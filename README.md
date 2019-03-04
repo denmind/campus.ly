@@ -16,3 +16,5 @@ Caboyo, Francis
 Margison, Alyssa Marie
 Regudo, Carah Justine
  
+Make instance of MySqlConnection better
+create instance for MySqlConnection

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="_Classes\Database.cs" />
+    <Compile Include="_Classes\DataBase_Status.cs" />
     <Compile Include="_Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
