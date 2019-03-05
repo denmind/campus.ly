@@ -1,6 +1,10 @@
 [PROJECT] : campus.ly (Student Info System)
 
-[LANGUAGE]: C#
+[LANGUAGE]:C#
+
+[TOOLS]:
+~WPF
+~MySQL
 
 [DATABASE]:
 ~Name : campus.ly
@@ -17,3 +21,7 @@ Margison, Alyssa Marie
 Regudo, Carah Justine
  
 Make accessors for Student class
+
+View student records
+Edit existing student record
+Create new student record

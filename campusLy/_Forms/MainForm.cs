@@ -27,25 +27,32 @@ namespace campusLy
 
             if (DB.start())
             {
+
             }
             else
             {
+
             }
 
             this.label_status.Text = DB.updateConnectionState();
         }
 
-        private void button_formCreate_OnClick(object sender, EventArgs e)
+        private void button_form_1_Create_OnClick(object sender, EventArgs e)
         {
 
         }
 
-        private void button_formUpdate_OnClick(object sender, EventArgs e)
+        private void button_form_2_Update_OnClick(object sender, EventArgs e)
         {
 
         }
 
-        private void button_formView_OnClick(object sender, EventArgs e)
+        private void button_form_3_View_OnClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_form_4_Delete_OnClick(object sender, EventArgs e)
         {
 
         }
