@@ -1,4 +1,4 @@
-[PROJECT] : campus.ly (Student Info Info System)
+[PROJECT] : campus.ly (Student Info System)
 
 [LANGUAGE]: C#
 
@@ -16,5 +16,4 @@ Caboyo, Francis
 Margison, Alyssa Marie
 Regudo, Carah Justine
  
-Make instance of MySqlConnection better
-create instance for MySqlConnection
+Make accessors for Student class

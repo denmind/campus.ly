@@ -2,10 +2,11 @@ c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\bin\Debug\
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.csprojResolveAssemblyReference.cache
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.Properties.Resources.resources
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.csproj.GenerateResource.Cache
-c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.Form1.resources
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\bin\Debug\campusLy.exe
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\bin\Debug\campusLy.pdb
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.exe
 c:\users\user\documents\visual studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.pdb
 C:\Users\User\documents\visual studio 2015\Projects\campusLy\campusLy\bin\Debug\MySql.Data.dll
 C:\Users\User\documents\visual studio 2015\Projects\campusLy\campusLy\bin\Debug\MySql.Data.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy.MainForm.resources
+C:\Users\User\Documents\Visual Studio 2015\Projects\campusLy\campusLy\obj\Debug\campusLy._Forms.BaseForm.resources

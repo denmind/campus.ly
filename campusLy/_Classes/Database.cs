@@ -1,17 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace campusLy
 {
-     public class Database
+     public sealed class Database
     {
         private string db_server;
         private string db_name;
@@ -21,37 +13,62 @@ namespace campusLy
         private MySqlConnection db_conn;
         private DataBase_Status db_state;
 
+        private static Database instance;
+
         /*Constructor*/
-        public Database()
+        internal Database()
         {
             db_server = "localhost";
             db_name = "campus.ly";
             db_uid = "student_admin";
-            db_password = "the_lunz_fiv3";
+            db_password = "admin_student";
 
-            db_conn = null;
+            instance = this;
+
+            db_conn = new MySqlConnection(generateDb_info_string());
             db_state = new DataBase_Status("N/A","None");
         }
 
-        public void start()
+        internal bool start()
         {
-            DataBase_Status State = getDb_status();
-
+            bool value;
             try
             {
-
-                //updateConnectionState();
-
-                getDb_status().setMessage(generateDb_info_string());
+                db_conn.Open();
+                value = true;
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                State.setMessage(ex.Message);
+                switch (ex.Number)
+                {
+                    case 0: getDb_status().setMessage("Cannot connect to server!"); break;
+                    case 1045: getDb_status().setMessage("Invalid username/password!"); break;
+                    default: getDb_status().setMessage(ex.Message); break;
+                }
+                value = false;
             }
+            return value;
+        }
 
-
-            getDb_status().setState(updateConnectionState());
-
+        internal bool end()
+        {
+            bool value;
+            try
+            {
+                db_conn.Close();
+                value = true;
+            }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0: getDb_status().setMessage("Cannot connect to server!"); break;
+                    case 1045: getDb_status().setMessage("Invalid username/password!"); break;
+                    default: getDb_status().setMessage(ex.Message); break;
+                }
+                value = false;
+            }
+            return value;
         }
 
         internal string updateConnectionState()
@@ -60,12 +77,12 @@ namespace campusLy
 
             switch (getDb_conn().State)
             {
-                case ConnectionState.Broken : value = "Broken"; break;
+                case ConnectionState.Open: value = "Open"; break;
                 case ConnectionState.Closed: value = "Closed"; break;
+                case ConnectionState.Broken : value = "Broken"; break;
                 case ConnectionState.Connecting: value = "Connecting"; break;
                 case ConnectionState.Executing: value = "Executing"; break;
                 case ConnectionState.Fetching: value = "Fetching"; break;
-                case ConnectionState.Open: value = "Open"; break;
             }
 
             getDb_status().setState(value);
@@ -76,21 +93,14 @@ namespace campusLy
             return "SERVER=" + db_server + ";DATABASE=" + db_name + ";UID=" + db_uid + ";PASSWORD=" + db_password;
         }
         /*Accessors*/
-        internal string getDb_server()
+        public static Database getInstance()
         {
-            return db_server;
-        }
-        internal string getDb_name()
-        {
-            return db_name;
-        }
-        internal string getDb_uid()
-        {
-            return db_uid;
-        }
-        internal string getDb_password()
-        {
-            return db_password;
+            if (instance == null)
+            {
+                instance = new Database();
+
+            }
+            return instance;
         }
         internal MySqlConnection getDb_conn()
         {
@@ -100,10 +110,15 @@ namespace campusLy
         {
             return db_state;
         }
-        internal void updateDb_status(string status_val)
+        internal void setPassword(string pass_val)
         {
-            getDb_status().setState(status_val);
+            db_password = pass_val;
         }
+        internal void setUsername(string user_val)
+        {
+            db_uid = user_val;
+        }
+       
 
     }
 }
