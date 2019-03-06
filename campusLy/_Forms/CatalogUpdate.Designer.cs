@@ -1,6 +1,6 @@
-﻿namespace campusLy._Forms
+﻿namespace campusLy
 {
-    partial class FormView
+    partial class CatalogUpdate
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "VIEW Student Records";
+            this.Text = "SELECT from catalog";
         }
 
         #endregion

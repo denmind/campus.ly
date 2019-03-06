@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using campusLy._Forms;
+using campusLy._Classes;
 
-namespace campusLy._Forms
+namespace campusLy
 {
-    public partial class BaseForm : Form
+    public partial class FormDelete : FormView
     {
-        public BaseForm()
+        public FormDelete()
         {
             InitializeComponent();
         }

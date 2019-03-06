@@ -15,6 +15,7 @@ namespace campusLy._Forms
         public FormCreate()
         {
             InitializeComponent();
+
         }
     }
 }

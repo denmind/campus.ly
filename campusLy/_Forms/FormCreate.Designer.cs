@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FormCreate
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "FormCreate";
+            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.Name = "FormCreate";
+            this.Text = "CREATE Student Record";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace campusLy._Forms
 {
-    public partial class FormUpdate : BaseForm
+    public partial class FormUpdate : FormCreate
     {
         public FormUpdate()
         {

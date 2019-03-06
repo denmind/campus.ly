@@ -1,6 +1,6 @@
-﻿namespace campusLy._Forms
+﻿namespace campusLy
 {
-    partial class FormView
+    partial class FormDelete
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "VIEW Student Records";
+            this.Text = "DELETE Student Record";
         }
 
         #endregion

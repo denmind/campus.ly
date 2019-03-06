@@ -69,17 +69,41 @@
     <Compile Include="_Classes\Database.cs" />
     <Compile Include="_Classes\DataBase_Status.cs" />
     <Compile Include="_Classes\Student.cs" />
+    <Compile Include="_Forms\BaseCatalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\BaseCatalog.Designer.cs">
+      <DependentUpon>BaseCatalog.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_Forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Forms\CatalogDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\CatalogDelete.Designer.cs">
+      <DependentUpon>CatalogDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Forms\CatalogUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\CatalogUpdate.Designer.cs">
+      <DependentUpon>CatalogUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Forms\FormCreate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_Forms\FormCreate.Designer.cs">
       <DependentUpon>FormCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Forms\FormDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\FormDelete.Designer.cs">
+      <DependentUpon>FormDelete.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\FormUpdate.cs">
       <SubType>Form</SubType>
@@ -101,8 +125,14 @@
     </Compile>
     <Compile Include="_Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="_Forms\BaseCatalog.resx">
+      <DependentUpon>BaseCatalog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="_Forms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\FormCreate.resx">
+      <DependentUpon>FormCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

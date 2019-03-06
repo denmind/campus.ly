@@ -29,46 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
-            this.label_status = new System.Windows.Forms.Label();
+            this.label_message = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label_status
+            // label_message
             // 
-            this.label_status.AutoSize = true;
-            this.label_status.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_status.ForeColor = System.Drawing.Color.Black;
-            this.label_status.Location = new System.Drawing.Point(271, 334);
-            this.label_status.Name = "label_status";
-            this.label_status.Size = new System.Drawing.Size(36, 18);
-            this.label_status.TabIndex = 0;
-            this.label_status.Text = "N/A";
+            this.label_message.AutoSize = true;
+            this.label_message.Location = new System.Drawing.Point(210, 9);
+            this.label_message.Name = "label_message";
+            this.label_message.Size = new System.Drawing.Size(0, 15);
+            this.label_message.TabIndex = 1;
             // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkOrange;
+            this.BackColor = System.Drawing.Color.Moccasin;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.label_status);
+            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.Controls.Add(this.label_message);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 400);
-            this.MinimumSize = new System.Drawing.Size(600, 400);
+            this.MaximumSize = new System.Drawing.Size(700, 500);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "BaseForm";
-            this.Text = "Campus.ly";
+            this.Text = "CAMPUS.ly";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        protected internal System.Windows.Forms.Label label_status;
+        protected internal System.Windows.Forms.Label label_message;
     }
 }
