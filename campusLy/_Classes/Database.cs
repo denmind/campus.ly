@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using campusLy._Classes;
 using MySql.Data.MySqlClient;
@@ -107,6 +108,75 @@ namespace campusLy
                 squery = "Cannot establish database connection! Check connection or contact admin!";
             }
             return squery;
+        }
+
+        internal List<string>[] /*int*/ view()
+        {
+            int data_set = viewSize();
+            const int row_n = 10;
+            int i;
+
+            int data_final_size = data_set * row_n;
+
+            /*Query prep*/
+            string squery = "SELECT * FROM student";
+
+            /*Store prep*/
+            List<string>[] data = new List<string>[data_final_size];
+            string[] data_head = new string[row_n];
+
+
+            /*Init list*/
+            for (i = 0; i < data_final_size; i++)
+                data[i] = new List<string>();
+
+
+             i = 0;
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                 MySqlCommand scomm = new MySqlCommand(squery, getDb_conn());
+                 MySqlDataReader dataReader = scomm.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                        data[i++].Add(dataReader["stud_id"] + "");
+                        data[i++].Add(dataReader["stud_id_no"] + "");
+                        data[i++].Add(dataReader["stud_name_first"] + "");
+                        data[i++].Add(dataReader["stud_name_mi"] + "");
+                        data[i++].Add(dataReader["stud_name_last"] + "");
+                        data[i++].Add(dataReader["stud_course"] + "");
+                        data[i++].Add(dataReader["stud_course_yr"] + "");
+                        data[i++].Add(dataReader["stud_date_of_birth"] + "");
+                        data[i++].Add(dataReader["stud_gender"] + "");
+                        data[i++].Add(dataReader["data_added"] + "");
+
+                }
+                dataReader.Close();
+
+                end();
+            }
+
+            return data;
+        }
+
+        internal int viewSize()
+        {
+            string squery = " SELECT COUNT(*) FROM student";
+
+            int value = -1;
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                MySqlCommand scomm = new MySqlCommand(squery, getDb_conn());
+
+                value = int.Parse(scomm.ExecuteScalar() + "");
+
+                end();
+            }
+
+            return value;
+
         }
 
         /*Accessors*/

@@ -93,6 +93,12 @@
     <Compile Include="_Forms\CatalogUpdate.Designer.cs">
       <DependentUpon>CatalogUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Forms\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Forms\FormCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,8 +137,14 @@
     <EmbeddedResource Include="_Forms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="_Forms\FormCreate.resx">
       <DependentUpon>FormCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\FormView.resx">
+      <DependentUpon>FormView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

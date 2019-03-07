@@ -53,6 +53,7 @@ namespace campusLy
         /*2. UPDATE*/
         private void button_form_2_Update_OnClick(object sender, EventArgs e)
         {
+            new CatalogUpdate().ShowDialog();
         }
         private void button_form_2_Update_OnHover(object sender, EventArgs e)
         {
@@ -88,6 +89,7 @@ namespace campusLy
         /*4. DELETE*/
         private void button_form_4_Delete_Click(object sender, EventArgs e)
         {
+            new CatalogDelete().ShowDialog();
         }
         private void button_form_4_Delete_OnHover(object sender, EventArgs e)
         {
