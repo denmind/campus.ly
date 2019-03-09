@@ -21,6 +21,8 @@ namespace campusLy._Classes
         {
 
         }
+        
+        /*YES  MIDDLE NAME*/
         internal Student(int id_no, string name_first, string name_mi, string name_last, string course, int courseyr, string date_of_birth, string gender)
         {
             stud_id = NULL_INT;
@@ -35,6 +37,8 @@ namespace campusLy._Classes
             stud_date_of_birth = date_of_birth;
             stud_gender = gender;
         }
+        
+        /*NO  MIDDLE NAME*/
         internal Student(int id_no, string name_first, string name_last, string course, int courseyr, string date_of_birth, string gender)
         {
             stud_id = NULL_INT;

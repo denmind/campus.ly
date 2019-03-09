@@ -34,33 +34,21 @@
             // 
             // label_message
             // 
-            this.label_message.AutoSize = true;
-            this.label_message.Location = new System.Drawing.Point(210, 9);
+            resources.ApplyResources(this.label_message, "label_message");
+            this.label_message.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
             this.label_message.Name = "label_message";
-            this.label_message.Size = new System.Drawing.Size(0, 15);
-            this.label_message.TabIndex = 1;
             // 
             // BaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(680, 457);
             this.Controls.Add(this.label_message);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.HelpButton = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(700, 500);
-            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "BaseForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CAMPUS.ly";
             this.ResumeLayout(false);
             this.PerformLayout();
 

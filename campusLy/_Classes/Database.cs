@@ -68,9 +68,9 @@ namespace campusLy
             return value;
         }
 
-        internal string insert(Student student)
+        internal bool insert(Student student)
         {
-            
+            bool value = true;
             /*Query prep*/
             string squery = (student.midInitIsEmpty()) ?
 
@@ -92,22 +92,14 @@ namespace campusLy
                 try
                 {
                     MySqlCommand scomm = new MySqlCommand(squery, getDb_conn());
-
                     scomm.ExecuteNonQuery();
-
-                    squery = "Successfully created record!";
                 }
-                catch(Exception ex)
-                {
-                    squery = "ERROR: " + ex.Message;
-                }
+                catch(Exception ex) {  value = false; }
                 end();
             }
-            else
-            {
-                squery = "Cannot establish database connection! Check connection or contact admin!";
-            }
-            return squery;
+            else{ value = false; }
+
+            return value;
         }
 
         internal List<string>[] /*int*/ view()
@@ -123,7 +115,6 @@ namespace campusLy
 
             /*Store prep*/
             List<string>[] data = new List<string>[data_final_size];
-            string[] data_head = new string[row_n];
 
 
             /*Init list*/
@@ -135,26 +126,7 @@ namespace campusLy
             /*Checks if db_conn is avail*/
             if (start())
             {
-                 MySqlCommand scomm = new MySqlCommand(squery, getDb_conn());
-                 MySqlDataReader dataReader = scomm.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                        data[i++].Add(dataReader["stud_id"] + "");
-                        data[i++].Add(dataReader["stud_id_no"] + "");
-                        data[i++].Add(dataReader["stud_name_first"] + "");
-                        data[i++].Add(dataReader["stud_name_mi"] + "");
-                        data[i++].Add(dataReader["stud_name_last"] + "");
-                        data[i++].Add(dataReader["stud_course"] + "");
-                        data[i++].Add(dataReader["stud_course_yr"] + "");
-                        data[i++].Add(dataReader["stud_date_of_birth"] + "");
-                        data[i++].Add(dataReader["stud_gender"] + "");
-                        data[i++].Add(dataReader["data_added"] + "");
-
-                }
-                dataReader.Close();
-
-                end();
+                 
             }
 
             return data;

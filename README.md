@@ -1,12 +1,14 @@
-[PROJECT] : campus.ly (Student Info System)
+[PROJECT]
+~campus.ly (Student Info System)
 
-[LANGUAGE]:C#
+[LANGUAGE]
+~C#
 
-[TOOLS]:
-~WPF
+[TOOLS]
+~Forms
 ~MySQL
 
-[DATABASE]:
+[DATABASE]
 ~Name : campus.ly
 ~Server: localhost
 ~Uid: student_admin
@@ -14,28 +16,15 @@
 
 
 
-GROUP MEMBERS:
-
+[GROUP MEMBERS]
 Caboyo, Francis
 Margison, Alyssa Marie
 Regudo, Carah Justine
- 
-Make accessors for Student class
 
-View student records
-Edit existing student record
+[2DO]
+Properize accessors for all
 
-Create new student record
-"  + student.getStudNameMi() + "
+VIEW, 
+EDIT = DELETE = Make Catalog
 
-private int stud_id;
-        private int stud_id_no;
-        private string stud_name_first;
-        private string stud_name_mi;
-        private string stud_name_last;
-        private Course stud_course;
-        private CourseYr stud_course_yr;
-        private string stud_date_of_birth;
-        private Gender stud_gender;
-		
 		
