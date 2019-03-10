@@ -14,7 +14,6 @@ namespace campusLy
         private string db_password;
 
         private MySqlConnection db_conn;
-        private DataBase_Status db_state;
         /*Constructor*/
         internal Database()
         {
@@ -24,7 +23,6 @@ namespace campusLy
             db_password = "admin_student";
 
             db_conn = new MySqlConnection(generateDb_info_string());
-            db_state = new DataBase_Status("N/A","None");
         }
 
         /*Core*/
@@ -38,15 +36,7 @@ namespace campusLy
                      value = true;
                 }
             }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0: getDb_status().setMessage("Cannot connect to server!"); break;
-                    case 1045: getDb_status().setMessage("Invalid username/password!"); break;
-                    default: getDb_status().setMessage(ex.Message); break;
-                }
-            }
+            catch (MySqlException ex){}
             return value;
         }
         internal bool end()
@@ -57,14 +47,7 @@ namespace campusLy
                     db_conn.Close();
                     value = true;
             }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0: getDb_status().setMessage("Cannot connect to server!"); break;
-                    default: getDb_status().setMessage(ex.Message); break;
-                }
-            }
+            catch (MySqlException ex){}
             return value;
         }
 
@@ -76,13 +59,13 @@ namespace campusLy
 
                 /*if mid name is empty*/
                 "INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_last`, `stud_course`, `stud_course_yr`, `stud_date_of_birth`, `stud_gender`, `date_added`)" +
-                "VALUES (NULL, '" + student.getStudIdNo() + "', '" + student.getStudNameFirst() + "', '" + student.getStudNameLast() + "', '" + student.getStudCourse() + "', '" + student.getStudCourseYr() + "', '" + student.getStudDateOfBirth() + "', '" + student.getStudGender() + "', CURRENT_TIMESTAMP)"
+                "VALUES (NULL, '" + student.IdNo + "', '" + student.NameFirst + "', '" + student.NameLast + "', '" + student.Course + "', '" + student.CourseYr + "', '" + student.DateOfBirth+ "', '" + student.Gender + "', CURRENT_TIMESTAMP)"
 
                 :
 
                 /*if mid name exists*/
                 "INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi`, `stud_name_last`, `stud_course`, `stud_course_yr`, `stud_date_of_birth`, `stud_gender`, `date_added`)" +
-                "VALUES (NULL, '" + student.getStudIdNo() + "', '" + student.getStudNameFirst() + "', '" + student.getStudNameMi() + "', '" + student.getStudNameLast() + "', '" + student.getStudCourse() + "', '" + student.getStudCourseYr() + "', '" + student.getStudDateOfBirth() + "', '" + student.getStudGender() + "', CURRENT_TIMESTAMP)"
+                "VALUES (NULL, '" + student.IdNo + "', '" + student.NameFirst + "', '" + student.NameMiddle + "', '" + student.NameLast + "', '" + student.Course + "', '" + student.CourseYr + "', '" + student.DateOfBirth + "', '" + student.Gender + "', CURRENT_TIMESTAMP)"
 
                 ;
 
@@ -102,34 +85,46 @@ namespace campusLy
             return value;
         }
 
-        internal List<string>[] /*int*/ view()
+        internal List<Student>  view()
         {
-            int data_set = viewSize();
-            const int row_n = 10;
-            int i;
-
-            int data_final_size = data_set * row_n;
-
-            /*Query prep*/
+            /*Query*/
             string squery = "SELECT * FROM student";
 
-            /*Store prep*/
-            List<string>[] data = new List<string>[data_final_size];
-
-
-            /*Init list*/
-            for (i = 0; i < data_final_size; i++)
-                data[i] = new List<string>();
-
-
-             i = 0;
-            /*Checks if db_conn is avail*/
+            /*Storage*/
+            List<Student> student_data = new List<Student>();
+             
             if (start())
             {
-                 
-            }
+                MySqlCommand scmd = new MySqlCommand(squery, getDb_conn());
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+                DateTime res_date_added;
+                DateTime res_date_of_birth;
 
-            return data;
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Student stud_data = new Student();
+
+                    stud_data.Id = int.Parse(sqlDataReader["stud_id"] + "");
+                    stud_data.IdNo = int.Parse(sqlDataReader["stud_id_no"] + "");
+                    stud_data.CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + "");
+
+                    stud_data.NameFirst = sqlDataReader["stud_name_first"] + "";
+                    stud_data.NameMiddle = sqlDataReader["stud_name_mi"] + "";
+                    stud_data.NameLast = sqlDataReader["stud_name_last"] + "";
+                    stud_data.Course = sqlDataReader["stud_course"] + "";
+                    stud_data.Gender = sqlDataReader["stud_gender"] + "";
+
+                    res_date_added = DateTime.Parse(sqlDataReader["date_added"] + "");
+                    res_date_of_birth = DateTime.Parse(sqlDataReader["stud_date_of_birth"] + "");
+
+                    stud_data.DateAdded = res_date_added.ToString("yyyy-MM-dd HH:mm:ss");
+                    stud_data.DateOfBirth = res_date_of_birth.ToString("yyy-MM-dd");
+
+                    student_data.Add(stud_data);
+                }
+            }
+            return student_data;
         }
 
         internal int viewSize()
@@ -163,29 +158,6 @@ namespace campusLy
         internal MySqlConnection getDb_conn()
         {
             return db_conn;
-        }
-        internal DataBase_Status getDb_status()
-        {
-            return db_state;
-        }
-
-        /*Other*/
-        internal string updateConnectionState()
-        {
-            string value = "None";
-
-            switch (getDb_conn().State)
-            {
-                case ConnectionState.Open: value = "Open"; break;
-                case ConnectionState.Closed: value = "Closed"; break;
-                case ConnectionState.Broken: value = "Broken"; break;
-                case ConnectionState.Connecting: value = "Connecting"; break;
-                case ConnectionState.Executing: value = "Executing"; break;
-                case ConnectionState.Fetching: value = "Fetching"; break;
-            }
-
-            getDb_status().setState(value);
-            return value;
         }
         internal string generateDb_info_string()
         {

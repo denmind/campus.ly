@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2019 at 05:54 PM
+-- Generation Time: Mar 10, 2019 at 10:16 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -46,7 +46,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi`, `stud_name_last`, `stud_course`, `stud_course_yr`, `stud_date_of_birth`, `stud_gender`, `date_added`) VALUES
-(1, 15200155, 'Caboyo', 'Jacobo', 'Francis Anthony Carmel', 'BSIT', '3', '1998-07-24', 'Male', '2019-03-06 16:31:21');
+(1, 15200155, 'Caboyo', 'Jacobo', 'Francis Anthony Carmel', 'BSIT', '3', '1998-07-24', 'Male', '2019-03-06 16:31:21'),
+(2, 1621164, 'Frank', 'Sio', 'Sinatra', 'BSIT', '3', '1998-03-10', 'Male', '2019-03-10 00:18:59'),
+(3, 1879754, 'Maria', '', 'Capitao', 'BSIS', '2', '1984-12-13', 'Female', '2019-03-10 00:25:54'),
+(4, 16798652, 'John', 'Mir', 'Mark', 'BSLIS', '5', '1948-10-05', 'Male', '2019-03-10 15:34:00'),
+(5, 15100123, 'Jessica', 'Calungsod', 'Mendez', 'BSCS', '1', '1997-10-12', 'Female', '2019-03-10 17:15:24');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +70,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=25;COMMIT;
+  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=6;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

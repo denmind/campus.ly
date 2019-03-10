@@ -12,7 +12,7 @@
 ~Name : campus.ly
 ~Server: localhost
 ~Uid: student_admin
-~Password: the_lunz_fiv3
+~Password: admin_student
 
 
 
