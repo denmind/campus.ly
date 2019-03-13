@@ -46,7 +46,6 @@
             this.Controls.Add(this.label_message);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.HelpButton = true;
             this.MaximizeBox = false;
             this.Name = "BaseForm";
             this.ResumeLayout(false);

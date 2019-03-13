@@ -15,16 +15,12 @@
 ~Password: admin_student
 
 
-
 [GROUP MEMBERS]
 Caboyo, Francis
 Margison, Alyssa Marie
 Regudo, Carah Justine
 
 [2DO]
-Properize accessors for all
-
-VIEW, 
-EDIT = DELETE = Make Catalog
+Make do update
 
 		

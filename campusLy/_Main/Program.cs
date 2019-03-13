@@ -17,7 +17,9 @@ namespace campusLy
         {
             Database DB = new Database();
 
-            if (DB.start()) { 
+            if (DB.start()) {
+                DB.end();
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());

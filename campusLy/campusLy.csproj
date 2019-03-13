@@ -68,29 +68,17 @@
   <ItemGroup>
     <Compile Include="_Classes\Database.cs" />
     <Compile Include="_Classes\Student.cs" />
-    <Compile Include="_Forms\BaseCatalog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_Forms\BaseCatalog.Designer.cs">
-      <DependentUpon>BaseCatalog.cs</DependentUpon>
-    </Compile>
     <Compile Include="_Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_Forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Forms\CatalogDelete.cs">
+    <Compile Include="_Forms\Confirm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_Forms\CatalogDelete.Designer.cs">
-      <DependentUpon>CatalogDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Forms\CatalogUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_Forms\CatalogUpdate.Designer.cs">
-      <DependentUpon>CatalogUpdate.cs</DependentUpon>
+    <Compile Include="_Forms\Confirm.Designer.cs">
+      <DependentUpon>Confirm.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\ErrorForm.cs">
       <SubType>Form</SubType>
@@ -103,18 +91,6 @@
     </Compile>
     <Compile Include="_Forms\FormCreate.Designer.cs">
       <DependentUpon>FormCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Forms\FormDelete.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_Forms\FormDelete.Designer.cs">
-      <DependentUpon>FormDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Forms\FormUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_Forms\FormUpdate.Designer.cs">
-      <DependentUpon>FormUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\InfoForm.cs">
       <SubType>Form</SubType>
@@ -134,13 +110,22 @@
     <Compile Include="_Forms\FormView.Designer.cs">
       <DependentUpon>FormView.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Forms\MessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\MessageForm.Designer.cs">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="_Forms\BaseCatalog.resx">
-      <DependentUpon>BaseCatalog.cs</DependentUpon>
+    <EmbeddedResource Include="_Forms\BaseForm.en.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\Confirm.resx">
+      <DependentUpon>Confirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
@@ -166,6 +151,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="_Forms\MessageForm.resx">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

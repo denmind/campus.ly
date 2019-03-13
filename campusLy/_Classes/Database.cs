@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace campusLy
 {
-     public sealed class Database
+    public sealed class Database
     {
         private string db_server;
         private string db_name;
@@ -31,12 +31,13 @@ namespace campusLy
             bool value = false;
             try
             {
-                if (!ConnectionState.Open.Equals(getDb_conn())) { 
-                     db_conn.Open();
-                     value = true;
+                if (!ConnectionState.Open.Equals(Database_Connection))
+                {
+                    db_conn.Open();
+                    value = true;
                 }
             }
-            catch (MySqlException ex){}
+            catch (MySqlException ex) { }
             return value;
         }
         internal bool end()
@@ -44,10 +45,10 @@ namespace campusLy
             bool value = false;
             try
             {
-                    db_conn.Close();
-                    value = true;
+                db_conn.Close();
+                value = true;
             }
-            catch (MySqlException ex){}
+            catch (MySqlException ex) { }
             return value;
         }
 
@@ -59,7 +60,7 @@ namespace campusLy
 
                 /*if mid name is empty*/
                 "INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_last`, `stud_course`, `stud_course_yr`, `stud_date_of_birth`, `stud_gender`, `date_added`)" +
-                "VALUES (NULL, '" + student.IdNo + "', '" + student.NameFirst + "', '" + student.NameLast + "', '" + student.Course + "', '" + student.CourseYr + "', '" + student.DateOfBirth+ "', '" + student.Gender + "', CURRENT_TIMESTAMP)"
+                "VALUES (NULL, '" + student.IdNo + "', '" + student.NameFirst + "', '" + student.NameLast + "', '" + student.Course + "', '" + student.CourseYr + "', '" + student.DateOfBirth + "', '" + student.Gender + "', CURRENT_TIMESTAMP)"
 
                 :
 
@@ -74,28 +75,28 @@ namespace campusLy
             {
                 try
                 {
-                    MySqlCommand scomm = new MySqlCommand(squery, getDb_conn());
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
                     scomm.ExecuteNonQuery();
                 }
-                catch(Exception ex) {  value = false; }
+                catch (Exception ex) { value = false; }
                 end();
             }
-            else{ value = false; }
+            else { value = false; }
 
             return value;
         }
 
-        internal List<Student>  view()
+        internal List<Student> view()
         {
             /*Query*/
             string squery = "SELECT * FROM student";
 
             /*Storage*/
             List<Student> student_data = new List<Student>();
-             
+
             if (start())
             {
-                MySqlCommand scmd = new MySqlCommand(squery, getDb_conn());
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
                 MySqlDataReader sqlDataReader = scmd.ExecuteReader();
                 DateTime res_date_added;
                 DateTime res_date_of_birth;
@@ -127,37 +128,96 @@ namespace campusLy
             return student_data;
         }
 
-        internal int viewSize()
+        internal List<Student> search(string srch_term)
         {
-            string squery = " SELECT COUNT(*) FROM student";
+            List<Student> search_result = new List<Student>();
 
-            int value = -1;
-            /*Checks if db_conn is avail*/
+            string squery = "SELECT * FROM student " +
+                            "WHERE stud_id_no LIKE '%" + srch_term + "%' OR " +
+                            "stud_name_first LIKE '%" + srch_term + "%' OR " +
+                            "stud_name_mi LIKE '%" + srch_term + "%' OR " +
+                            "stud_name_last LIKE '%" + srch_term + "%' OR " +
+                            "stud_date_of_birth LIKE '%" + srch_term + "%' OR " +
+                            "date_added LIKE '%" + srch_term + "%' ";
+
+
             if (start())
             {
-                MySqlCommand scomm = new MySqlCommand(squery, getDb_conn());
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+                DateTime res_date_added;
+                DateTime res_date_of_birth;
 
-                value = int.Parse(scomm.ExecuteScalar() + "");
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Student stud_data = new Student();
 
-                end();
+                    stud_data.Id = int.Parse(sqlDataReader["stud_id"] + "");
+                    stud_data.IdNo = int.Parse(sqlDataReader["stud_id_no"] + "");
+                    stud_data.CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + "");
+
+                    stud_data.NameFirst = sqlDataReader["stud_name_first"] + "";
+                    stud_data.NameMiddle = sqlDataReader["stud_name_mi"] + "";
+                    stud_data.NameLast = sqlDataReader["stud_name_last"] + "";
+                    stud_data.Course = sqlDataReader["stud_course"] + "";
+                    stud_data.Gender = sqlDataReader["stud_gender"] + "";
+
+                    res_date_added = DateTime.Parse(sqlDataReader["date_added"] + "");
+                    res_date_of_birth = DateTime.Parse(sqlDataReader["stud_date_of_birth"] + "");
+
+                    stud_data.DateAdded = res_date_added.ToString("yyyy-MM-dd HH:mm:ss");
+                    stud_data.DateOfBirth = res_date_of_birth.ToString("yyy-MM-dd");
+
+                    search_result.Add(stud_data);
+                }
+
+            }
+            return search_result;
+        }
+
+        internal bool delete(int idrops)
+        {
+            bool value = false;
+
+            string squery = "";
+
+            if(idrops > 0)
+            {
+                squery += "DELETE FROM student WHERE stud_id =" + idrops;
+
+                if (start())
+                {
+                    try
+                    {
+                        MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                        scomm.ExecuteNonQuery();
+                        value = true;
+                    }
+                    catch (Exception ex) { value = false; }
+                    end();
+                }
+                else { value = false; }
             }
 
             return value;
-
         }
 
         /*Accessors*/
-        internal void setPassword(string pass_val)
+        internal string Database_Username
         {
-            db_password = pass_val;
+            get { return db_uid;  }
+            set { db_uid = value; }
         }
-        internal void setUsername(string user_val)
+        internal string Database_Password
         {
-            db_uid = user_val;
+            get { return db_password; }
+            set { db_password = value; }
         }
-        internal MySqlConnection getDb_conn()
+
+        internal MySqlConnection Database_Connection
         {
-            return db_conn;
+            get { return db_conn; }
         }
         internal string generateDb_info_string()
         {

@@ -53,7 +53,11 @@ namespace campusLy
         /*2. UPDATE*/
         private void button_form_2_Update_OnClick(object sender, EventArgs e)
         {
-            new CatalogUpdate().ShowDialog();
+            string title = "UPDATE a student record";
+            string message = "Double click on a row cell to EDIT RECORD!";
+            string type = "UPDATE";
+
+            new FormView(true, type, title, message).ShowDialog();
         }
         private void button_form_2_Update_OnHover(object sender, EventArgs e)
         {
@@ -71,7 +75,11 @@ namespace campusLy
         /*3. VIEW*/
         private void button_form_3_View_OnClick(object sender, EventArgs e)
         {
-            new FormView().ShowDialog();
+            string title = "VIEW Student Records";
+            string message = "Double click on a row cell to COPY RECORD INFO to clipboard!";
+            string type = "VIEW";
+
+            new FormView(true, type, title, message).ShowDialog();
         }
         private void button_form_3_View_OnHover(object sender, EventArgs e)
         {
@@ -89,7 +97,11 @@ namespace campusLy
         /*4. DELETE*/
         private void button_form_4_Delete_Click(object sender, EventArgs e)
         {
-            new CatalogDelete().ShowDialog();
+            string title = "DELETE a student record";
+            string message = "Double click on a row cell to DELETE RECORD immediately!";
+            string type = "DELETE";
+
+            new FormView(true,type, title, message).ShowDialog();
         }
         private void button_form_4_Delete_OnHover(object sender, EventArgs e)
         {

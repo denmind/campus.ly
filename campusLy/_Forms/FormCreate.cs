@@ -31,7 +31,14 @@ namespace campusLy._Forms
             string stud_name_last = txt_stud_name_last.Text;
             string stud_date_of_birt = dtp_stud_date_of_birth.Text;
 
-            int stud_id_no = int.Parse(txt_stud_id_no.Text);
+            int stud_id_no;
+
+
+            if (txt_stud_id_no.Text.Equals(""))
+                stud_id_no = 0;
+            else
+                stud_id_no = int.Parse(txt_stud_id_no.Text);
+
             string stud_gender = "";
             string stud_course = "";
             int stud_course_yr = 1;

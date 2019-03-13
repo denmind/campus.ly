@@ -108,5 +108,22 @@ namespace campusLy._Classes
         {
             return NameMiddle.Equals("");
         }
+        internal string dataGen()
+        {
+            string data = "";
+
+            data += 1 + ". " + Id + "\n";
+            data += 2 + ". " + IdNo + "\n";
+            data += 3 + ". " + NameFirst + "\n";
+            data += 4 + ". " + NameMiddle + "\n";
+            data += 5 + ". " + NameLast + "\n";
+            data += 6 + ". " + Course + "\n";
+            data += 7 + ". " + CourseYr + "\n";
+            data += 8 + ". " + DateOfBirth + "\n";
+            data += 9 + ". " + Gender + "\n";
+            data += 10 + ". " + DateAdded + "\n";
+
+            return data;
+        }
     }
 }

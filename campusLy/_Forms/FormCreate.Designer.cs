@@ -513,33 +513,33 @@
         protected internal System.Windows.Forms.Label lbl_info_2;
 
         /*Input*/
-        private System.Windows.Forms.TextBox txt_stud_id_no;
-        private System.Windows.Forms.TextBox txt_stud_name_first;
-        private System.Windows.Forms.TextBox txt_stud_name_middle;
-        private System.Windows.Forms.TextBox txt_stud_name_last;
-        private System.Windows.Forms.DateTimePicker dtp_stud_date_of_birth;
+        protected internal System.Windows.Forms.TextBox txt_stud_id_no;
+        protected internal System.Windows.Forms.TextBox txt_stud_name_first;
+        protected internal System.Windows.Forms.TextBox txt_stud_name_middle;
+        protected internal System.Windows.Forms.TextBox txt_stud_name_last;
+        protected internal System.Windows.Forms.DateTimePicker dtp_stud_date_of_birth;
 
         /*Course*/
-        private System.Windows.Forms.GroupBox gbx_stud_course;
-        private System.Windows.Forms.RadioButton gbx_stud_course_bs_it;
-        private System.Windows.Forms.RadioButton gbx_stud_course_bs_cs;
-        private System.Windows.Forms.RadioButton gbx_stud_course_bs_is;
-        private System.Windows.Forms.RadioButton gbx_stud_course_bs_lis;
+        protected internal System.Windows.Forms.GroupBox gbx_stud_course;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_bs_it;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_bs_cs;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_bs_is;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_bs_lis;
 
         /*CourseYr*/
-        private System.Windows.Forms.GroupBox gbx_stud_course_yr;
-        private System.Windows.Forms.RadioButton gbx_stud_course_yr_one;
-        private System.Windows.Forms.RadioButton gbx_stud_course_yr_two;
-        private System.Windows.Forms.RadioButton gbx_stud_course_yr_three;
-        private System.Windows.Forms.RadioButton gbx_stud_course_yr_four;
-        private System.Windows.Forms.RadioButton gbx_stud_course_yr_fifth;
+        protected internal System.Windows.Forms.GroupBox gbx_stud_course_yr;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_yr_one;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_yr_two;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_yr_three;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_yr_four;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_course_yr_fifth;
 
         /*Gender*/
-        private System.Windows.Forms.GroupBox gbx_stud_gender;
-        private System.Windows.Forms.RadioButton gbx_stud_gender_male;
-        private System.Windows.Forms.RadioButton gbx_stud_gender_female;
+        protected internal System.Windows.Forms.GroupBox gbx_stud_gender;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_gender_male;
+        protected internal System.Windows.Forms.RadioButton gbx_stud_gender_female;
 
         /*Other*/
-        private System.Windows.Forms.Button btn_submit;
+        protected internal System.Windows.Forms.Button btn_submit;
     }
 }
