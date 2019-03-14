@@ -92,8 +92,8 @@ namespace campusLy._Forms
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
             Student S = new Student();
-            
 
+            S.Id = (int)hold[0].Value;
             S.IdNo = (int)hold[1].Value;
             S.NameLast = (string)hold[2].Value;
             S.NameMiddle = (string)hold[3].Value;
@@ -102,9 +102,8 @@ namespace campusLy._Forms
             S.CourseYr = (int)hold[6].Value;
             S.DateOfBirth = (string)hold[7].Value;
             S.Gender = (string)hold[8].Value;
-            S.DateAdded = (string)hold[9].Value;
 
-            new Confirm("UPDATE", indx, S.dataGen(), S).ShowDialog();
+            new FormCreate(S).ShowDialog();
         }
         private void DELETE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
