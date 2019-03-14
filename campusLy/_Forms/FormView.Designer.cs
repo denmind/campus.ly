@@ -44,7 +44,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.srch_box = new System.Windows.Forms.TextBox();
-            this.richText_title = new System.Windows.Forms.RichTextBox();
             this.lbl_form_view_title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_view)).BeginInit();
             this.SuspendLayout();
@@ -211,19 +210,6 @@
             this.srch_box.TextChanged += new System.EventHandler(this.srch_box_TextChanged);
             this.srch_box.GotFocus += new System.EventHandler(this.srch_box_GotFocus);
             // 
-            // richText_title
-            // 
-            this.richText_title.BackColor = System.Drawing.Color.Moccasin;
-            this.richText_title.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richText_title.Font = new System.Drawing.Font("OCR A Extended", 54F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richText_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
-            this.richText_title.Location = new System.Drawing.Point(12, 56);
-            this.richText_title.Name = "richText_title";
-            this.richText_title.ReadOnly = true;
-            this.richText_title.Size = new System.Drawing.Size(656, 381);
-            this.richText_title.TabIndex = 5;
-            this.richText_title.Text = "Database contains no record of such instance!";
-            // 
             // lbl_form_view_title
             // 
             this.lbl_form_view_title.AutoSize = true;
@@ -245,7 +231,6 @@
             this.Controls.Add(this.lbl_form_view_title);
             this.Controls.Add(this.srch_box);
             this.Controls.Add(this.dataGridView_view);
-            this.Controls.Add(this.richText_title);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.MaximumSize = new System.Drawing.Size(1000, 1000);
@@ -253,7 +238,6 @@
             this.MinimumSize = new System.Drawing.Size(0, 0);
             this.Name = "FormView";
             this.Load += new System.EventHandler(this.FormView_Load);
-            this.Controls.SetChildIndex(this.richText_title, 0);
             this.Controls.SetChildIndex(this.dataGridView_view, 0);
             this.Controls.SetChildIndex(this.srch_box, 0);
             this.Controls.SetChildIndex(this.label_message, 0);
@@ -275,7 +259,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.TextBox srch_box;
-        private System.Windows.Forms.RichTextBox richText_title;
         private System.Windows.Forms.Label lbl_form_view_title;
     }
 }

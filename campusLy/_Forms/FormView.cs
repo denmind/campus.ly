@@ -44,8 +44,6 @@ namespace campusLy._Forms
 
             displayOnDataGridView(stud_data);
 
-            lbl_form_view_title.Text += "";
-
         }
         private void srch_box_GotFocus(object sender, EventArgs e)
         {
@@ -53,8 +51,6 @@ namespace campusLy._Forms
         }
         private void srch_box_TextChanged(object sender, EventArgs e)
         {
-            dataGridView_view.Rows.Clear();
-
             Database DB = new Database();
 
             string search_term = srch_box.Text;
@@ -108,7 +104,7 @@ namespace campusLy._Forms
             S.Gender = (string)hold[8].Value;
             S.DateAdded = (string)hold[9].Value;
 
-            new Confirm("UPDATE", indx, S.dataGen()).ShowDialog();
+            new Confirm("UPDATE", indx, S.dataGen(), S).ShowDialog();
         }
         private void DELETE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -132,10 +128,9 @@ namespace campusLy._Forms
 
         private void displayOnDataGridView(List<Student> stud_data)
         {
-            int num = 1;
             if (stud_data.Count > 0)
             {
-                richText_title.Visible = false;
+                dataGridView_view.Rows.Clear();
 
                 foreach (Student S in stud_data)
                 {
@@ -156,15 +151,9 @@ namespace campusLy._Forms
 
                     dataGridView_view.Rows.Add(row);
                 }
-            }
-            else
-            {
-                srch_box.Visible = false;
-                dataGridView_view.Visible = false;
-                richText_title.Visible = true;
-                richText_title.ReadOnly = true;
+            }else{
+                dataGridView_view.Rows.Clear();
             }
         }
-
     }
 }
