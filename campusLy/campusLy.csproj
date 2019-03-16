@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="_Classes\Database.cs" />
+    <Compile Include="_Classes\FileGen.cs" />
     <Compile Include="_Classes\Student.cs" />
     <Compile Include="_Forms\BaseForm.cs">
       <SubType>Form</SubType>

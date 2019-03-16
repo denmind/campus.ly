@@ -13,7 +13,7 @@ namespace campusLy._Forms
 {
     public partial class FormView : BaseForm
     {
-        public FormView(bool allowSearch, string optype , string title, string header_message)
+        public FormView(bool allowSearch, string optype, string title, string header_message)
         {
             InitializeComponent();
             this.srch_box.Visible = allowSearch;
@@ -24,7 +24,7 @@ namespace campusLy._Forms
             {
                 this.dataGridView_view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VIEW_dataGridView_view_CellContentClick);
             }
-            else if(optype.Equals("UPDATE"))
+            else if (optype.Equals("UPDATE"))
             {
                 this.dataGridView_view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UPDATE_dataGridView_view_CellContentClick);
             }
@@ -44,6 +44,8 @@ namespace campusLy._Forms
 
             displayOnDataGridView(stud_data);
 
+            lbl_form_view_title.Text += "";
+
         }
         private void srch_box_GotFocus(object sender, EventArgs e)
         {
@@ -51,6 +53,8 @@ namespace campusLy._Forms
         }
         private void srch_box_TextChanged(object sender, EventArgs e)
         {
+            dataGridView_view.Rows.Clear();
+
             Database DB = new Database();
 
             string search_term = srch_box.Text;
@@ -66,17 +70,34 @@ namespace campusLy._Forms
         {
             //When a table row is double clicked a message box (modal) is displayed and within the control form
             //a copy button to clipboard is made available
-            
+
 
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
             string data = "";
+            string[] dataGen = new string[10];
+            Student student = new Student();
+            FileGen fileGen = new FileGen();
 
-            for(int i = 1; i < 10; i++) { 
+            for (int i = 1; i < 10; i++)
+            {
                 data += hold[i].Value + " ";
+                dataGen[i-1] = hold[i].Value + "";
             }
+
+            student.IdNo = Int32.Parse(dataGen[0] + "");
+            student.NameFirst = dataGen[1];
+            student.NameMiddle = dataGen[2];
+            student.NameLast = dataGen[3];
+            student.Course = dataGen[4];
+            student.CourseYr = Int32.Parse(dataGen[5] + "");
+            student.DateOfBirth = dataGen[6];
+            student.Gender = dataGen[7];
+
+            fileGen.Data = student;
+            fileGen.ProduceFile();
 
             new MessageForm(data).ShowDialog();
         }
@@ -93,7 +114,7 @@ namespace campusLy._Forms
 
             Student S = new Student();
 
-            S.Id = (int)hold[0].Value;
+
             S.IdNo = (int)hold[1].Value;
             S.NameLast = (string)hold[2].Value;
             S.NameMiddle = (string)hold[3].Value;
@@ -102,12 +123,13 @@ namespace campusLy._Forms
             S.CourseYr = (int)hold[6].Value;
             S.DateOfBirth = (string)hold[7].Value;
             S.Gender = (string)hold[8].Value;
+            S.DateAdded = (string)hold[9].Value;
 
-            new FormCreate(S).ShowDialog();
+            new Confirm("UPDATE", indx, S.dataGen()).ShowDialog();
         }
         private void DELETE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             Database DB = new Database();
 
             int indx = e.RowIndex;
@@ -122,14 +144,15 @@ namespace campusLy._Forms
 
             indx = Int32.Parse(hold[0].Value + "");
 
-            new Confirm("DELETE",indx, data).ShowDialog();
+            new Confirm("DELETE", indx, data).ShowDialog();
         }
 
         private void displayOnDataGridView(List<Student> stud_data)
         {
+            int num = 1;
             if (stud_data.Count > 0)
             {
-                dataGridView_view.Rows.Clear();
+                richText_title.Visible = false;
 
                 foreach (Student S in stud_data)
                 {
@@ -150,9 +173,15 @@ namespace campusLy._Forms
 
                     dataGridView_view.Rows.Add(row);
                 }
-            }else{
-                dataGridView_view.Rows.Clear();
+            }
+            else
+            {
+                srch_box.Visible = false;
+                dataGridView_view.Visible = false;
+                richText_title.Visible = true;
+                richText_title.ReadOnly = true;
             }
         }
+
     }
 }

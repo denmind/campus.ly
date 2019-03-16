@@ -36,6 +36,10 @@ namespace campusLy
             this.button_form_3_View = new System.Windows.Forms.Button();
             this.button_form_4_Delete = new System.Windows.Forms.Button();
             this.label_title = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenuTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuTools_CleanIdentifiers = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_form_1_Create
@@ -137,6 +141,36 @@ namespace campusLy
             this.label_title.TabIndex = 5;
             this.label_title.Text = "\'Hover and click on the buttons to discover your activities!\'";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuTools});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(680, 24);
+            this.menuStrip1.Stretch = false;
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mainMenuTools
+            // 
+            this.mainMenuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuTools_CleanIdentifiers});
+            this.mainMenuTools.Name = "mainMenuTools";
+            this.mainMenuTools.Size = new System.Drawing.Size(47, 20);
+            this.mainMenuTools.Text = "Tools";
+            // 
+            // mainMenuTools_CleanIdentifiers
+            // 
+            this.mainMenuTools_CleanIdentifiers.Name = "mainMenuTools_CleanIdentifiers";
+            this.mainMenuTools_CleanIdentifiers.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuTools_CleanIdentifiers.Text = "Clean identifiers";
+            this.mainMenuTools_CleanIdentifiers.ToolTipText = "Fixes the record identifiers in the database. May take some time to finish.";
+            this.mainMenuTools_CleanIdentifiers.Click += new System.EventHandler(this.mainMenuTools_CleanIdentifiers_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -148,16 +182,20 @@ namespace campusLy
             this.Controls.Add(this.button_form_3_View);
             this.Controls.Add(this.button_form_2_Update);
             this.Controls.Add(this.button_form_1_Create);
+            this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Load += new System.EventHandler(this.MainFormLoad);
+            this.Controls.SetChildIndex(this.menuStrip1, 0);
             this.Controls.SetChildIndex(this.label_message, 0);
             this.Controls.SetChildIndex(this.button_form_1_Create, 0);
             this.Controls.SetChildIndex(this.button_form_2_Update, 0);
             this.Controls.SetChildIndex(this.button_form_3_View, 0);
             this.Controls.SetChildIndex(this.button_form_4_Delete, 0);
             this.Controls.SetChildIndex(this.label_title, 0);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +208,9 @@ namespace campusLy
         private System.Windows.Forms.Button button_form_3_View;
         private System.Windows.Forms.Button button_form_4_Delete;
         protected internal System.Windows.Forms.Label label_title;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuTools;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuTools_CleanIdentifiers;
     }
 }
 

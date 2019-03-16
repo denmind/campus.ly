@@ -53,7 +53,7 @@
             this.lbl_footnote.Name = "lbl_footnote";
             this.lbl_footnote.Size = new System.Drawing.Size(220, 18);
             this.lbl_footnote.TabIndex = 2;
-            this.lbl_footnote.Text = "*Information copied to clipboard!";
+            this.lbl_footnote.Text = "*Record file generated and data copied to clipboard!!";
             // 
             // MessageForm
             // 
@@ -75,9 +75,10 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Data Sheet";
-            this.Load += new System.EventHandler(this.MessageForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.KeyPreview = true;
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(MessageForm_KeyPress);
 
         }
 

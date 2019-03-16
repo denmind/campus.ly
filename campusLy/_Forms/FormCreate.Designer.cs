@@ -59,7 +59,6 @@
             this.gbx_stud_gender_female = new System.Windows.Forms.RadioButton();
             this.lbl_info_1 = new System.Windows.Forms.Label();
             this.lbl_info_2 = new System.Windows.Forms.Label();
-            this.lbl_id = new System.Windows.Forms.Label();
             this.gbx_stud_course.SuspendLayout();
             this.gbx_stud_course_yr.SuspendLayout();
             this.gbx_stud_gender.SuspendLayout();
@@ -437,19 +436,9 @@
             this.lbl_info_2.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info_2.Location = new System.Drawing.Point(28, 420);
             this.lbl_info_2.Name = "lbl_info_2";
-            this.lbl_info_2.Size = new System.Drawing.Size(95, 18);
+            this.lbl_info_2.Size = new System.Drawing.Size(181, 18);
             this.lbl_info_2.TabIndex = 22;
             this.lbl_info_2.Text = "**Number only!";
-            // 
-            // lbl_id
-            // 
-            this.lbl_id.AutoSize = true;
-            this.lbl_id.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_id.Location = new System.Drawing.Point(417, 27);
-            this.lbl_id.Name = "lbl_id";
-            this.lbl_id.Size = new System.Drawing.Size(71, 24);
-            this.lbl_id.TabIndex = 23;
-            this.lbl_id.Text = "Default";
             // 
             // FormCreate
             // 
@@ -457,7 +446,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(680, 457);
-            this.Controls.Add(this.lbl_id);
             this.Controls.Add(this.lbl_info_2);
             this.Controls.Add(this.lbl_info_1);
             this.Controls.Add(this.gbx_stud_gender);
@@ -499,7 +487,6 @@
             this.Controls.SetChildIndex(this.gbx_stud_gender, 0);
             this.Controls.SetChildIndex(this.lbl_info_1, 0);
             this.Controls.SetChildIndex(this.lbl_info_2, 0);
-            this.Controls.SetChildIndex(this.lbl_id, 0);
             this.gbx_stud_course.ResumeLayout(false);
             this.gbx_stud_course.PerformLayout();
             this.gbx_stud_course_yr.ResumeLayout(false);
@@ -554,6 +541,5 @@
 
         /*Other*/
         protected internal System.Windows.Forms.Button btn_submit;
-        private System.Windows.Forms.Label lbl_id;
     }
 }

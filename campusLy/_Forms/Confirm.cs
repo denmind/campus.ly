@@ -14,7 +14,7 @@ namespace campusLy._Forms
     public partial class Confirm : Form
     {
         private int id;
-        private Student stud_data;
+        Student data;
 
         public Confirm(string type, int id, string message)
         {
@@ -26,7 +26,6 @@ namespace campusLy._Forms
             if (type.Equals("UPDATE"))
             {
                 label1.Text = "UPDATE?";
-                this.button_true.Click += new System.EventHandler(this.UPDATE_button_true_Click);
             }
             else if (type.Equals("DELETE"))
             {
@@ -34,18 +33,17 @@ namespace campusLy._Forms
                 this.button_true.Click += new System.EventHandler(this.DELETE_button_true_Click);
             }
         }
-        public Confirm(string type, int id, string message, Student data)
+        public Confirm(string type, int id, string message , Student info)
         {
             InitializeComponent();
 
             this.ConfirmId = id;
             this.richTextBox_confirm_delete.Text = message;
-            this.StudData = data;
+            this.StudentInstance = info;
 
             if (type.Equals("UPDATE"))
             {
                 label1.Text = "UPDATE?";
-                this.button_true.Click += new System.EventHandler(this.UPDATE_button_true_Click);
             }
             else if (type.Equals("DELETE"))
             {
@@ -58,19 +56,11 @@ namespace campusLy._Forms
             Database DB = new Database();
 
             new InfoForm(DB.delete(ConfirmId)).ShowDialog();
-
             this.Close();
         }
         private void UPDATE_button_true_Click(object sender, EventArgs e)
         {
             Database DB = new Database();
-
-            if (DB.delete(ConfirmId))
-            {
-                new InfoForm(DB.insert(StudData)).ShowDialog();
-            }
-            else { new InfoForm(false).ShowDialog(); }
-
 
             this.Close();
         }
@@ -86,10 +76,11 @@ namespace campusLy._Forms
             get { return id; }
             set { id = value; }
         }
-        internal Student StudData
+
+        internal Student StudentInstance
         {
-            get { return stud_data; }
-            set { stud_data = value; }
+            get { return data;  }
+            set { data = value; }
         }
     }
 }

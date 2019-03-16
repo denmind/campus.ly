@@ -16,11 +16,11 @@ namespace campusLy._Forms
         {
             InitializeComponent();
             msg_text.Text += data;
-        }
-
-        private void MessageForm_Load(object sender, EventArgs e)
-        {
             Clipboard.SetText(msg_text.Text);
+        }
+        void MessageForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                this.Close();
         }
     }
 }

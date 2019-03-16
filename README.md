@@ -21,6 +21,5 @@ Margison, Alyssa Marie
 Regudo, Carah Justine
 
 [2DO]
-Make do update
-
+Make do update query and method
 		

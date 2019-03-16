@@ -31,7 +31,6 @@ namespace campusLy
             InitializeComponent();
         }
 
-        private void MainFormLoad(object sender, EventArgs e){}
 
         /*1. CREATE*/
         private void button_form_1_Create_OnClick(object sender, EventArgs e)
@@ -76,7 +75,7 @@ namespace campusLy
         private void button_form_3_View_OnClick(object sender, EventArgs e)
         {
             string title = "VIEW Student Records";
-            string message = "Double click on a row cell to COPY RECORD INFO to clipboard!";
+            string message = "Double click on a row cell to GENERATE RECORD FILE!";
             string type = "VIEW";
 
             new FormView(true, type, title, message).ShowDialog();
@@ -112,6 +111,15 @@ namespace campusLy
         {
             button_form_4_Delete.Text = "";
             this.button_form_4_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_4_Delete.BackgroundImage")));
+        }
+
+        private void mainMenuTools_CleanIdentifiers_Click(object sender, EventArgs e)
+        {
+            Database DB = new Database();
+
+            List<int> id_data = DB.getSortedStudID();
+
+            new InfoForm(DB.cleanStudID(id_data)).ShowDialog();
         }
     }
 }

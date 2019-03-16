@@ -31,10 +31,9 @@ namespace campusLy
             bool value = false;
             try
             {
-                if (!ConnectionState.Open.Equals(Database_Connection))
+                switch (Database_Connection.State)
                 {
-                    db_conn.Open();
-                    value = true;
+                    case ConnectionState.Closed: db_conn.Open(); value = true; break;
                 }
             }
             catch (MySqlException ex) { }
@@ -127,7 +126,6 @@ namespace campusLy
             }
             return student_data;
         }
-
         internal List<Student> search(string srch_term)
         {
             List<Student> search_result = new List<Student>();
@@ -175,14 +173,13 @@ namespace campusLy
             }
             return search_result;
         }
-
         internal bool delete(int idrops)
         {
             bool value = false;
 
             string squery = "";
 
-            if(idrops > 0)
+            if (idrops > 0)
             {
                 squery += "DELETE FROM student WHERE stud_id =" + idrops;
 
@@ -206,7 +203,7 @@ namespace campusLy
         /*Accessors*/
         internal string Database_Username
         {
-            get { return db_uid;  }
+            get { return db_uid; }
             set { db_uid = value; }
         }
         internal string Database_Password
@@ -222,6 +219,33 @@ namespace campusLy
         internal string generateDb_info_string()
         {
             return "SERVER=" + db_server + ";DATABASE=" + db_name + ";UID=" + db_uid + ";PASSWORD=" + db_password;
+        }
+
+        internal List<int> getSortedStudID()
+        {
+            /*Query*/
+            string squery = "SELECT stud_id FROM student ORDER BY date_added ASC";
+
+            /*Storage*/
+            List<int> id_data = new List<int>();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    id_data.Add(int.Parse(sqlDataReader["stud_id"] + ""));
+                }
+            }
+            return id_data;
+        }
+        internal bool cleanStudID(List<int> id_data)
+        {
+            bool value = false;
+            return value;
         }
     }
 }
