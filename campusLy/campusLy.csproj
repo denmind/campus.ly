@@ -66,7 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="_Classes\Course.cs" />
     <Compile Include="_Classes\Database.cs" />
+    <Compile Include="_Classes\Enroll.cs" />
     <Compile Include="_Classes\FileGen.cs" />
     <Compile Include="_Classes\Student.cs" />
     <Compile Include="_Forms\BaseForm.cs">
@@ -80,6 +82,12 @@
     </Compile>
     <Compile Include="_Forms\Confirm.Designer.cs">
       <DependentUpon>Confirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Forms\DataOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\DataOption.Designer.cs">
+      <DependentUpon>DataOption.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\ErrorForm.cs">
       <SubType>Form</SubType>
@@ -99,17 +107,29 @@
     <Compile Include="_Forms\InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Forms\MainForm.cs">
+    <Compile Include="_Forms\MainFormEnroll.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="_Forms\MainFormEnroll.Designer.cs">
+      <DependentUpon>MainFormEnroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Forms\MainFormStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\MainFormStudent.Designer.cs">
+      <DependentUpon>MainFormStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\FormView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_Forms\FormView.Designer.cs">
       <DependentUpon>FormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Forms\MainFormCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\MainFormCourse.Designer.cs">
+      <DependentUpon>MainFormCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\MessageForm.cs">
       <SubType>Form</SubType>
@@ -128,6 +148,9 @@
     <EmbeddedResource Include="_Forms\Confirm.resx">
       <DependentUpon>Confirm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\DataOption.resx">
+      <DependentUpon>DataOption.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="_Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,8 +163,8 @@
     <EmbeddedResource Include="_Forms\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="_Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="_Forms\MainFormStudent.resx">
+      <DependentUpon>MainFormStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

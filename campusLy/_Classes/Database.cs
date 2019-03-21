@@ -51,6 +51,7 @@ namespace campusLy
             return value;
         }
 
+        /*STUDENT*/
         internal bool insert(Student student)
         {
             bool value = true;
@@ -85,7 +86,7 @@ namespace campusLy
             return value;
         }
 
-        internal List<Student> view()
+        internal List<Student> selectAllStud()
         {
             /*Query*/
             string squery = "SELECT * FROM student";
@@ -126,7 +127,7 @@ namespace campusLy
             }
             return student_data;
         }
-        internal List<Student> search(string srch_term)
+        internal List<Student> searchAll(string srch_term)
         {
             List<Student> search_result = new List<Student>();
 
@@ -200,6 +201,79 @@ namespace campusLy
             return value;
         }
 
+        /*COURSE*/
+        internal bool insert(Course course)
+        {
+            bool value = true;
+            /*Query prep*/
+            string squery = "INSERT INTO course (course_id, course_code, course_title) VALUES (NULL, '"+course.CourseCode +"', '"+ course.CourseTitle+"')";
+
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                }
+                catch (Exception ex) { value = false; }
+                end();
+            }
+            else { value = false; }
+
+            return value;
+        }
+        internal List<Course> selectAllCourse()
+        {
+            /*Query*/
+            string squery = "SELECT * FROM course";
+
+            /*Storage*/
+            List<Course> course_data = new List<Course>();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Course course_data_hold = new Course();
+
+                    course_data_hold.CourseId = int.Parse(sqlDataReader["course_id"] + "");
+                    course_data_hold.CourseCode = sqlDataReader["course_code"] + "";
+                    course_data_hold.CourseTitle = sqlDataReader["course_title"] + "";
+
+                    course_data.Add(course_data_hold);
+                }
+            }
+            return course_data;
+        }
+
+        /*ENROLL*/
+        internal bool insert(Enroll enroll)
+        {
+            bool value = true;
+            /*Query prep*/
+            string squery = "INSERT INTO enroll (enroll_id, course_id, stud_id) VALUES (NULL, '"+enroll.CourseID+"', '"+enroll.StudID+"')";
+
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                }
+                catch (Exception ex) { value = false; }
+                end();
+            }
+            else { value = false; }
+
+            return value;
+        }
+       
         /*Accessors*/
         internal string Database_Username
         {
@@ -221,6 +295,7 @@ namespace campusLy
             return "SERVER=" + db_server + ";DATABASE=" + db_name + ";UID=" + db_uid + ";PASSWORD=" + db_password;
         }
 
+        /*OTHERS*/
         internal List<int> getSortedStudID()
         {
             /*Query*/

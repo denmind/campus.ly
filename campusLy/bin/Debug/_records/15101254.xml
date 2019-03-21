@@ -1,0 +1,10 @@
+<student>
+	<stud_id_no>15101254</stud_id_no>
+	<stud_name_first>Capitao</stud_name_first>
+	<stud_name_mi>Santos</stud_name_mi>
+	<stud_name_last>Maria</stud_name_last>
+	<stud_course>BSIS</stud_course>
+	<stud_course_yr>2</stud_course_yr>
+	<stud_date_of_birth>1984-12-13</stud_date_of_birth>
+	<stud_gender>Female</stud_gender>
+</student>

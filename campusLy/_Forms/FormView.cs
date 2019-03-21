@@ -40,7 +40,7 @@ namespace campusLy._Forms
 
             List<Student> stud_data = new List<Student>();
 
-            stud_data = DB.view();
+            stud_data = DB.selectAllStud();
 
             displayOnDataGridView(stud_data);
 
@@ -61,7 +61,7 @@ namespace campusLy._Forms
 
             List<Student> stud_data = new List<Student>();
 
-            stud_data = DB.search(search_term);
+            stud_data = DB.searchAll(search_term);
 
             displayOnDataGridView(stud_data);
         }

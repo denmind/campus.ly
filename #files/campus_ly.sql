@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2019 at 02:27 PM
+-- Generation Time: Mar 21, 2019 at 06:41 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -21,6 +21,38 @@ SET time_zone = "+00:00";
 --
 -- Database: `campus.ly`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `course_id` int(11) NOT NULL,
+  `course_code` varchar(32) NOT NULL,
+  `course_title` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`course_id`, `course_code`, `course_title`) VALUES
+(1, 'IT 1101', 'PROGRAMMING I'),
+(2, 'IT 1102', 'INTRODUCTION TO COMPUTING');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `enroll`
+--
+
+CREATE TABLE `enroll` (
+  `enroll_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `stud_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -58,6 +90,20 @@ INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi
 --
 
 --
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `enroll`
+--
+ALTER TABLE `enroll`
+  ADD PRIMARY KEY (`enroll_id`),
+  ADD KEY `e_course_id` (`course_id`),
+  ADD KEY `e_stud_id` (`stud_id`);
+
+--
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -68,10 +114,33 @@ ALTER TABLE `student`
 --
 
 --
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `enroll`
+--
+ALTER TABLE `enroll`
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
   MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=14;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `enroll`
+--
+ALTER TABLE `enroll`
+  ADD CONSTRAINT `e_course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `e_stud_id` FOREIGN KEY (`stud_id`) REFERENCES `student` (`stud_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

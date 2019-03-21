@@ -38,7 +38,6 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.ErrorForm.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormCreate.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormView.resources
-C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy.MainForm.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy.Properties.Resources.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy.csproj.GenerateResource.cache
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy.csproj.CoreCompileInputs.cache
@@ -51,3 +50,5 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\en\campusLy.resources.dll
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.MessageForm.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.Confirm.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.DataOption.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy.MainFormStudent.resources
