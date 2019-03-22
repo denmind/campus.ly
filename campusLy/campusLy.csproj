@@ -95,11 +95,11 @@
     <Compile Include="_Forms\ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Forms\FormCreate.cs">
+    <Compile Include="_Forms\FormStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_Forms\FormCreate.Designer.cs">
-      <DependentUpon>FormCreate.cs</DependentUpon>
+    <Compile Include="_Forms\FormStudent.Designer.cs">
+      <DependentUpon>FormStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\InfoForm.cs">
       <SubType>Form</SubType>
@@ -113,11 +113,11 @@
     <Compile Include="_Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Forms\FormView.cs">
+    <Compile Include="_Forms\FormStudentView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_Forms\FormView.Designer.cs">
-      <DependentUpon>FormView.cs</DependentUpon>
+    <Compile Include="_Forms\FormStudentView.Designer.cs">
+      <DependentUpon>FormStudentView.cs</DependentUpon>
     </Compile>
     <Compile Include="_Forms\MessageForm.cs">
       <SubType>Form</SubType>
@@ -142,11 +142,11 @@
     <EmbeddedResource Include="_Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="_Forms\FormCreate.resx">
-      <DependentUpon>FormCreate.cs</DependentUpon>
+    <EmbeddedResource Include="_Forms\FormStudent.resx">
+      <DependentUpon>FormStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="_Forms\FormView.resx">
-      <DependentUpon>FormView.cs</DependentUpon>
+    <EmbeddedResource Include="_Forms\FormStudentView.resx">
+      <DependentUpon>FormStudentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>

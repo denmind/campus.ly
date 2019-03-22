@@ -1,6 +1,6 @@
 ﻿namespace campusLy._Forms
 {
-    partial class FormView
+    partial class FormStudentView
     {
         /// <summary>
         /// Required designer variable.
@@ -137,7 +137,7 @@
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "First Name";
+            this.Column3.HeaderText = "Surname";
             this.Column3.MaxInputLength = 0;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -153,7 +153,7 @@
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Surname";
+            this.Column5.HeaderText = "First Name";
             this.Column5.MaxInputLength = 0;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;

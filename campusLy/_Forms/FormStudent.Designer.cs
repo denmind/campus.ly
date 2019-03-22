@@ -1,6 +1,6 @@
 ﻿namespace campusLy._Forms
 {
-    partial class FormCreate
+    partial class FormStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreate));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStudent));
             this.lbl_stud_id_no = new System.Windows.Forms.Label();
-            this.lbl_stud_name_first = new System.Windows.Forms.Label();
-            this.lbl_stud_name_middle_name = new System.Windows.Forms.Label();
             this.lbl_stud_name_last = new System.Windows.Forms.Label();
+            this.lbl_stud_name_middle_name = new System.Windows.Forms.Label();
+            this.lbl_stud_name_first = new System.Windows.Forms.Label();
             this.lbl_stud_course = new System.Windows.Forms.Label();
             this.lbl_stud_course_yr = new System.Windows.Forms.Label();
             this.lbl_stud_date_of_birth = new System.Windows.Forms.Label();
@@ -83,16 +83,16 @@
             this.lbl_stud_id_no.TabIndex = 2;
             this.lbl_stud_id_no.Text = "**ID No:";
             // 
-            // lbl_stud_name_first
+            // lbl_stud_name_last
             // 
-            this.lbl_stud_name_first.AutoSize = true;
-            this.lbl_stud_name_first.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_stud_name_first.ForeColor = System.Drawing.Color.Black;
-            this.lbl_stud_name_first.Location = new System.Drawing.Point(28, 76);
-            this.lbl_stud_name_first.Name = "lbl_stud_name_first";
-            this.lbl_stud_name_first.Size = new System.Drawing.Size(99, 18);
-            this.lbl_stud_name_first.TabIndex = 3;
-            this.lbl_stud_name_first.Text = "First Name:";
+            this.lbl_stud_name_last.AutoSize = true;
+            this.lbl_stud_name_last.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stud_name_last.ForeColor = System.Drawing.Color.Black;
+            this.lbl_stud_name_last.Location = new System.Drawing.Point(28, 76);
+            this.lbl_stud_name_last.Name = "lbl_stud_name_last";
+            this.lbl_stud_name_last.Size = new System.Drawing.Size(99, 18);
+            this.lbl_stud_name_last.TabIndex = 3;
+            this.lbl_stud_name_last.Text = "First Name:";
             // 
             // lbl_stud_name_middle_name
             // 
@@ -105,16 +105,16 @@
             this.lbl_stud_name_middle_name.TabIndex = 4;
             this.lbl_stud_name_middle_name.Text = "*Middle Name:";
             // 
-            // lbl_stud_name_last
+            // lbl_stud_name_first
             // 
-            this.lbl_stud_name_last.AutoSize = true;
-            this.lbl_stud_name_last.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_stud_name_last.ForeColor = System.Drawing.Color.Black;
-            this.lbl_stud_name_last.Location = new System.Drawing.Point(28, 142);
-            this.lbl_stud_name_last.Name = "lbl_stud_name_last";
-            this.lbl_stud_name_last.Size = new System.Drawing.Size(89, 18);
-            this.lbl_stud_name_last.TabIndex = 7;
-            this.lbl_stud_name_last.Text = "Surname: ";
+            this.lbl_stud_name_first.AutoSize = true;
+            this.lbl_stud_name_first.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_stud_name_first.ForeColor = System.Drawing.Color.Black;
+            this.lbl_stud_name_first.Location = new System.Drawing.Point(28, 142);
+            this.lbl_stud_name_first.Name = "lbl_stud_name_first";
+            this.lbl_stud_name_first.Size = new System.Drawing.Size(89, 18);
+            this.lbl_stud_name_first.TabIndex = 7;
+            this.lbl_stud_name_first.Text = "Surname: ";
             // 
             // lbl_stud_course
             // 
@@ -168,7 +168,7 @@
             this.txt_stud_id_no.Name = "txt_stud_id_no";
             this.txt_stud_id_no.Size = new System.Drawing.Size(151, 25);
             this.txt_stud_id_no.TabIndex = 11;
-            this.txt_stud_id_no.TextChanged += txt_stud_id_no_TextChanged;
+            this.txt_stud_id_no.TextChanged += txt_field_ValidDigitOnly;
             // 
             // txt_stud_name_first
             // 
@@ -178,6 +178,7 @@
             this.txt_stud_name_first.Name = "txt_stud_name_first";
             this.txt_stud_name_first.Size = new System.Drawing.Size(157, 25);
             this.txt_stud_name_first.TabIndex = 12;
+            this.txt_stud_name_first.TextChanged += txt_field_ValidCharOnly;
             // 
             // txt_stud_name_middle
             // 
@@ -187,6 +188,7 @@
             this.txt_stud_name_middle.Name = "txt_stud_name_middle";
             this.txt_stud_name_middle.Size = new System.Drawing.Size(157, 25);
             this.txt_stud_name_middle.TabIndex = 13;
+            this.txt_stud_name_first.TextChanged += txt_field_ValidCharOnly;
             // 
             // txt_stud_name_last
             // 
@@ -196,6 +198,7 @@
             this.txt_stud_name_last.Name = "txt_stud_name_last";
             this.txt_stud_name_last.Size = new System.Drawing.Size(157, 25);
             this.txt_stud_name_last.TabIndex = 14;
+            this.txt_stud_name_last.TextChanged += txt_field_ValidCharOnly;
             // 
             // dtp_stud_date_of_birth
             // 
@@ -219,7 +222,6 @@
             this.btn_submit.Text = "SUBMIT";
             this.btn_submit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_submit.UseVisualStyleBackColor = true;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // gbx_stud_course
             // 
@@ -437,11 +439,11 @@
             this.lbl_info_2.Font = new System.Drawing.Font("Arial Unicode MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info_2.Location = new System.Drawing.Point(28, 420);
             this.lbl_info_2.Name = "lbl_info_2";
-            this.lbl_info_2.Size = new System.Drawing.Size(181, 18);
+            this.lbl_info_2.Size = new System.Drawing.Size(95, 18);
             this.lbl_info_2.TabIndex = 22;
             this.lbl_info_2.Text = "**Number only!";
             // 
-            // FormCreate
+            // FormStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -460,20 +462,20 @@
             this.Controls.Add(this.txt_stud_id_no);
             this.Controls.Add(this.lbl_stud_date_of_birth);
             this.Controls.Add(this.lbl_stud_gender);
-            this.Controls.Add(this.lbl_stud_name_last);
+            this.Controls.Add(this.lbl_stud_name_first);
             this.Controls.Add(this.lbl_stud_course);
             this.Controls.Add(this.lbl_stud_course_yr);
             this.Controls.Add(this.lbl_stud_name_middle_name);
-            this.Controls.Add(this.lbl_stud_name_first);
+            this.Controls.Add(this.lbl_stud_name_last);
             this.Controls.Add(this.lbl_stud_id_no);
-            this.Name = "FormCreate";
-            this.Text = "CREATE Student Record";
+            this.Name = "FormStudent";
+            this.Text = "CREATE | ";
             this.Controls.SetChildIndex(this.lbl_stud_id_no, 0);
-            this.Controls.SetChildIndex(this.lbl_stud_name_first, 0);
+            this.Controls.SetChildIndex(this.lbl_stud_name_last, 0);
             this.Controls.SetChildIndex(this.lbl_stud_name_middle_name, 0);
             this.Controls.SetChildIndex(this.lbl_stud_course_yr, 0);
             this.Controls.SetChildIndex(this.lbl_stud_course, 0);
-            this.Controls.SetChildIndex(this.lbl_stud_name_last, 0);
+            this.Controls.SetChildIndex(this.lbl_stud_name_first, 0);
             this.Controls.SetChildIndex(this.lbl_stud_gender, 0);
             this.Controls.SetChildIndex(this.lbl_stud_date_of_birth, 0);
             this.Controls.SetChildIndex(this.txt_stud_id_no, 0);
@@ -496,7 +498,6 @@
             this.gbx_stud_gender.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Text = "CREATE | ";
 
         }
 
@@ -504,9 +505,9 @@
 
         /*Labels*/
         protected internal System.Windows.Forms.Label lbl_stud_id_no;
-        protected internal System.Windows.Forms.Label lbl_stud_name_first;
-        protected internal System.Windows.Forms.Label lbl_stud_name_middle_name;
         protected internal System.Windows.Forms.Label lbl_stud_name_last;
+        protected internal System.Windows.Forms.Label lbl_stud_name_middle_name;
+        protected internal System.Windows.Forms.Label lbl_stud_name_first;
         protected internal System.Windows.Forms.Label lbl_stud_course;
         protected internal System.Windows.Forms.Label lbl_stud_course_yr;
         protected internal System.Windows.Forms.Label lbl_stud_date_of_birth;

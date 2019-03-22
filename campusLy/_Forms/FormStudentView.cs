@@ -11,27 +11,20 @@ using campusLy._Classes;
 
 namespace campusLy._Forms
 {
-    public partial class FormView : BaseForm
+    public partial class FormStudentView : BaseForm
     {
-        public FormView(bool allowSearch, string optype, string title, string header_message)
+        public FormStudentView(string optype,string header_message)
         {
             InitializeComponent();
-            this.srch_box.Visible = allowSearch;
-            this.Text = title;
+            this.Text = optype + " | STUDENT";
             lbl_form_view_title.Text += header_message;
 
             if (optype.Equals("VIEW"))
-            {
-                this.dataGridView_view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.VIEW_dataGridView_view_CellContentClick);
-            }
+                this.dataGridView_view.CellDoubleClick += this.VIEW_dataGridView_view_CellContentClick;
             else if (optype.Equals("UPDATE"))
-            {
-                this.dataGridView_view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UPDATE_dataGridView_view_CellContentClick);
-            }
+                this.dataGridView_view.CellDoubleClick += this.UPDATE_dataGridView_view_CellContentClick;
             else if (optype.Equals("DELETE"))
-            {
-                this.dataGridView_view.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DELETE_dataGridView_view_CellContentClick);
-            }
+                this.dataGridView_view.CellDoubleClick += this.DELETE_dataGridView_view_CellContentClick;
         }
 
         private void FormView_Load(object sender, EventArgs e)
@@ -97,9 +90,9 @@ namespace campusLy._Forms
 
             student.Id = Int32.Parse(hold[0].Value + "");
             student.IdNo = Int32.Parse(dataGen[0] + "");
-            student.NameFirst = dataGen[1];
+            student.NameLast = dataGen[1];
             student.NameMiddle = dataGen[2];
-            student.NameLast = dataGen[3];
+            student.NameFirst = dataGen[3];
             student.Course = dataGen[4];
             student.CourseYr = Int32.Parse(dataGen[5] + "");
             student.DateOfBirth = dataGen[6];
@@ -113,8 +106,8 @@ namespace campusLy._Forms
         }
         private void UPDATE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //When a table row is double clicked a new FormCreate is created, two methods are then executed
-            //1. DROP the selected identifier 2. CREATE a new record from the form using same create method in FormCreate
+            //When a table row is double clicked a new FormStudent is created, two methods are then executed
+            //1. DROP the selected identifier 2. CREATE a new record from the form using same create method in FormStudent
 
             Database DB = new Database();
 
@@ -124,18 +117,18 @@ namespace campusLy._Forms
 
             Student S = new Student();
 
-
+            S.Id = (int)hold[0].Value;
             S.IdNo = (int)hold[1].Value;
-            S.NameLast = (string)hold[2].Value;
-            S.NameMiddle = (string)hold[3].Value;
             S.NameFirst = (string)hold[4].Value;
+            S.NameMiddle = (string)hold[3].Value;
+            S.NameLast = (string)hold[2].Value;
             S.Course = (string)hold[5].Value;
             S.CourseYr = (int)hold[6].Value;
             S.DateOfBirth = (string)hold[7].Value;
             S.Gender = (string)hold[8].Value;
             S.DateAdded = (string)hold[9].Value;
-
-            new Confirm("UPDATE", indx, S.dataGen()).ShowDialog();
+            
+            new FormStudent(false, S).ShowDialog();
         }
         private void DELETE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

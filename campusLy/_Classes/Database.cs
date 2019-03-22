@@ -200,6 +200,53 @@ namespace campusLy
             }
             return search_result;
         }
+        internal bool update(Student student)
+        {
+            bool value = true;
+
+            string squery = (student.midInitIsEmpty()) ?
+
+               /*if mid name is empty*/
+               "UPDATE student SET " +
+               "stud_id_no = '" + student.IdNo + "', " +
+               "stud_name_first = '" + student.NameFirst + "'," +
+               "stud_name_last = '" + student.NameLast + "'," +
+               "stud_course = '" + student.Course + "'," +
+               "stud_course_yr = '" + student.CourseYr + "'," +
+               "stud_date_of_birth = '" + student.DateOfBirth + "'," +
+               "stud_gender = '" + student.Gender + "'" +
+               " WHERE stud_id = " + student.Id
+
+               :
+
+              /*if mid name exists*/
+              "UPDATE student SET " +
+               "stud_id_no = '" + student.IdNo + "', " +
+               "stud_name_first = '" + student.NameFirst + "'," +
+               "stud_name_mi = '"+student.NameMiddle+"'," +
+               "stud_name_last = '" + student.NameLast + "'," +
+               "stud_course = '" + student.Course + "'," +
+               "stud_course_yr = '" + student.CourseYr + "'," +
+               "stud_date_of_birth = '" + student.DateOfBirth + "'," +
+               "stud_gender = '" + student.Gender + "'" +
+               " WHERE stud_id = " + student.Id
+               ;
+
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                }
+                catch (Exception ex) { value = false; }
+                end();
+            }
+            else { value = false; }
+
+            return value;
+        }
         internal bool delete(int idrops)
         {
             bool value = false;

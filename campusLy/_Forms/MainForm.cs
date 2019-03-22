@@ -18,6 +18,7 @@ namespace campusLy
 {
     public partial class MainForm : BaseForm
     {
+        //STUDENT, COURSE, ENROLL
         internal string form_type;
 
         string[] btn_msg = {
@@ -59,34 +60,33 @@ namespace campusLy
         /*1. CREATE*/
         private void STUDENT_button_form_1_Create_OnClick(object sender, EventArgs e)
         {
-            new FormCreate(FormType).ShowDialog();
+            //TRUE FOR CREATE
+            //FALSE FOR EDIT
+            new FormStudent(true).ShowDialog();
         }
         /*2. UPDATE*/
         private void STUDENT_button_form_2_Update_OnClick(object sender, EventArgs e)
         {
-            string title = "UPDATE a student record";
             string message = "Double click on a row cell to EDIT RECORD!";
             string type = "UPDATE";
 
-            new FormView(true, type, title, message).ShowDialog();
+            new FormStudentView(type,message).ShowDialog();
         }
         /*3. VIEW*/
         private void STUDENT_button_form_3_View_OnClick(object sender, EventArgs e)
         {
-            string title = "VIEW Student Records";
             string message = "Double click on a row cell to GENERATE RECORD FILE!";
             string type = "VIEW";
 
-            new FormView(true, type, title, message).ShowDialog();
+            new FormStudentView(type,message).ShowDialog();
         }
         /*4. DELETE*/
         private void STUDENT_button_form_4_Delete_Click(object sender, EventArgs e)
         {
-            string title = "DELETE a student record";
             string message = "Double click on a row cell to DELETE RECORD immediately!";
             string type = "DELETE";
 
-            new FormView(true,type, title, message).ShowDialog();
+            new FormStudentView(type,message).ShowDialog();
         }
 
 
