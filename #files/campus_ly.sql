@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2019 at 06:41 AM
+-- Generation Time: Mar 22, 2019 at 01:33 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -31,16 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `course` (
   `course_id` int(11) NOT NULL,
   `course_code` varchar(32) NOT NULL,
-  `course_title` text NOT NULL
+  `course_title` text NOT NULL,
+  `course_type` enum('BSIT','BSCS','BSIS','BSLIS') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`course_id`, `course_code`, `course_title`) VALUES
-(1, 'IT 1101', 'PROGRAMMING I'),
-(2, 'IT 1102', 'INTRODUCTION TO COMPUTING');
+INSERT INTO `course` (`course_id`, `course_code`, `course_title`, `course_type`) VALUES
+(1, 'IT 1101', 'PROGRAMMING I', 'BSIT'),
+(2, 'IT 1102', 'INTRODUCTION TO COMPUTING', 'BSIT');
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,14 @@ CREATE TABLE `enroll` (
   `course_id` int(11) NOT NULL,
   `stud_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `enroll`
+--
+
+INSERT INTO `enroll` (`enroll_id`, `course_id`, `stud_id`) VALUES
+(1, 1, 1),
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +92,8 @@ INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi
 (3, 15101254, 'Maria', 'Santos', 'Capitao', 'BSIS', '2', '1984-12-13', 'Female', '2019-03-10 00:25:54'),
 (11, 16100213, 'Peter', 'Oraio', 'Dela Cruz', 'BSLIS', '1', '1979-07-02', 'Male', '2019-03-13 21:26:07'),
 (12, 16204321, 'Margarette', 'Pranto', 'Viscaya', 'BSCS', '1', '1997-04-05', 'Female', '2019-03-13 21:26:54'),
-(13, 15101253, 'Oliver', 'Reyes', 'Jake', 'BSLIS', '1', '1998-06-19', 'Male', '2019-03-15 17:00:55');
+(13, 15101253, 'Oliver', 'Reyes', 'Jake', 'BSLIS', '1', '1998-06-19', 'Male', '2019-03-15 17:00:55'),
+(14, 16211012, 'Sebastian', 'Miguel', 'Ramos', 'BSLIS', '1', '1997-11-14', 'Male', '2019-03-22 19:59:17');
 
 --
 -- Indexes for dumped tables
@@ -123,13 +133,13 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=14;
+  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

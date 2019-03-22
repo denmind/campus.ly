@@ -85,7 +85,6 @@ namespace campusLy
 
             return value;
         }
-
         internal List<Student> selectAllStud()
         {
             /*Query*/
@@ -124,8 +123,35 @@ namespace campusLy
 
                     student_data.Add(stud_data);
                 }
+                end();
             }
             return student_data;
+        }
+        internal List<Course> selectCourseStud(Student student)
+        {
+            List<Course> course_list = new List<Course>();
+            string squery = "SELECT * FROM enroll e JOIN course c ON e.course_id = c.course_id WHERE e.stud_id = " + student.Id;
+            /*Storage*/
+            List<Student> student_data = new List<Student>();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Course course_temp = new Course();
+
+                    course_temp.CourseCode = sqlDataReader["course_code"] + "";
+                    course_temp.CourseTitle = sqlDataReader["course_title"] + "";
+
+                    course_list.Add(course_temp);
+                }
+                end();
+            }
+            return course_list;
         }
         internal List<Student> searchAll(string srch_term)
         {

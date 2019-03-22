@@ -168,6 +168,7 @@
             this.txt_stud_id_no.Name = "txt_stud_id_no";
             this.txt_stud_id_no.Size = new System.Drawing.Size(151, 25);
             this.txt_stud_id_no.TabIndex = 11;
+            this.txt_stud_id_no.TextChanged += txt_stud_id_no_TextChanged;
             // 
             // txt_stud_name_first
             // 
@@ -495,6 +496,7 @@
             this.gbx_stud_gender.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.Text = "CREATE | ";
 
         }
 

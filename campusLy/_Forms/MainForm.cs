@@ -18,6 +18,8 @@ namespace campusLy
 {
     public partial class MainForm : BaseForm
     {
+        internal string form_type;
+
         string[] btn_msg = {
             "Create record data",
             "Update record info",
@@ -26,16 +28,98 @@ namespace campusLy
 
         ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
 
-        public MainForm()
+        public MainForm(string type)
         {
             InitializeComponent();
+            form_type = type;
+
+            this.Text += type;
+
+            if(type == "STUDENT")
+            {
+                this.button_form_1_Create.Click += new System.EventHandler(this.STUDENT_button_form_1_Create_OnClick);
+                this.button_form_2_Update.Click += new System.EventHandler(this.STUDENT_button_form_2_Update_OnClick);
+                this.button_form_3_View.Click += new System.EventHandler(this.STUDENT_button_form_3_View_OnClick);
+                this.button_form_4_Delete.Click += new System.EventHandler(this.STUDENT_button_form_4_Delete_Click);
+            }else if(type == "COURSE")
+            {
+
+            }else if(type == "ENROLL")
+            {
+
+            }
+        }
+
+        internal string FormType
+        {
+            get { return form_type; }
+        }
+
+        //STUDENT
+        /*1. CREATE*/
+        private void STUDENT_button_form_1_Create_OnClick(object sender, EventArgs e)
+        {
+            new FormCreate(FormType).ShowDialog();
+        }
+        /*2. UPDATE*/
+        private void STUDENT_button_form_2_Update_OnClick(object sender, EventArgs e)
+        {
+            string title = "UPDATE a student record";
+            string message = "Double click on a row cell to EDIT RECORD!";
+            string type = "UPDATE";
+
+            new FormView(true, type, title, message).ShowDialog();
+        }
+        /*3. VIEW*/
+        private void STUDENT_button_form_3_View_OnClick(object sender, EventArgs e)
+        {
+            string title = "VIEW Student Records";
+            string message = "Double click on a row cell to GENERATE RECORD FILE!";
+            string type = "VIEW";
+
+            new FormView(true, type, title, message).ShowDialog();
+        }
+        /*4. DELETE*/
+        private void STUDENT_button_form_4_Delete_Click(object sender, EventArgs e)
+        {
+            string title = "DELETE a student record";
+            string message = "Double click on a row cell to DELETE RECORD immediately!";
+            string type = "DELETE";
+
+            new FormView(true,type, title, message).ShowDialog();
         }
 
 
-        /*1. CREATE*/
-        private void button_form_1_Create_OnClick(object sender, EventArgs e)
+        //HOVER AND LEAVE
+        private void button_form_2_Update_OnHover(object sender, EventArgs e)
         {
-            new FormCreate().ShowDialog();
+            button_form_2_Update.Text = btn_msg[1];
+            this.button_form_2_Update.BackgroundImage = null;
+        }
+        private void button_form_2_Update_OnLeave(object sender, EventArgs e)
+        {
+            button_form_2_Update.Text = "";
+            this.button_form_2_Update.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_2_Update.BackgroundImage")));
+        }
+        private void button_form_3_View_OnHover(object sender, EventArgs e)
+        {
+            button_form_3_View.Text = btn_msg[2];
+            this.button_form_3_View.BackgroundImage = null;
+        }
+        private void button_form_3_View_OnLeave(object sender, EventArgs e)
+        {
+            button_form_3_View.Text = "";
+            this.button_form_3_View.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_3_View.BackgroundImage")));
+        }
+        private void button_form_4_Delete_OnHover(object sender, EventArgs e)
+        {
+            button_form_4_Delete.Text = btn_msg[3];
+            this.button_form_4_Delete.BackgroundImage = null;
+        }
+        private void button_form_4_Delete_OnLeave(object sender, EventArgs e)
+        {
+            button_form_4_Delete.Text = "";
+            this.button_form_4_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_4_Delete.BackgroundImage")));
         }
         private void button_form_1_Create_OnHover(object sender, EventArgs e)
         {
@@ -48,78 +132,5 @@ namespace campusLy
             this.button_form_1_Create.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_1_Create.BackgroundImage")));
         }
 
-
-        /*2. UPDATE*/
-        private void button_form_2_Update_OnClick(object sender, EventArgs e)
-        {
-            string title = "UPDATE a student record";
-            string message = "Double click on a row cell to EDIT RECORD!";
-            string type = "UPDATE";
-
-            new FormView(true, type, title, message).ShowDialog();
-        }
-        private void button_form_2_Update_OnHover(object sender, EventArgs e)
-        {
-            button_form_2_Update.Text = btn_msg[1];
-            this.button_form_2_Update.BackgroundImage = null;
-        }
-        private void button_form_2_Update_OnLeave(object sender, EventArgs e)
-        {
-            button_form_2_Update.Text = "";
-            this.button_form_2_Update.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_2_Update.BackgroundImage")));
-        }
-
-
-
-        /*3. VIEW*/
-        private void button_form_3_View_OnClick(object sender, EventArgs e)
-        {
-            string title = "VIEW Student Records";
-            string message = "Double click on a row cell to GENERATE RECORD FILE!";
-            string type = "VIEW";
-
-            new FormView(true, type, title, message).ShowDialog();
-        }
-        private void button_form_3_View_OnHover(object sender, EventArgs e)
-        {
-            button_form_3_View.Text = btn_msg[2];
-            this.button_form_3_View.BackgroundImage = null;
-        }
-        private void button_form_3_View_OnLeave(object sender, EventArgs e)
-        {
-            button_form_3_View.Text = "";
-            this.button_form_3_View.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_3_View.BackgroundImage")));
-        }
-
-
-
-        /*4. DELETE*/
-        private void button_form_4_Delete_Click(object sender, EventArgs e)
-        {
-            string title = "DELETE a student record";
-            string message = "Double click on a row cell to DELETE RECORD immediately!";
-            string type = "DELETE";
-
-            new FormView(true,type, title, message).ShowDialog();
-        }
-        private void button_form_4_Delete_OnHover(object sender, EventArgs e)
-        {
-            button_form_4_Delete.Text = btn_msg[3];
-            this.button_form_4_Delete.BackgroundImage = null;
-        }
-        private void button_form_4_Delete_OnLeave(object sender, EventArgs e)
-        {
-            button_form_4_Delete.Text = "";
-            this.button_form_4_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_4_Delete.BackgroundImage")));
-        }
-
-        private void mainMenuTools_CleanIdentifiers_Click(object sender, EventArgs e)
-        {
-            Database DB = new Database();
-
-            List<int> id_data = DB.getSortedStudID();
-
-            new InfoForm(DB.cleanStudID(id_data)).ShowDialog();
-        }
     }
 }

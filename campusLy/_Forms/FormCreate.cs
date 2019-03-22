@@ -13,10 +13,17 @@ namespace campusLy._Forms
 {
     public partial class FormCreate : BaseForm
     {
-        public FormCreate()
+        string form_type;
+
+
+        public FormCreate(string type)
         {
             InitializeComponent();
-
+            this.Text += type;
+        }
+        internal string FormType
+        {
+            get { return form_type; }
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -109,6 +116,23 @@ namespace campusLy._Forms
 
             this.Close();
             new InfoForm(flag).ShowDialog();
+        }
+
+        private void txt_stud_id_no_TextChanged(object sender, EventArgs e)
+        {
+            string input;
+            bool flag = true;
+
+            input = txt_stud_id_no.Text;
+
+            foreach(char c in input)
+            {
+                if(char.IsDigit(c) == false)
+                    flag = false;
+            }
+
+            if (flag == false)
+                txt_stud_id_no.Text = "";
         }
     }
 }

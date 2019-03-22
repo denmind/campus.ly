@@ -18,6 +18,13 @@ namespace campusLy._Forms
             "Choose COURSE",
             "Choose ENROLLEES"
         };
+        string[] form_table =
+        {
+            "STUDENT",
+            "COURSE",
+            "ENROLL"
+        };
+
         ComponentResourceManager resources = new ComponentResourceManager(typeof(DataOption));
         public DataOption()
         {
@@ -27,8 +34,22 @@ namespace campusLy._Forms
         //STUDENT BUTTONS
         private void button_STUDENT_OnClick(object sender, EventArgs e)
         {
-            new MainFormStudent().ShowDialog();
+            new MainForm(form_table[0]).ShowDialog();
         }
+
+        //COURSE BUTTONS
+        private void button_COURSE_OnClick(object sender, EventArgs e)
+        {
+
+        }
+
+        //ENROLL BUTTONS
+        private void button_ENROLL_OnClick(object sender, EventArgs e)
+        {
+        }
+
+
+        //HOVER AND LEAVE
         private void button_STUDENT_OnHover(object sender, EventArgs e)
         {
             button_STUDENT.Text = btn_message[0];
@@ -39,11 +60,6 @@ namespace campusLy._Forms
             button_STUDENT.Text = "";
             this.button_STUDENT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_STUDENT.BackgroundImage")));
         }
-        //COURSE BUTTONS
-        private void button_COURSE_OnClick(object sender, EventArgs e)
-        {
-            new MainFormCourse().ShowDialog();
-        }
         private void button_COURSE_OnHover(object sender, EventArgs e)
         {
             button_COURSE.Text = btn_message[1];
@@ -53,11 +69,6 @@ namespace campusLy._Forms
         {
             button_COURSE.Text = "";
             this.button_COURSE.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_COURSE.BackgroundImage")));
-        }
-        //ENROLL BUTTONS
-        private void button_ENROLL_OnClick(object sender, EventArgs e)
-        {
-            new MainFormEnroll().ShowDialog();
         }
         private void button_ENROLL_OnHover(object sender, EventArgs e)
         {

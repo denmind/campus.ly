@@ -36,7 +36,7 @@
             // 
             // button_STUDENT
             // 
-            this.button_STUDENT.BackColor = System.Drawing.Color.Bisque;
+            this.button_STUDENT.BackColor = System.Drawing.Color.AntiqueWhite;
             this.button_STUDENT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_STUDENT.BackgroundImage")));
             this.button_STUDENT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button_STUDENT.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -70,7 +70,7 @@
             // 
             // button_ENROLL
             // 
-            this.button_ENROLL.BackColor = System.Drawing.Color.NavajoWhite;
+            this.button_ENROLL.BackColor = System.Drawing.Color.AntiqueWhite;
             this.button_ENROLL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_ENROLL.BackgroundImage")));
             this.button_ENROLL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button_ENROLL.Cursor = System.Windows.Forms.Cursors.Hand;

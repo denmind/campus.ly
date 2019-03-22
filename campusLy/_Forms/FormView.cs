@@ -53,6 +53,11 @@ namespace campusLy._Forms
         }
         private void srch_box_TextChanged(object sender, EventArgs e)
         {
+            if (dataGridView_view.Visible.Equals(false))
+            {
+                dataGridView_view.Visible = true;
+            }
+
             dataGridView_view.Rows.Clear();
 
             Database DB = new Database();
@@ -77,16 +82,20 @@ namespace campusLy._Forms
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
             string data = "";
+
+            Database DB = new Database();
+            
             string[] dataGen = new string[10];
             Student student = new Student();
             FileGen fileGen = new FileGen();
 
             for (int i = 1; i < 10; i++)
             {
-                data += hold[i].Value + " ";
-                dataGen[i-1] = hold[i].Value + "";
+               data += hold[i].Value + " ";
+                dataGen[i - 1] = hold[i].Value + "";
             }
 
+            student.Id = Int32.Parse(hold[0].Value + "");
             student.IdNo = Int32.Parse(dataGen[0] + "");
             student.NameFirst = dataGen[1];
             student.NameMiddle = dataGen[2];
@@ -96,10 +105,11 @@ namespace campusLy._Forms
             student.DateOfBirth = dataGen[6];
             student.Gender = dataGen[7];
 
-            fileGen.Data = student;
+            fileGen.StudData = student;
+            fileGen.StudCourses = DB.selectCourseStud(student);
             fileGen.ProduceFile();
 
-            new MessageForm(data).ShowDialog();
+            new MessageForm(data,fileGen).ShowDialog();
         }
         private void UPDATE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -146,7 +156,6 @@ namespace campusLy._Forms
 
             new Confirm("DELETE", indx, data).ShowDialog();
         }
-
         private void displayOnDataGridView(List<Student> stud_data)
         {
             int num = 1;
@@ -176,7 +185,6 @@ namespace campusLy._Forms
             }
             else
             {
-                srch_box.Visible = false;
                 dataGridView_view.Visible = false;
                 richText_title.Visible = true;
                 richText_title.ReadOnly = true;

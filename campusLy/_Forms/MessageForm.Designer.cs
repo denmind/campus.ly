@@ -30,6 +30,7 @@
         {
             this.msg_text = new System.Windows.Forms.RichTextBox();
             this.lbl_footnote = new System.Windows.Forms.Label();
+            this.lbl_records_link = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // msg_text
@@ -51,9 +52,21 @@
             this.lbl_footnote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_footnote.Location = new System.Drawing.Point(12, 102);
             this.lbl_footnote.Name = "lbl_footnote";
-            this.lbl_footnote.Size = new System.Drawing.Size(220, 18);
+            this.lbl_footnote.Size = new System.Drawing.Size(241, 18);
             this.lbl_footnote.TabIndex = 2;
-            this.lbl_footnote.Text = "*Record file generated and data copied to clipboard!!";
+            this.lbl_footnote.Text = "*Generated record and data copied!";
+            // 
+            // lbl_records_link
+            // 
+            this.lbl_records_link.AutoSize = true;
+            this.lbl_records_link.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_records_link.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_records_link.Location = new System.Drawing.Point(360, 102);
+            this.lbl_records_link.Name = "lbl_records_link";
+            this.lbl_records_link.Size = new System.Drawing.Size(80, 18);
+            this.lbl_records_link.TabIndex = 3;
+            this.lbl_records_link.Text = "Open File";
+            this.lbl_records_link.Click += new System.EventHandler(this.lbl_records_link_Click);
             // 
             // MessageForm
             // 
@@ -62,12 +75,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(462, 129);
+            this.Controls.Add(this.lbl_records_link);
             this.Controls.Add(this.lbl_footnote);
             this.Controls.Add(this.msg_text);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -75,15 +90,15 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Data Sheet";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MessageForm_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.KeyPreview = true;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(MessageForm_KeyPress);
 
         }
 
         #endregion
         private System.Windows.Forms.RichTextBox msg_text;
         private System.Windows.Forms.Label lbl_footnote;
+        private System.Windows.Forms.Label lbl_records_link;
     }
 }
