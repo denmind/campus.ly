@@ -20,11 +20,11 @@ namespace campusLy._Forms
             lbl_form_view_title.Text += header_message;
 
             if (optype.Equals("VIEW"))
-                this.dataGridView_view.CellDoubleClick += this.VIEW_dataGridView_view_CellContentClick;
+                this.dataGridView_view.CellDoubleClick += this.VIEW_CellClick;
             else if (optype.Equals("UPDATE"))
-                this.dataGridView_view.CellDoubleClick += this.UPDATE_dataGridView_view_CellContentClick;
+                this.dataGridView_view.CellDoubleClick += this.UPDATE_CellClick;
             else if (optype.Equals("DELETE"))
-                this.dataGridView_view.CellDoubleClick += this.DELETE_dataGridView_view_CellContentClick;
+                this.dataGridView_view.CellDoubleClick += this.DELETE_CellClick;
         }
 
         private void FormView_Load(object sender, EventArgs e)
@@ -33,18 +33,16 @@ namespace campusLy._Forms
 
             List<Student> stud_data = new List<Student>();
 
-            stud_data = DB.selectAllStud();
+            stud_data = DB.selectStud();
 
             displayOnDataGridView(stud_data);
 
-            lbl_form_view_title.Text += "";
-
         }
-        private void srch_box_GotFocus(object sender, EventArgs e)
+        private void SEARCH_Focus(object sender, EventArgs e)
         {
             this.srch_box.Text = "";
         }
-        private void srch_box_TextChanged(object sender, EventArgs e)
+        private void SEARCH_TextChanged(object sender, EventArgs e)
         {
             if (dataGridView_view.Visible.Equals(false))
             {
@@ -59,12 +57,12 @@ namespace campusLy._Forms
 
             List<Student> stud_data = new List<Student>();
 
-            stud_data = DB.searchAll(search_term);
+            stud_data = DB.searchStudent(search_term);
 
             displayOnDataGridView(stud_data);
         }
 
-        private void VIEW_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //When a table row is double clicked a message box (modal) is displayed and within the control form
             //a copy button to clipboard is made available
@@ -104,7 +102,7 @@ namespace campusLy._Forms
 
             new MessageForm(data,fileGen).ShowDialog();
         }
-        private void UPDATE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //When a table row is double clicked a new FormStudent is created, two methods are then executed
             //1. DROP the selected identifier 2. CREATE a new record from the form using same create method in FormStudent
@@ -130,7 +128,7 @@ namespace campusLy._Forms
             
             new FormStudent(false, S).ShowDialog();
         }
-        private void DELETE_dataGridView_view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
             Database DB = new Database();
@@ -151,7 +149,6 @@ namespace campusLy._Forms
         }
         private void displayOnDataGridView(List<Student> stud_data)
         {
-            int num = 1;
             if (stud_data.Count > 0)
             {
                 richText_title.Visible = false;
@@ -171,7 +168,6 @@ namespace campusLy._Forms
                     row.Cells[7].Value = S.DateOfBirth;
                     row.Cells[8].Value = S.Gender;
                     row.Cells[9].Value = S.DateAdded;
-
 
                     dataGridView_view.Rows.Add(row);
                 }

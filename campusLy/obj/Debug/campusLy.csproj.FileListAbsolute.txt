@@ -52,3 +52,5 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy.MainForm.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormStudent.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormStudentView.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormCourse.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormCourseView.resources

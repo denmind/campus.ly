@@ -58,6 +58,7 @@
             // 
             this.dataGridView_view.AllowUserToDeleteRows = false;
             this.dataGridView_view.AllowUserToOrderColumns = true;
+            this.dataGridView_view.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,7 +81,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView_view.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView_view.ColumnHeadersHeight = 25;
+            this.dataGridView_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
@@ -105,7 +106,9 @@
             this.dataGridView_view.GridColor = System.Drawing.Color.Silver;
             this.dataGridView_view.Location = new System.Drawing.Point(12, 55);
             this.dataGridView_view.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView_view.MultiSelect = false;
             this.dataGridView_view.Name = "dataGridView_view";
+            this.dataGridView_view.ReadOnly = true;
             this.dataGridView_view.RowHeadersWidth = 19;
             this.dataGridView_view.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -208,8 +211,8 @@
             this.srch_box.Size = new System.Drawing.Size(301, 26);
             this.srch_box.TabIndex = 3;
             this.srch_box.Text = "Search anything...";
-            this.srch_box.TextChanged += new System.EventHandler(this.srch_box_TextChanged);
-            this.srch_box.GotFocus += new System.EventHandler(this.srch_box_GotFocus);
+            this.srch_box.TextChanged += new System.EventHandler(this.SEARCH_TextChanged);
+            this.srch_box.GotFocus += new System.EventHandler(this.SEARCH_Focus);
             // 
             // richText_title
             // 
@@ -235,7 +238,7 @@
             this.lbl_form_view_title.TabIndex = 6;
             this.lbl_form_view_title.Text = "*";
             // 
-            // FormView
+            // FormStudentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -249,9 +252,8 @@
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.MaximumSize = new System.Drawing.Size(1000, 1000);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(0, 0);
-            this.Name = "FormView";
+            this.Name = "FormStudentView";
             this.Load += new System.EventHandler(this.FormView_Load);
             this.Controls.SetChildIndex(this.richText_title, 0);
             this.Controls.SetChildIndex(this.dataGridView_view, 0);

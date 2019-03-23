@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2019 at 06:17 PM
+-- Generation Time: Mar 23, 2019 at 04:07 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `course` (
   `course_id` int(11) NOT NULL,
   `course_code` varchar(32) NOT NULL,
-  `course_title` text NOT NULL,
+  `course_title` mediumtext NOT NULL,
   `course_type` enum('BSIT','BSCS','BSIS','BSLIS') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `course`
@@ -41,7 +41,8 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`course_id`, `course_code`, `course_title`, `course_type`) VALUES
 (1, 'IT 1101', 'PROGRAMMING I', 'BSIT'),
-(2, 'IT 1102', 'INTRODUCTION TO COMPUTING', 'BSIT');
+(2, 'IT 1102', 'INTRODUCTION TO COMPUTING', 'BSIT'),
+(5, 'IT 1103', 'DISCRETE STRUCTURES', 'BSIT');
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,7 @@ CREATE TABLE `enroll` (
   `enroll_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `stud_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `enroll`
@@ -127,7 +128,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `enroll`

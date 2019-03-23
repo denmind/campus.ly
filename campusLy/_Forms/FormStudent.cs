@@ -17,6 +17,7 @@ namespace campusLy._Forms
         const int MAX_STRING_SIZE = 48;
 
         Student instance;
+
         //TRUE FOR CREATE 
         //FALSE FOR EDIT
         public FormStudent(bool value)
@@ -68,10 +69,6 @@ namespace campusLy._Forms
                     case 5: gbx_stud_course_yr_fifth.Checked = true; break;
                 }
             }
-        }
-        internal Student StudentInstance
-        {
-            get { return instance; }
         }
 
         //ADD
@@ -167,7 +164,6 @@ namespace campusLy._Forms
             this.Close();
             new InfoForm(flag).ShowDialog();
         }
-
         private void EDIT_btn_submit_Click(object sender, EventArgs e)
         {
             bool flag = false;

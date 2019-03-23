@@ -31,21 +31,20 @@ namespace campusLy._Forms
             InitializeComponent();
         }
 
-        //STUDENT BUTTONS
+        //STUDENT
         private void button_STUDENT_OnClick(object sender, EventArgs e)
         {
             new MainForm(form_table[0]).ShowDialog();
         }
-
-        //COURSE BUTTONS
+        //COURSE
         private void button_COURSE_OnClick(object sender, EventArgs e)
         {
-
+            new MainForm(form_table[1]).ShowDialog(); 
         }
-
-        //ENROLL BUTTONS
+        //ENROLL
         private void button_ENROLL_OnClick(object sender, EventArgs e)
         {
+            new MainForm(form_table[2]).ShowDialog();
         }
 
 

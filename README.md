@@ -14,17 +14,8 @@
 ~Uid: student_admin
 ~Password: admin_student
 
-
-[GROUP MEMBERS]
-Caboyo, Francis
-Margison, Alyssa Marie
-Regudo, Carah Justine
-
 [2DO]
-STUDENT : U
 ENROLL : CRUD
-COURSE : CRUD
+COURSE : UD
 
-XML Skeleton File [1 for now]
-
-TOP: Make XML Generator for STUDENT and its COURSES enrolled via ENROLL
+mods...

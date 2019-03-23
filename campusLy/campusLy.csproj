@@ -95,6 +95,18 @@
     <Compile Include="_Forms\ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Forms\FormCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\FormCourse.Designer.cs">
+      <DependentUpon>FormCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Forms\FormCourseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\FormCourseView.Designer.cs">
+      <DependentUpon>FormCourseView.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Forms\FormStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\ErrorForm.resx">
       <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\FormCourse.resx">
+      <DependentUpon>FormCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\FormCourseView.resx">
+      <DependentUpon>FormCourseView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_Forms\FormStudent.resx">
       <DependentUpon>FormStudent.cs</DependentUpon>

@@ -18,75 +18,121 @@ namespace campusLy
 {
     public partial class MainForm : BaseForm
     {
-        //STUDENT, COURSE, ENROLL
-        internal string form_type;
-
-        string[] btn_msg = {
+        string[] btn_msg =
+        {
             "Create record data",
             "Update record info",
             "View record list",
-            "Delete some records" };
+            "Delete some records"
+        };
+
+        string[] form_type =
+        {
+            "Double click cell to EDIT RECORD!",
+            "Double click cell to GENERATE RECORD FILE!",
+            "Double click cell to DELETE RECORD immediately!"
+        };
+
+        string[] form_op =
+        {
+            "UPDATE", "VIEW" , "DELETE"
+        };
 
         ComponentResourceManager resources = new ComponentResourceManager(typeof(MainForm));
 
         public MainForm(string type)
         {
             InitializeComponent();
-            form_type = type;
-
             this.Text += type;
 
             if(type == "STUDENT")
             {
-                this.button_form_1_Create.Click += new System.EventHandler(this.STUDENT_button_form_1_Create_OnClick);
-                this.button_form_2_Update.Click += new System.EventHandler(this.STUDENT_button_form_2_Update_OnClick);
-                this.button_form_3_View.Click += new System.EventHandler(this.STUDENT_button_form_3_View_OnClick);
-                this.button_form_4_Delete.Click += new System.EventHandler(this.STUDENT_button_form_4_Delete_Click);
+                this.button_form_1_Create.Click += new System.EventHandler(this.STUDENT_1_CREATE);
+                this.button_form_2_Update.Click += new System.EventHandler(this.STUDENT_2_UPDATE);
+                this.button_form_3_View.Click += new System.EventHandler(this.STUDENT_3_VIEW);
+                this.button_form_4_Delete.Click += new System.EventHandler(this.STUDENT_4_DELETE);
             }else if(type == "COURSE")
             {
-
-            }else if(type == "ENROLL")
-            {
-
+                this.button_form_1_Create.Click += new System.EventHandler(this.COURSE_1_CREATE);
+                this.button_form_2_Update.Click += new System.EventHandler(this.COURSE_2_UPDATE);
+                this.button_form_3_View.Click += new System.EventHandler(this.COURSE_3_VIEW);
+                this.button_form_4_Delete.Click += new System.EventHandler(this.COURSE_4_DELETE);
             }
-        }
-
-        internal string FormType
-        {
-            get { return form_type; }
+            else if(type == "ENROLL")
+            {
+                this.button_form_1_Create.Click += new System.EventHandler(this.ENROLL_1_CREATE);
+                this.button_form_2_Update.Click += new System.EventHandler(this.ENROLL_2_UPDATE);
+                this.button_form_3_View.Click += new System.EventHandler(this.ENROLL_3_VIEW);
+                this.button_form_4_Delete.Click += new System.EventHandler(this.ENROLL_4_DELETE);
+            }
         }
 
         //STUDENT
         /*1. CREATE*/
-        private void STUDENT_button_form_1_Create_OnClick(object sender, EventArgs e)
+        private void STUDENT_1_CREATE(object sender, EventArgs e)
         {
             //TRUE FOR CREATE
             //FALSE FOR EDIT
             new FormStudent(true).ShowDialog();
         }
         /*2. UPDATE*/
-        private void STUDENT_button_form_2_Update_OnClick(object sender, EventArgs e)
+        private void STUDENT_2_UPDATE(object sender, EventArgs e)
         {
-            string message = "Double click on a row cell to EDIT RECORD!";
-            string type = "UPDATE";
-
-            new FormStudentView(type,message).ShowDialog();
+            new FormStudentView(form_op[0], form_type[0]).ShowDialog();
         }
         /*3. VIEW*/
-        private void STUDENT_button_form_3_View_OnClick(object sender, EventArgs e)
+        private void STUDENT_3_VIEW(object sender, EventArgs e)
         {
-            string message = "Double click on a row cell to GENERATE RECORD FILE!";
-            string type = "VIEW";
-
-            new FormStudentView(type,message).ShowDialog();
+            new FormStudentView(form_op[1], form_type[1]).ShowDialog();
         }
         /*4. DELETE*/
-        private void STUDENT_button_form_4_Delete_Click(object sender, EventArgs e)
+        private void STUDENT_4_DELETE(object sender, EventArgs e)
         {
-            string message = "Double click on a row cell to DELETE RECORD immediately!";
-            string type = "DELETE";
+            new FormStudentView(form_op[2], form_type[2]).ShowDialog();
+        }
 
-            new FormStudentView(type,message).ShowDialog();
+        //COURSE
+        /*1. CREATE*/
+        private void COURSE_1_CREATE(object sender, EventArgs e)
+        {
+            //TRUE FOR CREATE
+            //FALSE FOR EDIT
+            new FormCourse(true).ShowDialog();
+        }
+        /*2. UPDATE*/
+        private void COURSE_2_UPDATE(object sender, EventArgs e)
+        {
+            new FormCourseView(form_op[0], form_type[0]).ShowDialog();
+        }
+        /*3. VIEW*/
+        private void COURSE_3_VIEW(object sender, EventArgs e)
+        {
+            new FormCourseView(form_op[1], form_type[1]).ShowDialog();
+        }
+        /*4. DELETE*/
+        private void COURSE_4_DELETE(object sender, EventArgs e)
+        {
+            new FormCourseView(form_op[2], form_type[2]).ShowDialog();
+        }
+
+        //ENROLL
+        /*1. CREATE*/
+        private void ENROLL_1_CREATE(object sender, EventArgs e)
+        {
+            //TRUE FOR CREATE
+            //FALSE FOR EDIT
+        }
+        /*2. UPDATE*/
+        private void ENROLL_2_UPDATE(object sender, EventArgs e)
+        {
+        }
+        /*3. VIEW*/
+        private void ENROLL_3_VIEW(object sender, EventArgs e)
+        {
+        }
+        /*4. DELETE*/
+        private void ENROLL_4_DELETE(object sender, EventArgs e)
+        {
         }
 
 

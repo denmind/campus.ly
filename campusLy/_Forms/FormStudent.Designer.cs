@@ -69,8 +69,8 @@
             this.label_message.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_message.ForeColor = System.Drawing.Color.Black;
             this.label_message.Location = new System.Drawing.Point(27, 19);
-            this.label_message.Size = new System.Drawing.Size(366, 24);
-            this.label_message.Text = "Fill out information below properly:";
+            this.label_message.Size = new System.Drawing.Size(359, 24);
+            this.label_message.Text = "Fill out information below properly\r\n";
             // 
             // lbl_stud_id_no
             // 
@@ -168,7 +168,7 @@
             this.txt_stud_id_no.Name = "txt_stud_id_no";
             this.txt_stud_id_no.Size = new System.Drawing.Size(151, 25);
             this.txt_stud_id_no.TabIndex = 11;
-            this.txt_stud_id_no.TextChanged += txt_field_ValidDigitOnly;
+            this.txt_stud_id_no.LostFocus += this.txt_field_ValidDigitOnly;
             // 
             // txt_stud_name_first
             // 
@@ -178,7 +178,7 @@
             this.txt_stud_name_first.Name = "txt_stud_name_first";
             this.txt_stud_name_first.Size = new System.Drawing.Size(157, 25);
             this.txt_stud_name_first.TabIndex = 12;
-            this.txt_stud_name_first.TextChanged += txt_field_ValidCharOnly;
+            this.txt_stud_name_first.LostFocus += this.txt_field_ValidCharOnly;
             // 
             // txt_stud_name_middle
             // 
@@ -188,7 +188,7 @@
             this.txt_stud_name_middle.Name = "txt_stud_name_middle";
             this.txt_stud_name_middle.Size = new System.Drawing.Size(157, 25);
             this.txt_stud_name_middle.TabIndex = 13;
-            this.txt_stud_name_first.TextChanged += txt_field_ValidCharOnly;
+            this.txt_stud_name_middle.LostFocus += this.txt_field_ValidCharOnly;
             // 
             // txt_stud_name_last
             // 
@@ -198,7 +198,7 @@
             this.txt_stud_name_last.Name = "txt_stud_name_last";
             this.txt_stud_name_last.Size = new System.Drawing.Size(157, 25);
             this.txt_stud_name_last.TabIndex = 14;
-            this.txt_stud_name_last.TextChanged += txt_field_ValidCharOnly;
+            this.txt_stud_name_last.LostFocus += this.txt_field_ValidCharOnly;
             // 
             // dtp_stud_date_of_birth
             // 

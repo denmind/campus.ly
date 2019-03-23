@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace campusLy._Classes
 {
-    class Course
+    public sealed class Course
     {
         private int course_id;
         private string course_code;
         private string course_title;
+        private string course_type;
 
         internal Course() { }
 
-        internal Course(string course_code_new, string course_title_new)
+        internal Course(string course_code_new, string course_title_new, string course_type_new)
         {
             course_code = course_code_new;
             course_title = course_title_new;
+            course_type = course_type_new;
         }
 
         internal int CourseId{
@@ -34,5 +36,11 @@ namespace campusLy._Classes
             get { return course_title; }
             set { course_title = value; }
         }
+        internal string CourseType
+        {
+            get { return course_type; }
+            set { course_type = value; }
+        }
+
     }
 }
