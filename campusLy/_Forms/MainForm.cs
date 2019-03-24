@@ -73,7 +73,7 @@ namespace campusLy
         {
             //TRUE FOR CREATE
             //FALSE FOR EDIT
-            new FormStudent(true).ShowDialog();
+            new FormStudent().ShowDialog();
         }
         /*2. UPDATE*/
         private void STUDENT_2_UPDATE(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace campusLy
         {
             //TRUE FOR CREATE
             //FALSE FOR EDIT
-            new FormCourse(true).ShowDialog();
+            new FormCourse().ShowDialog();
         }
         /*2. UPDATE*/
         private void COURSE_2_UPDATE(object sender, EventArgs e)
@@ -177,6 +177,5 @@ namespace campusLy
             button_form_1_Create.Text = "";
             this.button_form_1_Create.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_1_Create.BackgroundImage")));
         }
-
     }
 }

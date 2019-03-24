@@ -498,6 +498,7 @@
             this.gbx_stud_gender.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.Text = "CREATE | STUDENT";
 
         }
 

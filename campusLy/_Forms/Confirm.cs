@@ -14,73 +14,51 @@ namespace campusLy._Forms
     public partial class Confirm : Form
     {
         private int id;
-        Student data;
 
-        public Confirm(string type, int id, string message)
+        public Confirm(string table_type, int id, string message)
         {
             InitializeComponent();
 
             this.ConfirmId = id;
             this.richTextBox_confirm_delete.Text = message;
 
-            if (type.Equals("UPDATE"))
+            switch (table_type)
             {
-                label1.Text = "UPDATE?";
-            }
-            else if (type.Equals("DELETE"))
-            {
-                label1.Text = "DELETE?";
-                this.button_true.Click += new System.EventHandler(this.DELETE_button_true_Click);
+                case "STUDENT": this.button_true.Click += new System.EventHandler(this.STUD_DELETE); break;
+                case "COURSE": this.button_true.Click += new System.EventHandler(this.COURSE_DELETE); break;
+                case "ENROLL": this.button_true.Click += new System.EventHandler(this.ENROLL_DELETE); break;
             }
         }
-        public Confirm(string type, int id, string message , Student info)
-        {
-            InitializeComponent();
-
-            this.ConfirmId = id;
-            this.richTextBox_confirm_delete.Text = message;
-            this.StudentInstance = info;
-
-            if (type.Equals("UPDATE"))
-            {
-                label1.Text = "UPDATE?";
-            }
-            else if (type.Equals("DELETE"))
-            {
-                label1.Text = "DELETE?";
-                this.button_true.Click += new System.EventHandler(this.DELETE_button_true_Click);
-            }
-        }
-        private void DELETE_button_true_Click(object sender, EventArgs e)
+        private void STUD_DELETE(object sender, EventArgs e)
         {
             Database DB = new Database();
 
-            new InfoForm(DB.delete(ConfirmId)).ShowDialog();
+            new InfoForm(DB.deleteStud(ConfirmId)).ShowDialog();
             this.Close();
         }
-        private void UPDATE_button_true_Click(object sender, EventArgs e)
+        private void COURSE_DELETE(object sender, EventArgs e)
         {
             Database DB = new Database();
 
+            new InfoForm(DB.deleteCourse(ConfirmId)).ShowDialog();
             this.Close();
         }
+        private void ENROLL_DELETE(object sender, EventArgs e)
+        {
+            Database DB = new Database();
 
+            //new InfoForm(DB.deleteCourse(ConfirmId)).ShowDialog();
+
+            this.Close();
+        }
         private void button_false_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
         internal int ConfirmId
         {
             get { return id; }
             set { id = value; }
-        }
-
-        internal Student StudentInstance
-        {
-            get { return data;  }
-            set { data = value; }
         }
     }
 }

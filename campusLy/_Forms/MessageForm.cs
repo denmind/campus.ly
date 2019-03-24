@@ -32,7 +32,7 @@ namespace campusLy._Forms
         }
         void MessageForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-                this.Close();
+            this.Close();
         }
 
         private void lbl_records_link_Click(object sender, EventArgs e)

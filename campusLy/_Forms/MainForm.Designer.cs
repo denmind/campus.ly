@@ -147,6 +147,7 @@ namespace campusLy
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
             this.Name = "MainForm";
+            this.Text = "Campus.ly | ";
             this.Controls.SetChildIndex(this.label_message, 0);
             this.Controls.SetChildIndex(this.button_form_1_Create, 0);
             this.Controls.SetChildIndex(this.button_form_2_Update, 0);
@@ -155,7 +156,6 @@ namespace campusLy
             this.Controls.SetChildIndex(this.label_title, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Text = "Campus.ly | ";
 
         }
 

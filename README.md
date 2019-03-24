@@ -15,7 +15,25 @@
 ~Password: admin_student
 
 [2DO]
-ENROLL : CRUD
-COURSE : UD
+ENROLL :
+~enroll stud to class[C]
+~view all offered courses[R]
+~edit stud info in class[U]
+~remove stud from class[D]
+
+COURSE :
+~produce xml for students enrolled in course [ON CLICK ROW CELL] ..just append in filegen produceCourse and add List<Student> for param
+
 
 mods...
+
+[PREP]
+
+//Get sorted Ids
+SELECT {TABLE NAME ID} FROM {TABLE NAME} ORDER BY {TABLE NAME ID} ASC 
+
+//Update sorted Ids
+**Multiple update queries inside iteration 
+
+//Get max value id from sorted id via local variable (done in the loop)
+ALTER TABLE tbl AUTO_INCREMENT = {MAX VALUE + 1};

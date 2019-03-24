@@ -24,14 +24,22 @@ namespace campusLy
 
             db_conn = new MySqlConnection(generateDb_info_string());
         }
+        internal Database(string user_id, string user_pass)
+        {
+            db_server = "localhost";
+            db_name = "campus.ly";
+            db_uid = user_id;
+            db_password = user_pass;
 
+            db_conn = new MySqlConnection(generateDb_info_string());
+        }
         /*Core*/
         internal bool start()
         {
             bool value = false;
             try
             {
-                if(Database_Connection.State == ConnectionState.Closed)
+                if (Database_Connection.State == ConnectionState.Closed)
                 {
                     db_conn.Open();
                     value = true;
@@ -109,7 +117,7 @@ namespace campusLy
               "UPDATE student SET " +
                "stud_id_no = '" + student.IdNo + "', " +
                "stud_name_first = '" + student.NameFirst + "'," +
-               "stud_name_mi = '"+student.NameMiddle+"'," +
+               "stud_name_mi = '" + student.NameMiddle + "'," +
                "stud_name_last = '" + student.NameLast + "'," +
                "stud_course = '" + student.Course + "'," +
                "stud_course_yr = '" + student.CourseYr + "'," +
@@ -133,29 +141,23 @@ namespace campusLy
 
             return value;
         }
-        internal bool delete(int idrops)
+        internal bool deleteStud(int idrops)
         {
             bool value = false;
+            string squery = "DELETE FROM student WHERE stud_id =" + idrops;
 
-            string squery = "";
-
-            if (idrops > 0)
+            if (start())
             {
-                squery += "DELETE FROM student WHERE stud_id =" + idrops;
-
-                if (start())
+                try
                 {
-                    try
-                    {
-                        MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
-                        scomm.ExecuteNonQuery();
-                        value = true;
-                    }
-                    catch (Exception ex) { value = false; }
-                    end();
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                    value = true;
                 }
-                else { value = false; }
+                catch (Exception ex) { value = false; }
+                end();
             }
+            else { value = false; }
 
             return value;
         }
@@ -208,7 +210,7 @@ namespace campusLy
             bool value = true;
             /*Query prep*/
             string squery = "INSERT INTO course (course_id, course_code, course_title, course_type) " +
-                "VALUES (NULL, '"+course.CourseCode+ "', '" + course.CourseTitle + "', '" + course.CourseType + "')";
+                "VALUES (NULL, '" + course.CourseCode + "', '" + course.CourseTitle + "', '" + course.CourseType + "')";
 
             /*Checks if db_conn is avail*/
             if (start())
@@ -226,6 +228,54 @@ namespace campusLy
             return value
 ;
         }
+        internal bool update(Course course)
+        {
+            bool value = true;
+
+            /*Query prep*/
+            string squery =
+
+            "UPDATE course SET " +
+            "course_code = '"+course.CourseCode+"'," +
+            "course_title = '"+course.CourseTitle+"'," +
+            "course_type = '"+course.CourseType+"' " +
+            "WHERE course_id = "+course.CourseId;
+
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                }
+                catch (Exception ex) { value = false; }
+                end();
+            }
+            else { value = false; }
+
+            return value;
+        }
+        internal bool deleteCourse(int course_id)
+        {
+            bool value = false;
+            string squery = "DELETE FROM course WHERE course_id =" + course_id;
+
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                    value = true;
+                }
+                catch (Exception ex) { value = false; }
+                end();
+            }
+            else { value = false; }
+
+            return value;
+        }
         internal List<Course> selectCourse()
         {
             /*Query*/
@@ -242,12 +292,13 @@ namespace campusLy
                 /*read data*/
                 while (sqlDataReader.Read())
                 {
-                    Course c = new Course();
-
-                    c.CourseId = Int32.Parse(sqlDataReader["course_id"] + "");
-                    c.CourseCode = sqlDataReader["course_code"] + "";
-                    c.CourseTitle = sqlDataReader["course_title"] + "";
-                    c.CourseType = sqlDataReader["course_type"] + "";
+                    Course c = new Course
+                    {
+                        CourseId = Int32.Parse(sqlDataReader["course_id"] + ""),
+                        CourseCode = sqlDataReader["course_code"] + "",
+                        CourseTitle = sqlDataReader["course_title"] + "",
+                        CourseType = sqlDataReader["course_type"] + ""
+                    };
 
                     courses.Add(c);
                 }
@@ -261,7 +312,7 @@ namespace campusLy
         {
             bool value = true;
             /*Query prep*/
-            string squery = "INSERT INTO enroll (enroll_id, course_id, stud_id) VALUES (NULL, '"+enroll.CourseID+"', '"+enroll.StudID+"')";
+            string squery = "INSERT INTO enroll (enroll_id, course_id, stud_id) VALUES (NULL, '" + enroll.CourseID + "', '" + enroll.StudID + "')";
 
             /*Checks if db_conn is avail*/
             if (start())
@@ -282,7 +333,9 @@ namespace campusLy
 
         //OTHERS
         //STUDENT
-        internal List<Course> selectCourseStud(Student student)
+        
+        //Courses enrolled by student
+        internal List<Course> selectCoursesOfStud(Student student)
         {
             List<Course> course_list = new List<Course>();
             string squery = "SELECT * FROM enroll e JOIN course c ON e.course_id = c.course_id WHERE e.stud_id = " + student.Id;
@@ -308,6 +361,8 @@ namespace campusLy
             }
             return course_list;
         }
+
+        //Students enrolled in course
 
         //SEARCH
         internal List<Student> searchStudent(string srch_term)
@@ -357,7 +412,39 @@ namespace campusLy
             }
             return search_result;
         }
-        
+        internal List<Course> searchCourse(string srch_term)
+        {
+            List<Course> search_result = new List<Course>();
+
+            string squery = "SELECT * FROM course WHERE " +
+                            "course_code LIKE '%" + srch_term + "%' OR " +
+                            "course_title LIKE '%" + srch_term + "%' OR " +
+                            "course_type LIKE '%" + srch_term + "%'";
+
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Course C = new Course
+                    {
+                        CourseId = (int)sqlDataReader["course_id"],
+                        CourseCode = sqlDataReader["course_code"] + "",
+                        CourseTitle = sqlDataReader["course_title"] + "",
+                        CourseType = sqlDataReader["course_type"] + ""
+                    };
+
+                    search_result.Add(C);
+                }
+                end();
+            }
+            return search_result;
+        }
+
         //ACCESS
         internal string Database_Username
         {
@@ -383,7 +470,7 @@ namespace campusLy
         internal List<int> getSortedStudID()
         {
             /*Query*/
-            string squery = "SELECT stud_id FROM student ORDER BY date_added ASC";
+            string squery = "SELECT stud_id FROM student ORDER BY stud_id ASC";
 
             /*Storage*/
             List<int> id_data = new List<int>();

@@ -228,6 +228,7 @@
             this.gbx_course.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.Text = "CREATE | COURSE";
 
         }
 

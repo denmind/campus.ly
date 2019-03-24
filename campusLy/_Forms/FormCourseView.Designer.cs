@@ -136,12 +136,14 @@
             this.Column1.HeaderText = "#";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Code";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             // 
             // Column3
             // 
@@ -154,6 +156,7 @@
             this.Column4.HeaderText = "Course";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             // 
             // lbl_form_view_title
             // 

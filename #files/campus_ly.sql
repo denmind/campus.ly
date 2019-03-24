@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2019 at 04:07 PM
+-- Generation Time: Mar 24, 2019 at 08:27 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -42,7 +42,13 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`course_id`, `course_code`, `course_title`, `course_type`) VALUES
 (1, 'IT 1101', 'PROGRAMMING I', 'BSIT'),
 (2, 'IT 1102', 'INTRODUCTION TO COMPUTING', 'BSIT'),
-(5, 'IT 1103', 'DISCRETE STRUCTURES', 'BSIT');
+(5, 'IT 1103', 'DISCRETE STRUCTURES', 'BSIT'),
+(6, 'IT 1201', 'PROGRAMMING II', 'BSIT'),
+(7, 'IT 1202', 'NETWORKING I', 'BSIT'),
+(8, 'IT 1203', 'HUMAN COMPUTER INTERACTION', 'BSIT'),
+(9, 'IT 2101', 'INFORMATION MANAGEMENT', 'BSIT'),
+(10, 'IT 2102', 'DATA STRUCTURES AND ALGORITHMS', 'BSIT'),
+(14, 'IS 1101', 'PROGRAMMING I', 'BSIS');
 
 -- --------------------------------------------------------
 
@@ -62,7 +68,10 @@ CREATE TABLE `enroll` (
 
 INSERT INTO `enroll` (`enroll_id`, `course_id`, `stud_id`) VALUES
 (1, 1, 1),
-(2, 2, 1);
+(2, 2, 1),
+(3, 2, 1),
+(4, 7, 1),
+(5, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -128,13 +137,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student`

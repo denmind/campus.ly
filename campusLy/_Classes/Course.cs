@@ -13,7 +13,13 @@ namespace campusLy._Classes
         private string course_title;
         private string course_type;
 
-        internal Course() { }
+        internal Course()
+        {
+            course_id = 0;
+            course_code = "";
+            course_title = "";
+            course_type = "";
+        }
 
         internal Course(string course_code_new, string course_title_new, string course_type_new)
         {

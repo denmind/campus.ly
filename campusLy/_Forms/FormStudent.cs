@@ -16,58 +16,52 @@ namespace campusLy._Forms
         const int MAX_NO_SIZE = 11;
         const int MAX_STRING_SIZE = 48;
 
-        Student instance;
+        int inst_id;
 
-        //TRUE FOR CREATE 
-        //FALSE FOR EDIT
-        public FormStudent(bool value)
+        //no argument for create
+        //instance for edit
+        public FormStudent()
         {
             InitializeComponent();
 
-            if (value)
-            {
-                this.Text = "CREATE | STUDENT";
-                this.btn_submit.Click += ADD_btn_submit_Click;
-            }
+            this.btn_submit.Click += ADD_btn_submit_Click;
         }
-        public FormStudent(bool value, Student student)
+        public FormStudent(Student student)
         {
             InitializeComponent();
 
-            if (value == false)
+            //Stud ID
+            inst_id = student.Id;
+
+            this.Text = "EDIT | STUDENT";
+            this.btn_submit.Click += EDIT_btn_submit_Click;
+
+            txt_stud_name_first.Text = student.NameFirst + "";
+            txt_stud_name_middle.Text = student.NameMiddle + "";
+            txt_stud_name_last.Text = student.NameLast + "";
+            dtp_stud_date_of_birth.Text = student.DateOfBirth + "";
+            txt_stud_id_no.Text = student.IdNo + "";
+
+            if (student.Gender == "Male")
+                gbx_stud_gender_male.Checked = true;
+            else if (student.Gender == "Female")
+                gbx_stud_gender_female.Checked = true;
+
+            switch (student.Course)
             {
-                instance = student;
+                case "BSIT": gbx_stud_course_bs_it.Checked = true; break;
+                case "BSCS": gbx_stud_course_bs_cs.Checked = true; break;
+                case "BSIS": gbx_stud_course_bs_is.Checked = true; break;
+                case "BSLIS": gbx_stud_course_bs_lis.Checked = true; break;
+            }
 
-                this.Text = "EDIT | STUDENT";
-                this.btn_submit.Click += EDIT_btn_submit_Click;
-
-                txt_stud_name_first.Text = student.NameFirst + "";
-                txt_stud_name_middle.Text = student.NameMiddle + "";
-                txt_stud_name_last.Text = student.NameLast + "";
-                dtp_stud_date_of_birth.Text = student.DateOfBirth + "";
-                txt_stud_id_no.Text = student.IdNo + "";
-
-                if (student.Gender == "Male")
-                    gbx_stud_gender_male.Checked = true;
-                else if (student.Gender == "Female")
-                    gbx_stud_gender_female.Checked = true;
-
-                switch (student.Course)
-                {
-                    case "BSIT": gbx_stud_course_bs_it.Checked = true; break;
-                    case "BSCS": gbx_stud_course_bs_cs.Checked = true; break;
-                    case "BSIS": gbx_stud_course_bs_is.Checked = true; break;
-                    case "BSLIS": gbx_stud_course_bs_lis.Checked = true; break;
-                }
-
-                switch (student.CourseYr)
-                {
-                    case 1: gbx_stud_course_yr_one.Checked = true; break;
-                    case 2: gbx_stud_course_yr_two.Checked = true; break;
-                    case 3: gbx_stud_course_yr_three.Checked = true; break;
-                    case 4: gbx_stud_course_yr_four.Checked = true; break;
-                    case 5: gbx_stud_course_yr_fifth.Checked = true; break;
-                }
+            switch (student.CourseYr)
+            {
+                case 1: gbx_stud_course_yr_one.Checked = true; break;
+                case 2: gbx_stud_course_yr_two.Checked = true; break;
+                case 3: gbx_stud_course_yr_three.Checked = true; break;
+                case 4: gbx_stud_course_yr_four.Checked = true; break;
+                case 5: gbx_stud_course_yr_fifth.Checked = true; break;
             }
         }
 
@@ -249,7 +243,7 @@ namespace campusLy._Forms
             {
                 S = new Student(stud_id_no, stud_name_first, stud_name_middle_name, stud_name_last, stud_course, stud_course_yr, stud_date_of_birt, stud_gender);
             }
-            S.Id = instance.Id;
+            S.Id = inst_id;
 
             flag = DB.update(S);
             this.Close();
@@ -267,7 +261,7 @@ namespace campusLy._Forms
 
             //CUT INPUT IF GREATER THAN MAX_NO_SIZE
             if (txtId.Text.Length > MAX_NO_SIZE)
-               input = txtId.Text.Substring(0, MAX_NO_SIZE);
+                input = txtId.Text.Substring(0, MAX_NO_SIZE);
             else
                 input = txtId.Text;
 

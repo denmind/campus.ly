@@ -7,38 +7,24 @@ using System.Threading.Tasks;
 
 namespace campusLy._Classes
 {
-     internal class FileGen
+    internal class FileGen
     {
-        Student studentData;
-        List<Course> studCourses;
-
         string file_location;
 
-        internal const int StudDataSize = 8;
-        internal const string FileLoc= @"_records\";
+        internal const string FileLoc = @"_records\";
+
         internal FileGen()
         {
-            file_location = FileLoc;
+            file_location = "";
         }
         internal string FileLocation
         {
             get { return file_location; }
             set { file_location = value; }
         }
-        internal FileGen(Student student) { studentData = student; }
-        
-        internal Student StudData
-        {
-            get { return studentData; }
-            set { studentData = value; }
-        }
-        internal List<Course> StudCourses
-        {
-            get { return studCourses; }
-            set { studCourses = value; }
-        }
 
-        internal string ProduceCourses()
+        //STUDENT
+        internal string ProduceCourses(List<Course> studCourses)
         {
             string total = "";
             foreach (Course data in studCourses)
@@ -49,41 +35,58 @@ namespace campusLy._Classes
             }
             return total;
         }
-        internal string ProduceFile()
+        internal void ProduceStudent(Student StudData, List<Course> studCourses)
         {
-            bool value = true;
             string file_template = "none";
-            try
-            {
-                string file_type = ".xml";
+            string file_type = ".xml";
+            
+            //Folder Name
+            FileLocation = FileLoc + @"_student\";
 
-                DirectoryInfo info = Directory.CreateDirectory(FileLocation);
-                
-                FileLocation += StudData.IdNo + file_type;
+            DirectoryInfo info = Directory.CreateDirectory(FileLocation);
 
-
-                /*string */file_template = (StudData.midInitIsEmpty()) ?
-
-                /*if mid name is empty*/
-                "<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
-
-                :
-
-                /*if mid name exists*/
-                "<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_mi>" + StudData.NameMiddle + "</stud_name_mi>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
-
-                ;
-
-                file_template += ProduceCourses();
-
-                File.WriteAllText(FileLocation, file_template);
-
-            }
-            catch (Exception E) { value = false; }
+            //FileName + dir
+            FileLocation += StudData.IdNo + file_type;
 
 
-            return file_template;
+            /*string */
+            file_template = (StudData.midInitIsEmpty()) ?
+
+            /*if mid name is empty*/
+            "<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
+        
+            :
+
+            /*if mid name exists*/
+            "<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_mi>" + StudData.NameMiddle + "</stud_name_mi>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
+
+            ;
+
+            //Additional data
+            file_template += ProduceCourses(studCourses);
+
+            File.WriteAllText(FileLocation, file_template);
         }
 
+        //COURSE
+        internal void ProduceCourse(Course course)
+        {
+            string file_template = "none";
+            string file_type = ".xml";
+
+            //Folder Name
+            FileLocation = FileLoc + @"_course\";
+
+            DirectoryInfo info = Directory.CreateDirectory(FileLocation);
+
+            file_template = "<course>\n\t<course_code>"+course.CourseCode+ "</course_code>\n\t<course_title>" + course.CourseTitle + "</course_title>\n\t<course_type>" + course.CourseType + "</course_type>\n</course>";
+
+            //FileName + dir
+            FileLocation += course.CourseCode + file_type;
+
+            File.WriteAllText(FileLocation, file_template);
+        }
+
+        //ENROLL
     }
 }

@@ -14,7 +14,7 @@ namespace campusLy._Forms
         public FormCourseView(string optype, string header_message)
         {
             InitializeComponent();
-            this.Text = optype + " | STUDENT";
+            this.Text = optype + " | COURSE";
             lbl_form_view_title.Text = header_message;
 
             if (optype.Equals("VIEW"))
@@ -62,15 +62,71 @@ namespace campusLy._Forms
         }
         private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //When a table row is double clicked a message box (modal) is displayed and within the control form
+            //a open file link is made available
+            const int row_size = 4;
 
+            int indx = e.RowIndex;
+
+            DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
+
+            string data = "";
+
+            Database DB = new Database();
+            FileGen fileGen = new FileGen();
+
+            //set i = 0 to include identifier in message form
+            for (int i = 1; i < row_size; i++)
+                data += hold[i].Value + " ";
+
+
+            Course C = new Course
+            {
+                CourseId = (int)hold[0].Value,
+                CourseCode = hold[1].Value + "",
+                CourseTitle = hold[2].Value + "",
+                CourseType = hold[3].Value + ""
+            };
+
+            fileGen.ProduceCourse(C);
+
+            new MessageForm(data, fileGen).ShowDialog();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Database DB = new Database();
 
+            int indx = e.RowIndex;
+
+            DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
+
+            Course C = new Course
+            {
+                CourseId = (int)hold[0].Value,
+                CourseCode = hold[1].Value + "",
+                CourseTitle = hold[2].Value + "",
+                CourseType = hold[3].Value + ""
+            };
+
+            new FormCourse(C).ShowDialog();
         }
         private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            const int rowsize = 4;
 
+            Database DB = new Database();
+
+            int indx = e.RowIndex;
+            DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
+
+            string data = "";
+
+            for (int i = 1; i < rowsize; i++)
+                data += i + ". " + hold[i].Value + "\n";
+
+            indx = Int32.Parse(hold[0].Value + "");
+
+            new Confirm("COURSE", indx, data).ShowDialog();
         }
         private void SEARCH_Focus(object sender, EventArgs e)
         {
@@ -83,17 +139,17 @@ namespace campusLy._Forms
                 dataGridView_Course.Visible = true;
             }
 
-            //dataGridView_view.Rows.Clear();
+            dataGridView_Course.Rows.Clear();
 
-            //Database DB = new Database();
+            Database DB = new Database();
 
-            //string search_term = srch_box.Text;
+            string search_term = srch_box.Text;
 
-            //List<Student> stud_data = new List<Student>();
+            List<Course> course_list = new List<Course>();
 
-            //stud_data = DB.searchAll(search_term);
+            course_list = DB.searchCourse(search_term);
 
-            //displayOnDataGridView(stud_data);
+            displayOnDataGridView(course_list);
         }
     }
 }

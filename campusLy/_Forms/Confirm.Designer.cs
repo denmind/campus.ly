@@ -107,6 +107,7 @@
             this.Controls.Add(this.button_true);
             this.Controls.Add(this.richTextBox_confirm_delete);
             this.Name = "Confirm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirm";
             this.ResumeLayout(false);
             this.PerformLayout();

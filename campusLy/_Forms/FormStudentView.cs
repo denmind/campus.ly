@@ -65,40 +65,39 @@ namespace campusLy._Forms
         private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //When a table row is double clicked a message box (modal) is displayed and within the control form
-            //a copy button to clipboard is made available
-
+            //a open file link is made available
+            const int row_size = 10;
 
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
             string data = "";
+            string[] dataGen = new string[row_size];
 
             Database DB = new Database();
-            
-            string[] dataGen = new string[10];
-            Student student = new Student();
             FileGen fileGen = new FileGen();
 
-            for (int i = 1; i < 10; i++)
+            //set i = 0 to include identifier in message form
+            for (int i = 1; i < row_size; i++)
             {
                data += hold[i].Value + " ";
                 dataGen[i - 1] = hold[i].Value + "";
             }
+            Student student = new Student
+            {
+                Id = Int32.Parse(hold[0].Value + ""),
+                IdNo = Int32.Parse(dataGen[0] + ""),
+                NameLast = dataGen[1],
+                NameMiddle = dataGen[2],
+                NameFirst = dataGen[3],
+                Course = dataGen[4],
+                CourseYr = Int32.Parse(dataGen[5] + ""),
+                DateOfBirth = dataGen[6],
+                Gender = dataGen[7]
+            };
 
-            student.Id = Int32.Parse(hold[0].Value + "");
-            student.IdNo = Int32.Parse(dataGen[0] + "");
-            student.NameLast = dataGen[1];
-            student.NameMiddle = dataGen[2];
-            student.NameFirst = dataGen[3];
-            student.Course = dataGen[4];
-            student.CourseYr = Int32.Parse(dataGen[5] + "");
-            student.DateOfBirth = dataGen[6];
-            student.Gender = dataGen[7];
-
-            fileGen.StudData = student;
-            fileGen.StudCourses = DB.selectCourseStud(student);
-            fileGen.ProduceFile();
+            fileGen.ProduceStudent(student, DB.selectCoursesOfStud(student));
 
             new MessageForm(data,fileGen).ShowDialog();
         }
@@ -113,23 +112,25 @@ namespace campusLy._Forms
 
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
-            Student S = new Student();
+            Student S = new Student
+            {
+                Id = (int)hold[0].Value,
+                IdNo = (int)hold[1].Value,
+                NameFirst = (string)hold[4].Value,
+                NameMiddle = (string)hold[3].Value,
+                NameLast = (string)hold[2].Value,
+                Course = (string)hold[5].Value,
+                CourseYr = (int)hold[6].Value,
+                DateOfBirth = (string)hold[7].Value,
+                Gender = (string)hold[8].Value,
+                DateAdded = (string)hold[9].Value
+            };
 
-            S.Id = (int)hold[0].Value;
-            S.IdNo = (int)hold[1].Value;
-            S.NameFirst = (string)hold[4].Value;
-            S.NameMiddle = (string)hold[3].Value;
-            S.NameLast = (string)hold[2].Value;
-            S.Course = (string)hold[5].Value;
-            S.CourseYr = (int)hold[6].Value;
-            S.DateOfBirth = (string)hold[7].Value;
-            S.Gender = (string)hold[8].Value;
-            S.DateAdded = (string)hold[9].Value;
-            
-            new FormStudent(false, S).ShowDialog();
+            new FormStudent(S).ShowDialog();
         }
         private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            const int row_size = 10;
 
             Database DB = new Database();
 
@@ -138,14 +139,12 @@ namespace campusLy._Forms
 
             string data = "";
 
-            for (int i = 1; i < 10; i++)
-            {
+            for (int i = 1; i < row_size; i++)
                 data += i + ". " + hold[i].Value + "\n";
-            }
 
             indx = Int32.Parse(hold[0].Value + "");
 
-            new Confirm("DELETE", indx, data).ShowDialog();
+            new Confirm("STUDENT", indx, data).ShowDialog();
         }
         private void displayOnDataGridView(List<Student> stud_data)
         {
