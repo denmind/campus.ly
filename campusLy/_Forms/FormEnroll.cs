@@ -23,13 +23,6 @@ namespace campusLy._Forms
 
             this.btn_submit.Click += ADD_btn_submit_Click;
         }
-        public FormEnroll(Enroll enroll)
-        {
-            InitializeComponent();
-            
-            this.Text = "EDIT | ENROLL";
-            //this.btn_submit.Click += EDIT_btn_submit_Click;
-        }
 
         private void ADD_btn_submit_Click(object sender, EventArgs e)
         {
@@ -44,17 +37,6 @@ namespace campusLy._Forms
             this.Close();
             new InfoForm(DB.insert(E)).ShowDialog();
         }
-        private void EDIT_btn_submit_Click(object sender, EventArgs e)
-        {
-            Enroll E = new Enroll();
-            Database DB = new Database();
-
-
-            this.Close();
-
-            new InfoForm(DB.update(E)).ShowDialog();
-        }
-
         private void FormEnroll_Load(object sender, EventArgs e)
         {
             Database DB = new Database();

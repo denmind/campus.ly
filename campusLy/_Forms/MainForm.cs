@@ -23,7 +23,9 @@ namespace campusLy
             "Create record data",
             "Update record info",
             "View record list",
-            "Delete some records"
+            "Delete some records",
+            "Enroll student in course",
+            "Unenroll student from course"
         };
 
         string[] form_type =
@@ -60,10 +62,20 @@ namespace campusLy
             }
             else if(type == "ENROLL")
             {
+                this.ClientSize = new System.Drawing.Size(700, 225);
+                this.MinimumSize = new System.Drawing.Size(700, 225);
+                this.MaximumSize = new System.Drawing.Size(700, 225);
+                this.label_title.Location = new System.Drawing.Point(104, 16);
+
                 this.button_form_1_Create.Click += new System.EventHandler(this.ENROLL_1_CREATE);
-                this.button_form_2_Update.Click += new System.EventHandler(this.ENROLL_2_UPDATE);
-                this.button_form_3_View.Click += new System.EventHandler(this.ENROLL_3_VIEW);
-                this.button_form_4_Delete.Click += new System.EventHandler(this.ENROLL_4_DELETE);
+                this.button_form_2_Update.Click += new System.EventHandler(this.ENROLL_2_DELETE);
+
+
+                this.button_form_1_Create.MouseLeave += new System.EventHandler(this.Enroll_OnLeave);
+                this.button_form_1_Create.MouseHover += new System.EventHandler(this.Enroll_OnHover);
+
+                this.button_form_2_Update.MouseLeave += new System.EventHandler(this.UnEnroll_OnLeave);
+                this.button_form_2_Update.MouseHover += new System.EventHandler(this.UnEnroll_OnHover);
             }
         }
 
@@ -119,26 +131,47 @@ namespace campusLy
         /*1. CREATE*/
         private void ENROLL_1_CREATE(object sender, EventArgs e)
         {
-            //TRUE FOR CREATE
-            //FALSE FOR EDIT
-
             new FormEnroll().ShowDialog();
         }
-        /*2. UPDATE*/
-        private void ENROLL_2_UPDATE(object sender, EventArgs e)
+        /*2. DELETE*/
+        private void ENROLL_2_DELETE(object sender, EventArgs e)
         {
-        }
-        /*3. VIEW*/
-        private void ENROLL_3_VIEW(object sender, EventArgs e)
-        {
-        }
-        /*4. DELETE*/
-        private void ENROLL_4_DELETE(object sender, EventArgs e)
-        {
+
         }
 
 
         //HOVER AND LEAVE
+        private void Enroll_OnHover(object sender, EventArgs e)
+        {
+            this.button_form_1_Create.Text = btn_msg[4];
+            this.button_form_1_Create.BackgroundImage = null;
+        }
+        private void Enroll_OnLeave(object sender, EventArgs e)
+        {
+            this.button_form_1_Create.Text = "";
+            this.button_form_1_Create.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_1_Create.BackgroundImage")));
+        }
+        private void UnEnroll_OnHover(object sender, EventArgs e)
+        {
+            this.button_form_2_Update.Text = btn_msg[5];
+            this.button_form_2_Update.BackgroundImage = null;
+        }
+        private void UnEnroll_OnLeave(object sender, EventArgs e)
+        {
+            this.button_form_2_Update.Text = "";
+            this.button_form_2_Update.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_2_Update.BackgroundImage")));
+        }
+
+        private void button_form_1_Create_OnHover(object sender, EventArgs e)
+        {
+            button_form_1_Create.Text = btn_msg[0];
+            this.button_form_1_Create.BackgroundImage = null;
+        }
+        private void button_form_1_Create_OnLeave(object sender, EventArgs e)
+        {
+            button_form_1_Create.Text = "";
+            this.button_form_1_Create.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_1_Create.BackgroundImage")));
+        }
         private void button_form_2_Update_OnHover(object sender, EventArgs e)
         {
             button_form_2_Update.Text = btn_msg[1];
@@ -168,16 +201,6 @@ namespace campusLy
         {
             button_form_4_Delete.Text = "";
             this.button_form_4_Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_4_Delete.BackgroundImage")));
-        }
-        private void button_form_1_Create_OnHover(object sender, EventArgs e)
-        {
-            button_form_1_Create.Text = btn_msg[0];
-            this.button_form_1_Create.BackgroundImage = null;
-        }
-        private void button_form_1_Create_OnLeave(object sender, EventArgs e)
-        {
-            button_form_1_Create.Text = "";
-            this.button_form_1_Create.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_form_1_Create.BackgroundImage")));
         }
     }
 }
