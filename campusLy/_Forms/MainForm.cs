@@ -121,6 +121,8 @@ namespace campusLy
         {
             //TRUE FOR CREATE
             //FALSE FOR EDIT
+
+            new FormEnroll().ShowDialog();
         }
         /*2. UPDATE*/
         private void ENROLL_2_UPDATE(object sender, EventArgs e)

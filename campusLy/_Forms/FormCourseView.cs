@@ -88,8 +88,10 @@ namespace campusLy._Forms
                 CourseType = hold[3].Value + ""
             };
 
-            fileGen.ProduceCourse(C);
 
+            fileGen.ProduceCourse(C,DB.selectStudsOfCourse(C));
+
+            this.Close();
             new MessageForm(data, fileGen).ShowDialog();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -108,6 +110,7 @@ namespace campusLy._Forms
                 CourseType = hold[3].Value + ""
             };
 
+            this.Close();
             new FormCourse(C).ShowDialog();
         }
         private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -126,6 +129,7 @@ namespace campusLy._Forms
 
             indx = Int32.Parse(hold[0].Value + "");
 
+            this.Close();
             new Confirm("COURSE", indx, data).ShowDialog();
         }
         private void SEARCH_Focus(object sender, EventArgs e)

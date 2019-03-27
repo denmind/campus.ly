@@ -18,7 +18,7 @@ namespace campusLy._Forms
         {
             InitializeComponent();
             msg_text.Text += data;
-            Clipboard.SetText(msg_text.Text);
+            //Clipboard.SetText(msg_text.Text);
 
             lbl_records_link.Visible = false;
         }

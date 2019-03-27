@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace campusLy._Classes
 {
-    class Enroll
+    public sealed class Enroll
     {
         private int enroll_id;
         private int course_id;
@@ -40,7 +40,7 @@ namespace campusLy._Classes
             get { return course_id; }
             set { course_id = value; }
         }
-        internal Student StudID
+        internal Student StudInst
         {
             get { return student_instance; }
             set { student_instance = value; }
@@ -52,7 +52,7 @@ namespace campusLy._Classes
             set { course_instance = value; }
         }
 
-        internal int StudInst
+        internal int StudId
         {
             get { return stud_id; }
             set { stud_id = value; }

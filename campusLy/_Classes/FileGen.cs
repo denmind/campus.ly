@@ -24,7 +24,7 @@ namespace campusLy._Classes
         }
 
         //STUDENT
-        internal string ProduceCourses(List<Course> studCourses)
+        internal string ProduceCoursesOfStud(List<Course> studCourses)
         {
             string total = "";
             foreach (Course data in studCourses)
@@ -39,7 +39,7 @@ namespace campusLy._Classes
         {
             string file_template = "none";
             string file_type = ".xml";
-            
+
             //Folder Name
             FileLocation = FileLoc + @"_student\";
 
@@ -49,27 +49,47 @@ namespace campusLy._Classes
             FileLocation += StudData.IdNo + file_type;
 
 
-            /*string */
+            /*string*/
             file_template = (StudData.midInitIsEmpty()) ?
 
             /*if mid name is empty*/
-            "<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
-        
+            "\n<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
+
             :
 
             /*if mid name exists*/
-            "<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_mi>" + StudData.NameMiddle + "</stud_name_mi>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
+            "\n<student>\n\t<stud_id_no>" + StudData.IdNo + "</stud_id_no>\n\t<stud_name_first>" + StudData.NameFirst + "</stud_name_first>\n\t<stud_name_mi>" + StudData.NameMiddle + "</stud_name_mi>\n\t<stud_name_last>" + StudData.NameLast + "</stud_name_last>\n\t<stud_course>" + StudData.Course + "</stud_course>\n\t<stud_course_yr>" + StudData.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + StudData.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + StudData.Gender + "</stud_gender>\n</student>"
 
             ;
 
             //Additional data
-            file_template += ProduceCourses(studCourses);
+            file_template += ProduceCoursesOfStud(studCourses);
 
             File.WriteAllText(FileLocation, file_template);
         }
 
         //COURSE
-        internal void ProduceCourse(Course course)
+        internal string ProduceStudentsOfCourse(List<Student> StudList)
+        {
+            string total = "";
+            foreach (Student data in StudList)
+            {
+                string template = (data.midInitIsEmpty()) ?
+
+                /*if mid name is empty*/
+                "\n<student>\n\t<stud_id_no>" + data.IdNo + "</stud_id_no>\n\t<stud_name_first>" + data.NameFirst + "</stud_name_first>\n\t<stud_name_last>" + data.NameLast + "</stud_name_last>\n\t<stud_course>" + data.Course + "</stud_course>\n\t<stud_course_yr>" + data.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + data.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + data.Gender + "</stud_gender>\n</student>"
+
+                :
+
+                /*if mid name exists*/
+                "\n<student>\n\t<stud_id_no>" + data.IdNo + "</stud_id_no>\n\t<stud_name_first>" + data.NameFirst + "</stud_name_first>\n\t<stud_name_mi>" + data.NameMiddle + "</stud_name_mi>\n\t<stud_name_last>" + data.NameLast + "</stud_name_last>\n\t<stud_course>" + data.Course + "</stud_course>\n\t<stud_course_yr>" + data.CourseYr + "</stud_course_yr>\n\t<stud_date_of_birth>" + data.DateOfBirth + "</stud_date_of_birth>\n\t<stud_gender>" + data.Gender + "</stud_gender>\n</student>"
+
+                ;
+                total += template;
+            }
+            return total;
+        }
+        internal void ProduceCourse(Course course, List<Student> StudList)
         {
             string file_template = "none";
             string file_type = ".xml";
@@ -79,10 +99,13 @@ namespace campusLy._Classes
 
             DirectoryInfo info = Directory.CreateDirectory(FileLocation);
 
-            file_template = "<course>\n\t<course_code>"+course.CourseCode+ "</course_code>\n\t<course_title>" + course.CourseTitle + "</course_title>\n\t<course_type>" + course.CourseType + "</course_type>\n</course>";
+            file_template = "<course>\n\t<course_code>" + course.CourseCode + "</course_code>\n\t<course_title>" + course.CourseTitle + "</course_title>\n\t<course_type>" + course.CourseType + "</course_type>\n</course>";
 
             //FileName + dir
             FileLocation += course.CourseCode + file_type;
+
+            //Additional data
+            file_template += ProduceStudentsOfCourse(StudList);
 
             File.WriteAllText(FileLocation, file_template);
         }

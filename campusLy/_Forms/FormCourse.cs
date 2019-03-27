@@ -95,6 +95,7 @@ namespace campusLy._Forms
             //Course Title
             C.CourseTitle = txt_course_title.Text;
 
+            this.Close();
             new InfoForm(DB.insert(C)).ShowDialog();
         }
         private void EDIT_btn_submit_Click(object sender, EventArgs e)
@@ -137,6 +138,7 @@ namespace campusLy._Forms
             //Course Id
             C.CourseId = inst_id;
 
+            this.Close();
             new InfoForm(DB.update(C)).ShowDialog();
         }
         //VALIDATORS

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 08:27 AM
+-- Generation Time: Mar 27, 2019 at 12:38 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -48,7 +48,8 @@ INSERT INTO `course` (`course_id`, `course_code`, `course_title`, `course_type`)
 (8, 'IT 1203', 'HUMAN COMPUTER INTERACTION', 'BSIT'),
 (9, 'IT 2101', 'INFORMATION MANAGEMENT', 'BSIT'),
 (10, 'IT 2102', 'DATA STRUCTURES AND ALGORITHMS', 'BSIT'),
-(14, 'IS 1101', 'PROGRAMMING I', 'BSIS');
+(14, 'IS 1101', 'PROGRAMMING I', 'BSIS'),
+(15, 'CS 1101', 'PROGRAMMING I', 'BSCS');
 
 -- --------------------------------------------------------
 
@@ -68,10 +69,10 @@ CREATE TABLE `enroll` (
 
 INSERT INTO `enroll` (`enroll_id`, `course_id`, `stud_id`) VALUES
 (1, 1, 1),
-(2, 2, 1),
 (3, 2, 1),
 (4, 7, 1),
-(5, 2, 3);
+(5, 2, 3),
+(6, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -98,12 +99,13 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi`, `stud_name_last`, `stud_course`, `stud_course_yr`, `stud_date_of_birth`, `stud_gender`, `date_added`) VALUES
 (1, 15200155, 'Francis Anthony Carmel', 'Jacobo', 'Caboyo', 'BSIT', '3', '1998-07-24', 'Male', '2019-03-06 16:31:21'),
-(2, 1621164, 'Frank', 'Sio', 'Sinatra', 'BSIT', '3', '1998-03-10', 'Male', '2019-03-10 00:18:59'),
+(2, 16210164, 'Frank', 'Sio', 'Sinatra', 'BSIT', '3', '1998-03-10', 'Male', '2019-03-10 00:18:59'),
 (3, 15101254, 'Capitao', 'Santos', 'Maria', 'BSIS', '1', '1998-05-01', 'Female', '2019-03-10 00:25:54'),
 (11, 16100213, 'Peter', 'Oraio', 'Dela Cruz', 'BSLIS', '1', '1979-07-02', 'Male', '2019-03-13 21:26:07'),
 (12, 16204321, 'Margarette', 'Pranto', 'Viscaya', 'BSCS', '1', '1997-04-05', 'Female', '2019-03-13 21:26:54'),
 (13, 15101253, 'Oliver', 'Reyes', 'Jake', 'BSLIS', '1', '1998-06-19', 'Male', '2019-03-15 17:00:55'),
-(14, 16211012, 'Sebastian', 'Miguel', 'Ramos', 'BSLIS', '1', '1997-11-14', 'Male', '2019-03-22 19:59:17');
+(14, 16211012, 'Sebastian', 'Miguel', 'Ramos', 'BSLIS', '1', '1997-11-14', 'Male', '2019-03-22 19:59:17'),
+(15, 15100146, 'Alexis', 'Minaro', 'Jocinta', 'BSIS', '2', '1997-07-14', 'Female', '2019-03-27 14:03:16');
 
 --
 -- Indexes for dumped tables
@@ -137,19 +139,19 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=18;
+  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

@@ -179,17 +179,90 @@ namespace campusLy
                 /*read data*/
                 while (sqlDataReader.Read())
                 {
-                    Student stud_data = new Student();
+                    Student stud_data = new Student
+                    {
+                        Id = int.Parse(sqlDataReader["stud_id"] + ""),
+                        IdNo = int.Parse(sqlDataReader["stud_id_no"] + ""),
+                        CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + ""),
 
-                    stud_data.Id = int.Parse(sqlDataReader["stud_id"] + "");
-                    stud_data.IdNo = int.Parse(sqlDataReader["stud_id_no"] + "");
-                    stud_data.CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + "");
+                        NameFirst = sqlDataReader["stud_name_first"] + "",
+                        NameMiddle = sqlDataReader["stud_name_mi"] + "",
+                        NameLast = sqlDataReader["stud_name_last"] + "",
+                        Course = sqlDataReader["stud_course"] + "",
+                        Gender = sqlDataReader["stud_gender"] + ""
+                    };
 
-                    stud_data.NameFirst = sqlDataReader["stud_name_first"] + "";
-                    stud_data.NameMiddle = sqlDataReader["stud_name_mi"] + "";
-                    stud_data.NameLast = sqlDataReader["stud_name_last"] + "";
-                    stud_data.Course = sqlDataReader["stud_course"] + "";
-                    stud_data.Gender = sqlDataReader["stud_gender"] + "";
+                    res_date_added = DateTime.Parse(sqlDataReader["date_added"] + "");
+                    res_date_of_birth = DateTime.Parse(sqlDataReader["stud_date_of_birth"] + "");
+
+                    stud_data.DateAdded = res_date_added.ToString("yyyy-MM-dd HH:mm:ss");
+                    stud_data.DateOfBirth = res_date_of_birth.ToString("yyy-MM-dd");
+
+                    student_data.Add(stud_data);
+                }
+                end();
+            }
+            return student_data;
+        }
+        internal Student selectStudViaIdNo(int id_no)
+        {
+            /*Query*/
+            string squery = "SELECT * FROM student WHERE stud_id_no = " + id_no;
+
+            /*Storage*/
+            Student student = new Student();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    student.Id = int.Parse(sqlDataReader["stud_id"] + "");
+                    student.IdNo = int.Parse(sqlDataReader["stud_id_no"] + "");
+
+                    student.NameFirst = sqlDataReader["stud_name_first"] + "";
+                    student.NameMiddle = sqlDataReader["stud_name_mi"] + "";
+                    student.NameLast = sqlDataReader["stud_name_last"] + "";
+
+                    student.Course = sqlDataReader["stud_course"] + "";
+                    student.CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + "");
+                }
+                end();
+            }
+            return student;
+        }
+        internal List<Student> selectStud_Sorted_IdNoAsc()
+        {
+            /*Query*/
+            string squery = "SELECT * FROM student ORDER BY stud_id_no";
+
+            /*Storage*/
+            List<Student> student_data = new List<Student>();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+                DateTime res_date_added;
+                DateTime res_date_of_birth;
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Student stud_data = new Student
+                    {
+                        Id = int.Parse(sqlDataReader["stud_id"] + ""),
+                        IdNo = int.Parse(sqlDataReader["stud_id_no"] + ""),
+                        CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + ""),
+
+                        NameFirst = sqlDataReader["stud_name_first"] + "",
+                        NameMiddle = sqlDataReader["stud_name_mi"] + "",
+                        NameLast = sqlDataReader["stud_name_last"] + "",
+                        Course = sqlDataReader["stud_course"] + "",
+                        Gender = sqlDataReader["stud_gender"] + ""
+                    };
 
                     res_date_added = DateTime.Parse(sqlDataReader["date_added"] + "");
                     res_date_of_birth = DateTime.Parse(sqlDataReader["stud_date_of_birth"] + "");
@@ -236,10 +309,10 @@ namespace campusLy
             string squery =
 
             "UPDATE course SET " +
-            "course_code = '"+course.CourseCode+"'," +
-            "course_title = '"+course.CourseTitle+"'," +
-            "course_type = '"+course.CourseType+"' " +
-            "WHERE course_id = "+course.CourseId;
+            "course_code = '" + course.CourseCode + "'," +
+            "course_title = '" + course.CourseTitle + "'," +
+            "course_type = '" + course.CourseType + "' " +
+            "WHERE course_id = " + course.CourseId;
 
             /*Checks if db_conn is avail*/
             if (start())
@@ -306,13 +379,70 @@ namespace campusLy
             }
             return courses;
         }
+        internal List<Course> selectCourseViaCourseType(string course_type)
+        {
+            /*Query*/
+            string squery = "SELECT * FROM course WHERE course_type = '" + course_type + "' ORDER BY course_code";
+
+            /*Storage*/
+            List<Course> courses = new List<Course>();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Course c = new Course
+                    {
+                        CourseId = Int32.Parse(sqlDataReader["course_id"] + ""),
+                        CourseCode = sqlDataReader["course_code"] + "",
+                        CourseTitle = sqlDataReader["course_title"] + "",
+                        CourseType = sqlDataReader["course_type"] + ""
+                    };
+
+                    courses.Add(c);
+                }
+                end();
+            }
+            return courses;
+        }
+
+        internal Course selectCourseViaCourseCodeAndType(string course_code, string course_type)
+        {
+            /*Query*/
+            string squery = "SELECT * FROM course WHERE course_type = '"+course_type+"' AND course_code LIKE '%"+course_code+"%'";
+
+            /*Storage*/
+            Course course = new Course();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    course.CourseId = Int32.Parse(sqlDataReader["course_id"] + "");
+                    course.CourseCode = sqlDataReader["course_code"] + "";
+                    course.CourseTitle = sqlDataReader["course_title"] + "";
+                    course.CourseType = sqlDataReader["course_type"] + "";
+
+                }
+                end();
+            }
+            return course;
+        }
 
         /*ENROLL*/
         internal bool insert(Enroll enroll)
         {
             bool value = true;
             /*Query prep*/
-            string squery = "INSERT INTO enroll (enroll_id, course_id, stud_id) VALUES (NULL, '" + enroll.CourseID + "', '" + enroll.StudID + "')";
+            string squery = "INSERT INTO enroll (enroll_id, course_id, stud_id) VALUES (NULL, '" + enroll.CourseID + "', '" + enroll.StudId + "')";
 
             /*Checks if db_conn is avail*/
             if (start())
@@ -329,18 +459,22 @@ namespace campusLy
 
             return value;
         }
+        internal bool update(Enroll enroll)
+        {
+            bool value = true;
+
+            return value;
+        }
 
 
         //OTHERS
         //STUDENT
-        
+
         //Courses enrolled by student
         internal List<Course> selectCoursesOfStud(Student student)
         {
             List<Course> course_list = new List<Course>();
             string squery = "SELECT * FROM enroll e JOIN course c ON e.course_id = c.course_id WHERE e.stud_id = " + student.Id;
-            /*Storage*/
-            List<Student> student_data = new List<Student>();
 
             if (start())
             {
@@ -363,6 +497,46 @@ namespace campusLy
         }
 
         //Students enrolled in course
+        internal List<Student> selectStudsOfCourse(Course course)
+        {
+            List<Student> stud_list = new List<Student>();
+            string squery = "SELECT * FROM enroll e JOIN student s ON e.stud_id = s.stud_id WHERE e.course_id = " + course.CourseId;
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+                DateTime res_date_added;
+                DateTime res_date_of_birth;
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Student student = new Student
+                    {
+                        Id = int.Parse(sqlDataReader["stud_id"] + ""),
+                        IdNo = int.Parse(sqlDataReader["stud_id_no"] + ""),
+                        CourseYr = int.Parse(sqlDataReader["stud_course_yr"] + ""),
+
+                        NameFirst = sqlDataReader["stud_name_first"] + "",
+                        NameMiddle = sqlDataReader["stud_name_mi"] + "",
+                        NameLast = sqlDataReader["stud_name_last"] + "",
+                        Course = sqlDataReader["stud_course"] + "",
+                        Gender = sqlDataReader["stud_gender"] + ""
+                    };
+
+                    res_date_added = DateTime.Parse(sqlDataReader["date_added"] + "");
+                    res_date_of_birth = DateTime.Parse(sqlDataReader["stud_date_of_birth"] + "");
+
+                    student.DateAdded = res_date_added.ToString("yyyy-MM-dd HH:mm:ss");
+                    student.DateOfBirth = res_date_of_birth.ToString("yyy-MM-dd");
+
+                    stud_list.Add(student);
+                }
+                end();
+            }
+            return stud_list;
+        }
 
         //SEARCH
         internal List<Student> searchStudent(string srch_term)

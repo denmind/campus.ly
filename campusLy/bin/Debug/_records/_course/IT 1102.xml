@@ -1,0 +1,23 @@
+<course>
+	<course_code>IT 1102</course_code>
+	<course_title>INTRODUCTION TO COMPUTING</course_title>
+	<course_type>BSIT</course_type>
+</course><student>
+	<stud_id_no>15200155</stud_id_no>
+	<stud_name_first>Francis Anthony Carmel</stud_name_first>
+	<stud_name_mi>Jacobo</stud_name_mi>
+	<stud_name_last>Caboyo</stud_name_last>
+	<stud_course>BSIT</stud_course>
+	<stud_course_yr>3</stud_course_yr>
+	<stud_date_of_birth>1998-07-24</stud_date_of_birth>
+	<stud_gender>Male</stud_gender>
+</student><student>
+	<stud_id_no>15101254</stud_id_no>
+	<stud_name_first>Capitao</stud_name_first>
+	<stud_name_mi>Santos</stud_name_mi>
+	<stud_name_last>Maria</stud_name_last>
+	<stud_course>BSIS</stud_course>
+	<stud_course_yr>1</stud_course_yr>
+	<stud_date_of_birth>1998-05-01</stud_date_of_birth>
+	<stud_gender>Female</stud_gender>
+</student>

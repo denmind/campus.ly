@@ -16,10 +16,8 @@
 
 [2DO]
 ENROLL :
-~enroll stud to class[C]
-~view all offered courses[R]
-~edit stud info in class[U]
-~remove stud from class[D]
+~enroll student to class[C]
+~remove student from class[D]
 
 COURSE :
 ~produce xml for students enrolled in course [ON CLICK ROW CELL] ..just append in filegen produceCourse and add List<Student> for param

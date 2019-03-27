@@ -99,6 +99,7 @@ namespace campusLy._Forms
 
             fileGen.ProduceStudent(student, DB.selectCoursesOfStud(student));
 
+            this.Close();
             new MessageForm(data,fileGen).ShowDialog();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -126,6 +127,7 @@ namespace campusLy._Forms
                 DateAdded = (string)hold[9].Value
             };
 
+            this.Close();
             new FormStudent(S).ShowDialog();
         }
         private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -144,6 +146,7 @@ namespace campusLy._Forms
 
             indx = Int32.Parse(hold[0].Value + "");
 
+            this.Close();
             new Confirm("STUDENT", indx, data).ShowDialog();
         }
         private void displayOnDataGridView(List<Student> stud_data)
