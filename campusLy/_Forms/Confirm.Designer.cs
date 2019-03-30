@@ -46,6 +46,7 @@
             this.richTextBox_confirm_delete.ReadOnly = true;
             this.richTextBox_confirm_delete.Size = new System.Drawing.Size(232, 185);
             this.richTextBox_confirm_delete.TabIndex = 0;
+            this.richTextBox_confirm_delete.TabStop = false;
             this.richTextBox_confirm_delete.Text = "";
             // 
             // button_true

@@ -57,7 +57,6 @@
             // dataGridView_view
             // 
             this.dataGridView_view.AllowUserToDeleteRows = false;
-            this.dataGridView_view.AllowUserToOrderColumns = true;
             this.dataGridView_view.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));

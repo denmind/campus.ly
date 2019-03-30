@@ -17,6 +17,8 @@ namespace campusLy._Forms
         Student e_stud;
         Course e_course;
 
+        Enroll E;
+
         public FormEnroll()
         {
             InitializeComponent();
@@ -28,11 +30,7 @@ namespace campusLy._Forms
         {
             Database DB = new Database();
 
-            Enroll E = new Enroll
-            {
-                StudId = e_stud.Id,
-                CourseID = e_course.CourseId
-            };
+            
 
             this.Close();
             new InfoForm(DB.insert(E)).ShowDialog();
@@ -106,14 +104,34 @@ namespace campusLy._Forms
 
         private void cmbox_courses_ValueChanged(object sender, EventArgs e)
         {
+            //RESET
+            lbl_already_enrolled.Visible = false;
+            btn_submit.Enabled = false;
+
             Database DB = new Database();
 
             //TAKE COURSE
             e_course = DB.selectCourseViaCourseCodeAndType(cmbox_courses.Text, e_stud.Course);
 
+            //Display coures title in text area
             txt_course_title.Text = e_course.CourseTitle + "";
 
-            btn_submit.Enabled = true;
+            //Everytime the course value is changed
+            //auto change the enroll attributes.
+            E = new Enroll
+            {
+                StudId = e_stud.Id,
+                CourseID = e_course.CourseId
+            };
+
+            //new MessageForm(DB.canEnroll(new Enroll(e_course.CourseId, e_stud.Id)) + "").ShowDialog();
+            if (DB.canEnroll(E)) { 
+                btn_submit.Enabled = true;
+            }
+            else
+            {
+                lbl_already_enrolled.Visible = true;
+            }
         }
     }
 }

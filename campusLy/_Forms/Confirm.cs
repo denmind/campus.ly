@@ -14,6 +14,7 @@ namespace campusLy._Forms
     public partial class Confirm : Form
     {
         private int id;
+        Enroll enrollInstance;
 
         public Confirm(string table_type, int id, string message)
         {
@@ -26,9 +27,17 @@ namespace campusLy._Forms
             {
                 case "STUDENT": this.button_true.Click += new System.EventHandler(this.STUD_DELETE); break;
                 case "COURSE": this.button_true.Click += new System.EventHandler(this.COURSE_DELETE); break;
-                case "ENROLL": this.button_true.Click += new System.EventHandler(this.ENROLL_DELETE); break;
             }
         }
+
+        public Confirm(string message, Enroll E)
+        {
+            InitializeComponent();
+            this.richTextBox_confirm_delete.Text = message;
+            this.enrollInstance = E;
+            this.button_true.Click += new System.EventHandler(this.ENROLL_DELETE);
+        }
+
         private void STUD_DELETE(object sender, EventArgs e)
         {
             Database DB = new Database();
@@ -47,7 +56,7 @@ namespace campusLy._Forms
         {
             Database DB = new Database();
 
-            //new InfoForm(DB.deleteCourse(ConfirmId)).ShowDialog();
+            new InfoForm(DB.delete(enrollInstance)).ShowDialog();
 
             this.Close();
         }

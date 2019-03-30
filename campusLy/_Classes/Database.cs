@@ -413,7 +413,7 @@ namespace campusLy
         internal Course selectCourseViaCourseCodeAndType(string course_code, string course_type)
         {
             /*Query*/
-            string squery = "SELECT * FROM course WHERE course_type = '"+course_type+"' AND course_code LIKE '%"+course_code+"%'";
+            string squery = "SELECT * FROM course WHERE course_type = '" + course_type + "' AND course_code LIKE '%" + course_code + "%'";
 
             /*Storage*/
             Course course = new Course();
@@ -459,16 +459,91 @@ namespace campusLy
 
             return value;
         }
+        internal bool canEnroll(Enroll enroll)
+        {
+            /*Checks if the student is enroll with the course*/
+            string squery = "SELECT stud_id FROM enroll WHERE course_id = " + enroll.CourseID + " AND stud_id = " + enroll.StudId;
+            int result = -1;
+
+            /*Checks if db_conn is avail*/
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                    MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                    /*read data*/
+                    while (sqlDataReader.Read())
+                    {
+                        result = (int)sqlDataReader["stud_id"];
+                    }
+                }
+                catch (Exception ex) { }
+                end();
+            }
+            /*The sql result will have same value (in terms of stud_id) with the parameter Enroll, hence student is 
+             * already enrolled in that course terminating the entire insert operation*/
+
+            return (result != enroll.StudId);
+        }
         internal bool update(Enroll enroll)
         {
             bool value = true;
 
             return value;
         }
+        internal bool delete(Enroll enroll)
+        {
+            bool value = false;
+            string squery = "DELETE FROM enroll WHERE course_id = " + enroll.CourseID + " AND stud_id = " + enroll.StudId;
 
+            if (start())
+            {
+                try
+                {
+                    MySqlCommand scomm = new MySqlCommand(squery, Database_Connection);
+                    scomm.ExecuteNonQuery();
+                    value = true;
+                }
+                catch (Exception ex) { value = false; }
+                end();
+            }
+            else { value = false; }
 
-        //OTHERS
-        //STUDENT
+            return value;
+        }
+        internal List<Course> selectEnrolledCoursesOfStudent(Student student)
+        {
+            /*Query*/
+            string squery = "SELECT c.* FROM enroll e JOIN course c ON c.course_id = e.course_id WHERE e.stud_id = " + student.Id;
+
+            /*Storage*/
+            List<Course> courses = new List<Course>();
+
+            if (start())
+            {
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    Course c = new Course
+                    {
+                        CourseId = Int32.Parse(sqlDataReader["course_id"] + ""),
+                        CourseCode = sqlDataReader["course_code"] + "",
+                        CourseTitle = sqlDataReader["course_title"] + "",
+                        CourseType = sqlDataReader["course_type"] + ""
+                    };
+
+                    courses.Add(c);
+                }
+                end();
+            }
+            return courses;
+        }
+
 
         //Courses enrolled by student
         internal List<Course> selectCoursesOfStud(Student student)

@@ -136,7 +136,7 @@ namespace campusLy
         /*2. DELETE*/
         private void ENROLL_2_DELETE(object sender, EventArgs e)
         {
-
+            new FormUnenroll().ShowDialog();
         }
 
 

@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_course_count = new System.Windows.Forms.Label();
+            this.lbl_already_enrolled = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_message
@@ -53,11 +54,11 @@
             // 
             this.btn_submit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_submit.Enabled = false;
-            this.btn_submit.Location = new System.Drawing.Point(195, 407);
+            this.btn_submit.Location = new System.Drawing.Point(195, 430);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(90, 27);
             this.btn_submit.TabIndex = 31;
-            this.btn_submit.Text = "SUBMIT";
+            this.btn_submit.Text = "ENROLL";
             this.btn_submit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_submit.UseVisualStyleBackColor = true;
             // 
@@ -207,10 +208,23 @@
             this.lbl_course_count.Size = new System.Drawing.Size(0, 18);
             this.lbl_course_count.TabIndex = 45;
             // 
+            // lbl_already_enrolled
+            // 
+            this.lbl_already_enrolled.AutoSize = true;
+            this.lbl_already_enrolled.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_already_enrolled.ForeColor = System.Drawing.Color.Red;
+            this.lbl_already_enrolled.Location = new System.Drawing.Point(76, 400);
+            this.lbl_already_enrolled.Name = "lbl_already_enrolled";
+            this.lbl_already_enrolled.Size = new System.Drawing.Size(328, 20);
+            this.lbl_already_enrolled.TabIndex = 46;
+            this.lbl_already_enrolled.Text = "Student already enrolled in course subject!";
+            this.lbl_already_enrolled.Visible = false;
+            // 
             // FormEnroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.ClientSize = new System.Drawing.Size(480, 457);
+            this.ClientSize = new System.Drawing.Size(480, 469);
+            this.Controls.Add(this.lbl_already_enrolled);
             this.Controls.Add(this.lbl_course_count);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -226,8 +240,8 @@
             this.Controls.Add(this.lbl_message);
             this.Controls.Add(this.cmbox_student);
             this.Controls.Add(this.btn_submit);
-            this.MaximumSize = new System.Drawing.Size(500, 500);
-            this.MinimumSize = new System.Drawing.Size(500, 500);
+            this.MaximumSize = new System.Drawing.Size(500, 512);
+            this.MinimumSize = new System.Drawing.Size(500, 512);
             this.Name = "FormEnroll";
             this.Text = "CREATE | ENROLL";
             this.Load += new System.EventHandler(this.FormEnroll_Load);
@@ -247,6 +261,7 @@
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.lbl_course_count, 0);
+            this.Controls.SetChildIndex(this.lbl_already_enrolled, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,5 +284,6 @@
         protected internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         protected internal System.Windows.Forms.Label lbl_course_count;
+        protected internal System.Windows.Forms.Label lbl_already_enrolled;
     }
 }
