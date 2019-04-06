@@ -76,7 +76,6 @@ namespace campusLy._Forms
             string[] dataGen = new string[row_size];
 
             Database DB = new Database();
-            FileGen fileGen = new FileGen();
 
             //set i = 0 to include identifier in message form
             for (int i = 1; i < row_size; i++)
@@ -97,10 +96,10 @@ namespace campusLy._Forms
                 Gender = dataGen[7]
             };
 
-            fileGen.ProduceStudent(student, DB.selectCoursesOfStud(student));
+            //fileGen.ProduceStudent(student, DB.selectCoursesOfStud(student));
 
-            this.Close();
-            new MessageForm(data,fileGen).ShowDialog();
+            new XMLPicker("student",student).ShowDialog();
+            //new MessageForm(data,fileGen).ShowDialog();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {

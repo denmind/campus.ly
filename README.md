@@ -15,8 +15,14 @@
 ~Password: admin_student
 
 [2DO]
+ENROLL :
+~remove student from class[D]
+//Double Click pass Enroll instance (w/ stud and course id)
 
-~Prep
+
+mods...
+
+[PREP]
 
 //Get sorted Ids
 SELECT {TABLE NAME ID} FROM {TABLE NAME} ORDER BY {TABLE NAME ID} ASC 

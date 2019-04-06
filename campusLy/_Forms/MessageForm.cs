@@ -13,22 +13,15 @@ namespace campusLy._Forms
 {
     public partial class MessageForm : Form
     {
-        FileGen file;
-        internal MessageForm(string data)
+        FileHandler file;
+        internal MessageForm(FileHandler XML, string message)
         {
             InitializeComponent();
-            msg_text.Text += data;
-            //Clipboard.SetText(msg_text.Text);
+            msg_text.Text += message;
+            file = XML;
 
-            lbl_records_link.Visible = false;
-        }
-        internal MessageForm(string data, FileGen instance)
-        {
-            InitializeComponent();
-            msg_text.Text += data;
-            Clipboard.SetText(msg_text.Text);
-
-            file = instance;
+            if (XML != null && lbl_records_link.Visible == false)
+                lbl_records_link.Visible = true;
         }
         void MessageForm_KeyPress(object sender, KeyPressEventArgs e)
         {

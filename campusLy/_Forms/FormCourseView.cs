@@ -15,7 +15,7 @@ namespace campusLy._Forms
         {
             InitializeComponent();
             this.Text = optype + " | COURSE";
-            lbl_form_view_title.Text = header_message;
+            lbl_form_view_title.Text += header_message;
 
             if (optype.Equals("VIEW"))
                 this.dataGridView_Course.CellDoubleClick += this.VIEW_CellClick;
@@ -73,7 +73,6 @@ namespace campusLy._Forms
             string data = "";
 
             Database DB = new Database();
-            FileGen fileGen = new FileGen();
 
             //set i = 0 to include identifier in message form
             for (int i = 1; i < row_size; i++)
@@ -88,11 +87,9 @@ namespace campusLy._Forms
                 CourseType = hold[3].Value + ""
             };
 
-
-            fileGen.ProduceCourse(C,DB.selectStudsOfCourse(C));
+            
 
             this.Close();
-            new MessageForm(data, fileGen).ShowDialog();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {

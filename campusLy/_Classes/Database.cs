@@ -19,8 +19,8 @@ namespace campusLy
         {
             db_server = "localhost";
             db_name = "campus.ly";
-            db_uid = "student_admin";
-            db_password = "admin_student";
+            db_uid = "root";
+            db_password = "";
 
             db_conn = new MySqlConnection(generateDb_info_string());
         }
@@ -487,12 +487,6 @@ namespace campusLy
 
             return (result != enroll.StudId);
         }
-        internal bool update(Enroll enroll)
-        {
-            bool value = true;
-
-            return value;
-        }
         internal bool delete(Enroll enroll)
         {
             bool value = false;
@@ -513,6 +507,8 @@ namespace campusLy
 
             return value;
         }
+
+        //Courses enrolled by student
         internal List<Course> selectEnrolledCoursesOfStudent(Student student)
         {
             /*Query*/
@@ -544,35 +540,8 @@ namespace campusLy
             return courses;
         }
 
-
-        //Courses enrolled by student
-        internal List<Course> selectCoursesOfStud(Student student)
-        {
-            List<Course> course_list = new List<Course>();
-            string squery = "SELECT * FROM enroll e JOIN course c ON e.course_id = c.course_id WHERE e.stud_id = " + student.Id;
-
-            if (start())
-            {
-                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
-                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
-
-                /*read data*/
-                while (sqlDataReader.Read())
-                {
-                    Course course_temp = new Course();
-
-                    course_temp.CourseCode = sqlDataReader["course_code"] + "";
-                    course_temp.CourseTitle = sqlDataReader["course_title"] + "";
-
-                    course_list.Add(course_temp);
-                }
-                end();
-            }
-            return course_list;
-        }
-
         //Students enrolled in course
-        internal List<Student> selectStudsOfCourse(Course course)
+        internal List<Student> selectEnrolledStudsOfCourse(Course course)
         {
             List<Student> stud_list = new List<Student>();
             string squery = "SELECT * FROM enroll e JOIN student s ON e.stud_id = s.stud_id WHERE e.course_id = " + course.CourseId;
@@ -715,7 +684,32 @@ namespace campusLy
             return "SERVER=" + db_server + ";DATABASE=" + db_name + ";UID=" + db_uid + ";PASSWORD=" + db_password;
         }
 
-        //TEST
+        //OTHERS
+        internal List<string> getAttributesFromTable(string table_name)
+        {
+            List<string> tagList = new List<string>();
+
+            if (start())
+            {
+                string squery = "DESCRIBE " + table_name;
+                string holder = "";
+
+                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
+                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
+
+                /*read data*/
+                while (sqlDataReader.Read())
+                {
+                    holder = sqlDataReader["Field"] + "";
+
+                    tagList.Add(holder);
+                }
+
+                end();
+            }
+            return tagList;
+        }
+
         internal List<int> getSortedStudID()
         {
             /*Query*/
@@ -743,5 +737,6 @@ namespace campusLy
             bool value = false;
             return value;
         }
+
     }
 }

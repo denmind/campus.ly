@@ -51,7 +51,7 @@
             // 
             // label_message
             // 
-            this.label_message.Location = new System.Drawing.Point(236, 10);
+            this.label_message.Location = new System.Drawing.Point(236, -4);
             this.label_message.Size = new System.Drawing.Size(0, 17);
             // 
             // dataGridView_view
@@ -103,7 +103,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView_view.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_view.GridColor = System.Drawing.Color.Silver;
-            this.dataGridView_view.Location = new System.Drawing.Point(12, 55);
+            this.dataGridView_view.Location = new System.Drawing.Point(9, 66);
             this.dataGridView_view.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView_view.MultiSelect = false;
             this.dataGridView_view.Name = "dataGridView_view";
@@ -205,7 +205,7 @@
             // 
             this.srch_box.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.srch_box.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.srch_box.Location = new System.Drawing.Point(12, 12);
+            this.srch_box.Location = new System.Drawing.Point(9, 23);
             this.srch_box.Name = "srch_box";
             this.srch_box.Size = new System.Drawing.Size(301, 26);
             this.srch_box.TabIndex = 3;
@@ -219,7 +219,7 @@
             this.richText_title.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richText_title.Font = new System.Drawing.Font("OCR A Extended", 54F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richText_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
-            this.richText_title.Location = new System.Drawing.Point(12, 56);
+            this.richText_title.Location = new System.Drawing.Point(9, 67);
             this.richText_title.Name = "richText_title";
             this.richText_title.ReadOnly = true;
             this.richText_title.Size = new System.Drawing.Size(656, 381);
@@ -229,11 +229,11 @@
             // lbl_form_view_title
             // 
             this.lbl_form_view_title.AutoSize = true;
-            this.lbl_form_view_title.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_form_view_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbl_form_view_title.Location = new System.Drawing.Point(369, 17);
+            this.lbl_form_view_title.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_form_view_title.ForeColor = System.Drawing.Color.Black;
+            this.lbl_form_view_title.Location = new System.Drawing.Point(316, 27);
             this.lbl_form_view_title.Name = "lbl_form_view_title";
-            this.lbl_form_view_title.Size = new System.Drawing.Size(14, 17);
+            this.lbl_form_view_title.Size = new System.Drawing.Size(14, 18);
             this.lbl_form_view_title.TabIndex = 6;
             this.lbl_form_view_title.Text = "*";
             // 

@@ -30,9 +30,9 @@ namespace campusLy
 
         string[] form_type =
         {
-            "Double click cell to EDIT RECORD!",
-            "Double click cell to GENERATE RECORD FILE!",
-            "Double click cell to DELETE RECORD immediately!"
+            "Double-click cell to EDIT RECORD!",
+            "Double-click cell to GENERATE XML FILE!",
+            "Double-click cell to DELETE RECORD!"
         };
 
         string[] form_op =

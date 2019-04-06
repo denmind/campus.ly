@@ -56,3 +56,4 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormCourseView.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormEnroll.resources
 C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.FormUnenroll.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\IT3202\campusLy\campusLy\obj\Debug\campusLy._Forms.XMLPicker.resources

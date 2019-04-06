@@ -69,8 +69,8 @@
     <Compile Include="_Classes\Course.cs" />
     <Compile Include="_Classes\Database.cs" />
     <Compile Include="_Classes\Enroll.cs" />
-    <Compile Include="_Classes\FileGen.cs" />
     <Compile Include="_Classes\Student.cs" />
+    <Compile Include="_Classes\FileHandler.cs" />
     <Compile Include="_Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +149,12 @@
     <Compile Include="_Forms\MessageForm.Designer.cs">
       <DependentUpon>MessageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Forms\XMLPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Forms\XMLPicker.Designer.cs">
+      <DependentUpon>XMLPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="_Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="_Forms\BaseForm.en.resx">
@@ -202,6 +208,9 @@
     </Compile>
     <EmbeddedResource Include="_Forms\MessageForm.resx">
       <DependentUpon>MessageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Forms\XMLPicker.resx">
+      <DependentUpon>XMLPicker.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

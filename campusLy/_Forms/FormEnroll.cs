@@ -17,7 +17,7 @@ namespace campusLy._Forms
         Student e_stud;
         Course e_course;
 
-        Enroll E;
+        Enroll E = new Enroll();
 
         public FormEnroll()
         {
@@ -29,9 +29,6 @@ namespace campusLy._Forms
         private void ADD_btn_submit_Click(object sender, EventArgs e)
         {
             Database DB = new Database();
-
-            
-
             this.Close();
             new InfoForm(DB.insert(E)).ShowDialog();
         }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2019 at 04:51 PM
+-- Generation Time: Apr 06, 2019 at 02:37 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -73,7 +73,8 @@ INSERT INTO `enroll` (`enroll_id`, `course_id`, `stud_id`) VALUES
 (4, 7, 1),
 (5, 2, 3),
 (6, 8, 1),
-(7, 14, 3);
+(7, 14, 3),
+(8, 15, 12);
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `student`

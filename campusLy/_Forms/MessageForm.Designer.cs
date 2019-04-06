@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.msg_text = new System.Windows.Forms.RichTextBox();
-            this.lbl_footnote = new System.Windows.Forms.Label();
             this.lbl_records_link = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -42,30 +41,21 @@
             this.msg_text.Location = new System.Drawing.Point(12, 21);
             this.msg_text.Name = "msg_text";
             this.msg_text.ReadOnly = true;
-            this.msg_text.Size = new System.Drawing.Size(428, 85);
+            this.msg_text.Size = new System.Drawing.Size(428, 72);
             this.msg_text.TabIndex = 1;
             this.msg_text.Text = "";
-            // 
-            // lbl_footnote
-            // 
-            this.lbl_footnote.AutoSize = true;
-            this.lbl_footnote.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_footnote.Location = new System.Drawing.Point(12, 102);
-            this.lbl_footnote.Name = "lbl_footnote";
-            this.lbl_footnote.Size = new System.Drawing.Size(241, 18);
-            this.lbl_footnote.TabIndex = 2;
-            this.lbl_footnote.Text = "*Generated record and data copied!";
             // 
             // lbl_records_link
             // 
             this.lbl_records_link.AutoSize = true;
             this.lbl_records_link.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_records_link.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_records_link.Location = new System.Drawing.Point(360, 102);
+            this.lbl_records_link.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_records_link.Location = new System.Drawing.Point(347, 96);
             this.lbl_records_link.Name = "lbl_records_link";
-            this.lbl_records_link.Size = new System.Drawing.Size(80, 18);
+            this.lbl_records_link.Size = new System.Drawing.Size(103, 24);
             this.lbl_records_link.TabIndex = 3;
             this.lbl_records_link.Text = "Open File";
+            this.lbl_records_link.Visible = false;
             this.lbl_records_link.Click += new System.EventHandler(this.lbl_records_link_Click);
             // 
             // MessageForm
@@ -76,7 +66,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(462, 129);
             this.Controls.Add(this.lbl_records_link);
-            this.Controls.Add(this.lbl_footnote);
             this.Controls.Add(this.msg_text);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,7 +87,6 @@
 
         #endregion
         private System.Windows.Forms.RichTextBox msg_text;
-        private System.Windows.Forms.Label lbl_footnote;
         private System.Windows.Forms.Label lbl_records_link;
     }
 }

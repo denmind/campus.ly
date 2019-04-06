@@ -1,0 +1,3 @@
+Always include "_templates" directory in same path with exe file.
+
+Exe uses localhost for database with the file "campus_ly.sql"

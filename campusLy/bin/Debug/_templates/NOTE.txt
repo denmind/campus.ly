@@ -1,0 +1,25 @@
+#############################################################
+#	IF ANY RULE IS VIOLATED DUE TO USER INTERFERENCE		#
+#	 A) DIRECTORY NAME MODIFIED 							#
+#	 B) ANY ASSOCIATED FILE NAMES MODIFIED					#
+#	 C) TAG NAMES NOT FOLLOWED ACCORDING TO RULE			#
+#	XML VALIDATOR WOULD IGNORE THE REQUESTED OPERATION		#
+#############################################################
+
+	[GENERAL FORMAT]
+		<outer>
+			<inner></inner>
+		</outer>
+
+	[OUTER]
+		~Tags should correspond to database table name
+		e.g. student equivalent to <student></student>
+
+	[INNER]
+		~Tags should correspond to database table attributes
+		e.g. student_id equivalent to <student_id></student_id>
+	
+#####################################################################
+#	IF YOU WANT TO ADD YOUR OWN XML FILE, ADHERE TO THE DATABASE	#
+#	(MYSQL)FILE TABLE NAMES AND ITS CORRESPONDING ATTRIBUTES		#
+#####################################################################
