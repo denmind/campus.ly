@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2019 at 02:37 PM
+-- Generation Time: Apr 06, 2019 at 03:15 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -69,12 +69,12 @@ CREATE TABLE `enroll` (
 
 INSERT INTO `enroll` (`enroll_id`, `course_id`, `stud_id`) VALUES
 (1, 1, 1),
-(3, 2, 1),
 (4, 7, 1),
 (5, 2, 3),
 (6, 8, 1),
 (7, 14, 3),
-(8, 15, 12);
+(8, 15, 12),
+(10, 14, 15);
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,8 @@ INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi
 (12, 16204321, 'Margarette', 'Pranto', 'Viscaya', 'BSCS', '1', '1997-04-05', 'Female', '2019-03-13 21:26:54'),
 (13, 15101253, 'Oliver', 'Reyes', 'Jake', 'BSLIS', '1', '1998-06-19', 'Male', '2019-03-15 17:00:55'),
 (14, 16211012, 'Sebastian', 'Miguel', 'Ramos', 'BSLIS', '1', '1997-11-14', 'Male', '2019-03-22 19:59:17'),
-(15, 15100146, 'Alexis', 'Minaro', 'Jocinta', 'BSIS', '2', '1997-07-14', 'Female', '2019-03-27 14:03:16');
+(15, 15100146, 'Alexis', 'Minaro', 'Jocinta', 'BSIS', '2', '1997-07-14', 'Female', '2019-03-27 14:03:16'),
+(16, 16712001, 'Johnny', '', 'Goode', 'BSLIS', '4', '1937-05-14', 'Male', '2019-04-06 21:14:54');
 
 --
 -- Indexes for dumped tables
@@ -147,13 +148,13 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=16;
+  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

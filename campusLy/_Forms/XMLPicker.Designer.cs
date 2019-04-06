@@ -44,6 +44,7 @@
             // richTxtBox_preview
             // 
             this.richTxtBox_preview.BackColor = System.Drawing.Color.White;
+            this.richTxtBox_preview.Enabled = false;
             this.richTxtBox_preview.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTxtBox_preview.Location = new System.Drawing.Point(20, 129);
             this.richTxtBox_preview.Name = "richTxtBox_preview";
@@ -55,6 +56,7 @@
             // cmBox_files
             // 
             this.cmBox_files.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmBox_files.Enabled = false;
             this.cmBox_files.FormattingEnabled = true;
             this.cmBox_files.Location = new System.Drawing.Point(20, 49);
             this.cmBox_files.Name = "cmBox_files";
@@ -141,7 +143,7 @@
             this.MaximumSize = new System.Drawing.Size(613, 565);
             this.MinimumSize = new System.Drawing.Size(613, 565);
             this.Name = "XMLPicker";
-            this.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(3);
             this.Text = "XML Templates";
             this.Load += new System.EventHandler(this.XMLPicker_Load);
             this.Controls.SetChildIndex(this.label_message, 0);

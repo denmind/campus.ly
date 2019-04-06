@@ -64,8 +64,9 @@
             // 
             // cmbox_student
             // 
-            this.cmbox_student.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbox_student.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbox_student.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbox_student.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbox_student.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbox_student.ForeColor = System.Drawing.Color.Black;
             this.cmbox_student.FormattingEnabled = true;
@@ -158,8 +159,9 @@
             // 
             // cmbox_courses
             // 
-            this.cmbox_courses.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbox_courses.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbox_courses.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbox_courses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbox_courses.Enabled = false;
             this.cmbox_courses.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbox_courses.ForeColor = System.Drawing.Color.Black;

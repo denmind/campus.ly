@@ -29,6 +29,8 @@ namespace campusLy._Forms
         private void ADD_btn_submit_Click(object sender, EventArgs e)
         {
             Database DB = new Database();
+
+
             this.Close();
             new InfoForm(DB.insert(E)).ShowDialog();
         }
@@ -36,7 +38,7 @@ namespace campusLy._Forms
         {
             Database DB = new Database();
 
-            List<Student> stud_list = DB.selectStud_Sorted_IdNoAsc();
+            List<Student> stud_list = DB.selectStudSortedIdNoAsc();
 
             foreach(Student stud in stud_list)
             {

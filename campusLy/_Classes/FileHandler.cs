@@ -35,18 +35,32 @@ namespace campusLy._Classes
         internal int countFilesInFolder()
         {
             DirectoryInfo info = new System.IO.DirectoryInfo(FileLocation);
+            int count;
+            try
+            {
+                count = info.GetFiles().Length;
+            }catch(Exception E)
+            {
+                count = 0;
+            }
 
-            return info.GetFiles().Length;
+            return count;
         }
-        internal void getFilesInFolder(FileInfo[] storage)
+        internal bool getFilesInFolder(FileInfo[] storage)
         {
             int filecount = this.countFilesInFolder();
             DirectoryInfo info = new System.IO.DirectoryInfo(FileLocation);
+            bool value = false;
 
-            FileInfo[] fileInfos = info.GetFiles();
+            if (filecount > 0)
+            {
+                value = true;
+                FileInfo[] fileInfos = info.GetFiles();
 
-            for (int i = 0; i < filecount; i++)
-                storage[i] = fileInfos[i];
+                for (int i = 0; i < filecount; i++)
+                    storage[i] = fileInfos[i];
+            }
+            return value;
         }
 
         //FOR STUDENT

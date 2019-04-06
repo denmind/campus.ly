@@ -25,7 +25,7 @@ namespace campusLy._Forms
         {
             Database DB = new Database();
 
-            List<Student> stud_list = DB.selectStud_Sorted_IdNoAsc();
+            List<Student> stud_list = DB.selectStudSortedIdNoAsc();
 
             foreach (Student stud in stud_list)
             {

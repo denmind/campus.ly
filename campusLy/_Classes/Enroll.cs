@@ -12,22 +12,12 @@ namespace campusLy._Classes
         private int course_id;
         private int stud_id;
 
-        private Course course_instance;
-        private Student student_instance;
-
-        internal Enroll() {
-            course_instance = new Course();
-            student_instance = new Student();
-        }
+        internal Enroll() {}
 
         internal Enroll(int course_id_new, int stud_id_new)
         {
             course_id = course_id_new;
             stud_id = stud_id_new;
-
-            course_instance = new Course();
-            student_instance = new Student();
-
         }
 
         internal int EnrollID
@@ -39,17 +29,6 @@ namespace campusLy._Classes
         {
             get { return course_id; }
             set { course_id = value; }
-        }
-        internal Student StudInst
-        {
-            get { return student_instance; }
-            set { student_instance = value; }
-        }
-
-        internal Course CourseInst
-        {
-            get { return course_instance; }
-            set { course_instance = value; }
         }
 
         internal int StudId

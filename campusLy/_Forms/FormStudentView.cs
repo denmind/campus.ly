@@ -13,7 +13,7 @@ namespace campusLy._Forms
 {
     public partial class FormStudentView : BaseForm
     {
-        public FormStudentView(string optype,string header_message)
+        public FormStudentView(string optype, string header_message)
         {
             InitializeComponent();
             this.Text = optype + " | STUDENT";
@@ -64,42 +64,27 @@ namespace campusLy._Forms
 
         private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //When a table row is double clicked a message box (modal) is displayed and within the control form
-            //a open file link is made available
-            const int row_size = 10;
-
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
-            string data = "";
-            string[] dataGen = new string[row_size];
-
             Database DB = new Database();
 
-            //set i = 0 to include identifier in message form
-            for (int i = 1; i < row_size; i++)
-            {
-               data += hold[i].Value + " ";
-                dataGen[i - 1] = hold[i].Value + "";
-            }
             Student student = new Student
             {
-                Id = Int32.Parse(hold[0].Value + ""),
-                IdNo = Int32.Parse(dataGen[0] + ""),
-                NameLast = dataGen[1],
-                NameMiddle = dataGen[2],
-                NameFirst = dataGen[3],
-                Course = dataGen[4],
-                CourseYr = Int32.Parse(dataGen[5] + ""),
-                DateOfBirth = dataGen[6],
-                Gender = dataGen[7]
+                Id = (int)hold[0].Value,
+                IdNo = (int)hold[1].Value,
+                NameLast = hold[2].Value + "",
+                NameMiddle = hold[3].Value + "",
+                NameFirst = hold[4].Value + "",
+                Course = hold[5].Value + "",
+                CourseYr = (int)hold[6].Value,
+                DateOfBirth = hold[7].Value + "",
+                Gender = hold[8].Value + "",
+                DateAdded = hold[9].Value + ""
             };
 
-            //fileGen.ProduceStudent(student, DB.selectCoursesOfStud(student));
-
-            new XMLPicker("student",student).ShowDialog();
-            //new MessageForm(data,fileGen).ShowDialog();
+            new XMLPicker("student", student).ShowDialog();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -56,9 +56,9 @@ namespace campusLy._Forms
         {
             Database DB = new Database();
 
+            this.Close();
             new InfoForm(DB.delete(enrollInstance)).ShowDialog();
 
-            this.Close();
         }
         private void button_false_Click(object sender, EventArgs e)
         {

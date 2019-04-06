@@ -15,12 +15,7 @@
 ~Password: admin_student
 
 [2DO]
-ENROLL :
-~remove student from class[D]
-//Double Click pass Enroll instance (w/ stud and course id)
-
-
-mods...
+mod
 
 [PREP]
 
@@ -32,3 +27,5 @@ SELECT {TABLE NAME ID} FROM {TABLE NAME} ORDER BY {TABLE NAME ID} ASC
 
 //Get max value id from sorted id via local variable (done in the loop)
 ALTER TABLE tbl AUTO_INCREMENT = {MAX VALUE + 1};
+
+Try login during startup

@@ -62,22 +62,11 @@ namespace campusLy._Forms
         }
         private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //When a table row is double clicked a message box (modal) is displayed and within the control form
-            //a open file link is made available
-            const int row_size = 4;
-
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
 
-            string data = "";
-
             Database DB = new Database();
-
-            //set i = 0 to include identifier in message form
-            for (int i = 1; i < row_size; i++)
-                data += hold[i].Value + " ";
-
 
             Course C = new Course
             {
@@ -87,7 +76,7 @@ namespace campusLy._Forms
                 CourseType = hold[3].Value + ""
             };
 
-            
+            new XMLPicker("course", C).ShowDialog();
 
             this.Close();
         }

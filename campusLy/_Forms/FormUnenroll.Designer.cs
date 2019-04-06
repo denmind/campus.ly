@@ -62,7 +62,7 @@
             // 
             // cmbox_student
             // 
-            this.cmbox_student.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbox_student.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbox_student.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbox_student.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbox_student.ForeColor = System.Drawing.Color.Black;

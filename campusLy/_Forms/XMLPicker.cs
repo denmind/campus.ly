@@ -20,7 +20,6 @@ namespace campusLy._Forms
         Course course_inst;
 
         string FinalFileRead;
-        string FinalFileWrite;
 
         string xml_group;
         string xml_file_name;
@@ -77,11 +76,20 @@ namespace campusLy._Forms
 
             FileInfo[] myFiles = new FileInfo[count];
 
-            XML.getFilesInFolder(myFiles);
-
-            for (int i = 0; i < count; i++)
+            //There is more than 1 file in the folder
+            if (XML.getFilesInFolder(myFiles))
             {
-                cmBox_files.Items.Add(myFiles[i].Name);
+                cmBox_files.Enabled = true;
+                richTxtBox_preview.Enabled = true;
+
+                for (int i = 0; i < count; i++)
+                {
+                    cmBox_files.Items.Add(myFiles[i].Name);
+                }
+            }
+            else
+            {
+                richTxtBox_preview.Text = "NO XML TEMPLATE IN DIRECTORY!";
             }
         }
 

@@ -233,7 +233,7 @@ namespace campusLy
             }
             return student;
         }
-        internal List<Student> selectStud_Sorted_IdNoAsc()
+        internal List<Student> selectStudSortedIdNoAsc()
         {
             /*Query*/
             string squery = "SELECT * FROM student ORDER BY stud_id_no";
@@ -409,7 +409,6 @@ namespace campusLy
             }
             return courses;
         }
-
         internal Course selectCourseViaCourseCodeAndType(string course_code, string course_type)
         {
             /*Query*/
