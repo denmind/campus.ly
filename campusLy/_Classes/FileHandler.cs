@@ -15,6 +15,9 @@ namespace campusLy._Classes
         internal const string FileLocWriting = @"_records\";
         internal const string FileType = ".xml";
 
+        internal const string XMLOpen = "<record>\n\t";
+        internal const string XMLClose = "\n</record>";
+
         internal FileHandler()
         {
             file_location = "";
@@ -123,7 +126,7 @@ namespace campusLy._Classes
 
                 foreach (Course course in subjects)
                 {
-                    course_final_output += "\n" + course_backbone;
+                    course_final_output += "\n\t" + course_backbone;
                     foreach (string tagData in attributes)
                     {
                         search_term = "<" + tagData + "></" + tagData + ">";
@@ -151,7 +154,7 @@ namespace campusLy._Classes
 
             //ADD BOTH STUDENT AND COURSE DATA
 
-            return stud_final_output + "" + course_final_output;
+            return XMLOpen + stud_final_output + "" + course_final_output + XMLClose;
         }
         //FOR COURSE
         internal string buildCourse(string data, Course crsdata)
@@ -206,7 +209,7 @@ namespace campusLy._Classes
 
                 foreach (Student stdat in enrollees )
                 {
-                    stud_final_output += "\n" + stud_backbone;
+                    stud_final_output += "\n\t" + stud_backbone;
                     foreach (string tagData in attributes)
                     {
                         search_term = "<" + tagData + "></" + tagData + ">";
@@ -237,7 +240,7 @@ namespace campusLy._Classes
                 }
 
             }
-            return course_final_output + "" + stud_final_output;
+            return XMLOpen + course_final_output + "" + stud_final_output + XMLClose;
         }
 
         internal string findAndCapture(string data, string begin, string end)

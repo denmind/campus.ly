@@ -1,10 +1,12 @@
-<student>
-	<stud_id_no></stud_id_no>
-	<stud_name_first></stud_name_first>
-	<stud_name_mi></stud_name_mi>
-	<stud_name_last></stud_name_last>
-	<stud_course></stud_course>
-	<stud_course_yr></stud_course_yr>
-	<stud_date_of_birth></stud_date_of_birth>
-	<stud_gender></stud_gender>
-</student>
+<record>
+	<student>
+		<stud_id_no></stud_id_no>
+		<stud_name_first></stud_name_first>
+		<stud_name_mi></stud_name_mi>
+		<stud_name_last></stud_name_last>
+		<stud_course></stud_course>
+		<stud_course_yr></stud_course_yr>
+		<stud_date_of_birth></stud_date_of_birth>
+		<stud_gender></stud_gender>
+	</student>
+</record>
