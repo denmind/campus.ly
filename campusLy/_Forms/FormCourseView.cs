@@ -77,8 +77,6 @@ namespace campusLy._Forms
             };
 
             new XMLPicker("course", C).ShowDialog();
-
-            this.Close();
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {

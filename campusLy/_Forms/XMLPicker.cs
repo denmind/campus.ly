@@ -104,6 +104,7 @@ namespace campusLy._Forms
                 MessageBox.Show(E.Message);
             }
         }
+
         private void cmBox_files_ValueChanged(object sender, EventArgs e)
         {
             string filetemplate = "";
@@ -118,8 +119,12 @@ namespace campusLy._Forms
 
                 filetemplate = File.ReadAllText(FinalFileRead);
 
+                //CHOOSES WHICH DATA TO PREVIEW
                 if (stud_inst != null)
                     preview = XML.buildStudent(filetemplate, stud_inst);
+
+                if (course_inst != null)
+                    preview = XML.buildCourse(filetemplate, course_inst);
 
                 richTxtBox_preview.Text = preview;
             }

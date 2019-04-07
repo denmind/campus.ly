@@ -153,6 +153,92 @@ namespace campusLy._Classes
 
             return stud_final_output + "" + course_final_output;
         }
+        //FOR COURSE
+        internal string buildCourse(string data, Course crsdata)
+        {
+            Database DB = new Database();
+            string search_term = "";
+            string final_term = "";
+            string stud_final_output = this.findAndCapture(data, "<student>", "</student>");
+            string course_final_output = this.findAndCapture(data, "<course>", "</course>");
+
+            if (course_final_output != "")
+            {
+                //CHANGE PARAMETER APPROPRIATE TO DATABASE TABLE NAME
+                List<string> attributes = DB.getAttributesFromTable("course");
+
+                foreach (string tagData in attributes)
+                {
+                    search_term = "<" + tagData + "></" + tagData + ">";
+
+                    final_term = "<" + tagData + ">";
+
+                    //EDIT THIS CASE PART IF ANY NEW ATTRIBUTE IS ADDED TO DATABASE
+                    //ALONG WITH APPROPRIATE ACCESSOR
+                    switch (tagData)
+                    {
+                        case "course_id": final_term += crsdata.CourseId + ""; break;
+                        case "course_code": final_term += crsdata.CourseCode + ""; break;
+                        case "course_title": final_term += crsdata.CourseTitle + ""; break;
+                        case "course_type": final_term += crsdata.CourseType + ""; break;
+                    }
+
+                    final_term += "</" + tagData + ">";
+
+                    //at this point search_term and final_term is well built
+                    course_final_output = course_final_output.Replace(search_term, final_term);
+                }
+            }
+
+            //COURSE BUILDER
+            if (stud_final_output != "")
+            {
+                //CHANGE PARAMETER APPROPRIATE TO DATABASE TABLE NAME
+                List<string> attributes = DB.getAttributesFromTable("student");
+                List<Student> enrollees = DB.selectEnrolledStudsOfCourse(crsdata);
+
+                //course_backbone exists, since this method is meant for determining the student
+                //and its enrolled courses regardless if there exists or none, a student may have 0 or more
+                //enrolled courses, hence the need for a List<Course>, course_backbone serves as a 'money plate' for
+                //'printing' courses
+                string stud_backbone = stud_final_output;
+                stud_final_output = "";
+
+                foreach (Student stdat in enrollees )
+                {
+                    stud_final_output += "\n" + stud_backbone;
+                    foreach (string tagData in attributes)
+                    {
+                        search_term = "<" + tagData + "></" + tagData + ">";
+
+                        final_term = "<" + tagData + ">";
+
+                        //EDIT THIS CASE PART IF ANY NEW ATTRIBUTE IS ADDED TO DATABASE
+                        //ALONG WITH APPROPRIATE ACCESSOR
+                        switch (tagData)
+                        {
+                            case "stud_id": final_term += stdat.Id + ""; break;
+                            case "stud_id_no": final_term += stdat.IdNo + ""; break;
+                            case "stud_name_first": final_term += stdat.NameFirst + ""; break;
+                            case "stud_name_mi": final_term += stdat.NameMiddle + ""; break;
+                            case "stud_name_last": final_term += stdat.NameLast + ""; break;
+                            case "stud_course": final_term += stdat.Course + ""; break;
+                            case "stud_course_yr": final_term += stdat.CourseYr + ""; break;
+                            case "stud_date_of_birth": final_term += stdat.DateOfBirth + ""; break;
+                            case "stud_gender": final_term += stdat.Gender + ""; break;
+                            case "date_added": final_term += stdat.DateAdded + ""; break;
+                        }
+
+                        final_term += "</" + tagData + ">";
+
+                        //at this point search_term and final_term is well built
+                        stud_final_output = stud_final_output.Replace(search_term, final_term);
+                    }
+                }
+
+            }
+            return course_final_output + "" + stud_final_output;
+        }
 
         internal string findAndCapture(string data, string begin, string end)
         {
