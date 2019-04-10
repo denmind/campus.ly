@@ -43,6 +43,7 @@ namespace campusLy._Forms
             dataGridView_Course.Rows.Clear();
             lbl_course_count.Text = "";
             lbl_course_count.ForeColor = Color.Black;
+            string enrollNameDisplay = "";
 
             Database DB = new Database();
 
@@ -51,7 +52,17 @@ namespace campusLy._Forms
 
             //Set Student Info
             txt_enrollee_course_yr.Text = e_stud.Course + " - " + e_stud.CourseYr;
-            txt_enrollee_name.Text = e_stud.NameLast + ", " + e_stud.NameFirst + " " + e_stud.NameMiddle[0] + ".";
+
+            if (e_stud.midInitIsEmpty())
+            {
+                enrollNameDisplay += e_stud.NameLast + ", " + e_stud.NameFirst;
+            }
+            else
+            {
+                enrollNameDisplay = e_stud.NameLast + ", " + e_stud.NameFirst + " " + e_stud.NameMiddle[0] + ".";
+            }
+
+            txt_enrollee_name.Text = enrollNameDisplay;
 
             //Get courses of student
             List<Course> e_stud_courses = DB.selectEnrolledCoursesOfStudent(e_stud);
