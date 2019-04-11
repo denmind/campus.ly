@@ -69,6 +69,7 @@
     <Compile Include="_Classes\Course.cs" />
     <Compile Include="_Classes\Database.cs" />
     <Compile Include="_Classes\Enroll.cs" />
+    <Compile Include="_Classes\Selector.cs" />
     <Compile Include="_Classes\Student.cs" />
     <Compile Include="_Classes\FileHandler.cs" />
     <Compile Include="_Forms\BaseForm.cs">

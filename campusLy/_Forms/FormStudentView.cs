@@ -44,10 +44,14 @@ namespace campusLy._Forms
         }
         private void SEARCH_TextChanged(object sender, EventArgs e)
         {
+            //reset
             if (dataGridView_view.Visible.Equals(false))
             {
                 dataGridView_view.Visible = true;
             }
+
+            lbl_form_view_title.Visible = true;
+            menuStrip.Visible = true;
 
             dataGridView_view.Rows.Clear();
 
@@ -61,30 +65,31 @@ namespace campusLy._Forms
 
             displayOnDataGridView(stud_data);
         }
-
         private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
-            Database DB = new Database();
-
-            Student student = new Student
+            try
             {
-                Id = (int)hold[0].Value,
-                IdNo = (int)hold[1].Value,
-                NameLast = hold[2].Value + "",
-                NameMiddle = hold[3].Value + "",
-                NameFirst = hold[4].Value + "",
-                Course = hold[5].Value + "",
-                CourseYr = (int)hold[6].Value,
-                DateOfBirth = hold[7].Value + "",
-                Gender = hold[8].Value + "",
-                DateAdded = hold[9].Value + ""
-            };
+                Student student = new Student
+                {
+                    Id = (int)hold[0].Value,
+                    IdNo = (int)hold[1].Value,
+                    NameLast = hold[2].Value + "",
+                    NameMiddle = hold[3].Value + "",
+                    NameFirst = hold[4].Value + "",
+                    Course = hold[5].Value + "",
+                    CourseYr = (int)hold[6].Value,
+                    DateOfBirth = hold[7].Value + "",
+                    Gender = hold[8].Value + "",
+                    DateAdded = hold[9].Value + ""
+                };
 
-            new XMLPicker("student", student).ShowDialog();
+                new XMLPicker("student", student).ShowDialog();
+            }
+            catch (Exception E) { }
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -96,23 +101,27 @@ namespace campusLy._Forms
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
-
-            Student S = new Student
+            try
             {
-                Id = (int)hold[0].Value,
-                IdNo = (int)hold[1].Value,
-                NameFirst = (string)hold[4].Value,
-                NameMiddle = (string)hold[3].Value,
-                NameLast = (string)hold[2].Value,
-                Course = (string)hold[5].Value,
-                CourseYr = (int)hold[6].Value,
-                DateOfBirth = (string)hold[7].Value,
-                Gender = (string)hold[8].Value,
-                DateAdded = (string)hold[9].Value
-            };
+                Student S = new Student
+                {
+                    Id = (int)hold[0].Value,
+                    IdNo = (int)hold[1].Value,
+                    NameFirst = (string)hold[4].Value,
+                    NameMiddle = (string)hold[3].Value,
+                    NameLast = (string)hold[2].Value,
+                    Course = (string)hold[5].Value,
+                    CourseYr = (int)hold[6].Value,
+                    DateOfBirth = (string)hold[7].Value,
+                    Gender = (string)hold[8].Value,
+                    DateAdded = (string)hold[9].Value
+                };
 
-            this.Close();
-            new FormStudent(S).ShowDialog();
+                this.Close();
+                new FormStudent(S).ShowDialog();
+            }
+            catch (Exception E) { }
+            
         }
         private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -123,15 +132,19 @@ namespace campusLy._Forms
             int indx = e.RowIndex;
             DataGridViewCellCollection hold = dataGridView_view.Rows[indx].Cells;
 
-            string data = "";
+            try
+            {
+                string data = "";
 
-            for (int i = 1; i < row_size; i++)
-                data += i + ". " + hold[i].Value + "\n";
+                for (int i = 1; i < row_size; i++)
+                    data += i + ". " + hold[i].Value + "\n";
 
-            indx = Int32.Parse(hold[0].Value + "");
+                indx = Int32.Parse(hold[0].Value + "");
 
-            this.Close();
-            new Confirm("STUDENT", indx, data).ShowDialog();
+                this.Close();
+                new Confirm("STUDENT", indx, data).ShowDialog();
+            }
+            catch (Exception E) { }
         }
         private void displayOnDataGridView(List<Student> stud_data)
         {
@@ -163,8 +176,63 @@ namespace campusLy._Forms
                 dataGridView_view.Visible = false;
                 richText_title.Visible = true;
                 richText_title.ReadOnly = true;
+
+                lbl_form_view_title.Visible = false;
+                menuStrip.Visible = false;
             }
         }
 
+        private void GenerateXMLFromSelectedValues(object sender, EventArgs e)
+        {
+            //SelectedColumns displays 0 no matter the number of selected cells
+            //SelectedRows only works for the entire row
+            //SelectedCells can get the row index but they are duped
+            int rowCount = dataGridView_view.SelectedCells.Count;
+
+            if (rowCount > 0)
+            {
+                Selector select = new Selector();
+                List<int> indexFinal = new List<int>();
+
+                //Adds row index in collection, but makes sure it is not duped
+                //So that the number of selected rows is equiv to number of form modals
+                for (int i = 0; i < rowCount; i++)
+                    select.AddIfNotExist(indexFinal, dataGridView_view.SelectedCells[i].RowIndex);
+
+                rowCount = indexFinal.Count;
+
+                if (rowCount > 0)
+                {
+                    DataGridViewCellCollection hold;
+
+                    //Depending on the number of indexes in collection
+                    //should be equiv to number of XMLPicker forms shown
+                    foreach (int i in indexFinal)
+                    {
+                        hold = dataGridView_view.Rows[i].Cells;
+
+                        try
+                        {
+                            Student student = new Student
+                            {
+                                Id = (int)hold[0].Value,
+                                IdNo = (int)hold[1].Value,
+                                NameLast = hold[2].Value + "",
+                                NameMiddle = hold[3].Value + "",
+                                NameFirst = hold[4].Value + "",
+                                Course = hold[5].Value + "",
+                                CourseYr = (int)hold[6].Value,
+                                DateOfBirth = hold[7].Value + "",
+                                Gender = hold[8].Value + "",
+                                DateAdded = hold[9].Value + ""
+                            };
+
+                            new XMLPicker("student", student).ShowDialog();
+                        }
+                        catch (Exception E) { }
+                    }
+                }
+            }
+        }
     }
 }

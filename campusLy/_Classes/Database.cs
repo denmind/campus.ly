@@ -14,7 +14,7 @@ namespace campusLy
         private string db_password;
 
         private MySqlConnection db_conn;
-        /*Constructor*/
+
         internal Database()
         {
             db_server = "localhost";
@@ -24,16 +24,8 @@ namespace campusLy
 
             db_conn = new MySqlConnection(generateDb_info_string());
         }
-        internal Database(string user_id, string user_pass)
-        {
-            db_server = "localhost";
-            db_name = "campus.ly";
-            db_uid = user_id;
-            db_password = user_pass;
 
-            db_conn = new MySqlConnection(generateDb_info_string());
-        }
-        /*Core*/
+        //CORE
         internal bool start()
         {
             bool value = false;
@@ -60,7 +52,7 @@ namespace campusLy
             return value;
         }
 
-        /*STUDENT*/
+        //STUDENT
         internal bool insert(Student student)
         {
             bool value = true;
@@ -277,7 +269,7 @@ namespace campusLy
             return student_data;
         }
 
-        /*COURSE*/
+        //COURSE
         internal bool insert(Course course)
         {
             bool value = true;
@@ -436,7 +428,7 @@ namespace campusLy
             return course;
         }
 
-        /*ENROLL*/
+        //ENROLL
         internal bool insert(Enroll enroll)
         {
             bool value = true;
@@ -662,18 +654,6 @@ namespace campusLy
             return search_result;
         }
 
-        //ACCESS
-        internal string Database_Username
-        {
-            get { return db_uid; }
-            set { db_uid = value; }
-        }
-        internal string Database_Password
-        {
-            get { return db_password; }
-            set { db_password = value; }
-        }
-
         internal MySqlConnection Database_Connection
         {
             get { return db_conn; }
@@ -708,34 +688,5 @@ namespace campusLy
             }
             return tagList;
         }
-
-        internal List<int> getSortedStudID()
-        {
-            /*Query*/
-            string squery = "SELECT stud_id FROM student ORDER BY stud_id ASC";
-
-            /*Storage*/
-            List<int> id_data = new List<int>();
-
-            if (start())
-            {
-                MySqlCommand scmd = new MySqlCommand(squery, Database_Connection);
-                MySqlDataReader sqlDataReader = scmd.ExecuteReader();
-
-                /*read data*/
-                while (sqlDataReader.Read())
-                {
-                    id_data.Add(int.Parse(sqlDataReader["stud_id"] + ""));
-                }
-                end();
-            }
-            return id_data;
-        }
-        internal bool cleanStudID(List<int> id_data)
-        {
-            bool value = false;
-            return value;
-        }
-
     }
 }

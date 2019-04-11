@@ -22,4 +22,5 @@
 	Regudo, Carah
 	
 [NOTES]
-	Final output inside #files
+	Database (SQL) files are inside '#DATABASE' directory
+	Run campusLy.exe

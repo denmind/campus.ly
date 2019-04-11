@@ -40,19 +40,23 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_form_view_title = new System.Windows.Forms.Label();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.multiGenerateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Course)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_message
             // 
-            this.label_message.Location = new System.Drawing.Point(205, 21);
+            this.label_message.Location = new System.Drawing.Point(205, 37);
             this.label_message.Size = new System.Drawing.Size(0, 17);
             // 
             // srch_box
             // 
             this.srch_box.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.srch_box.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.srch_box.Location = new System.Drawing.Point(9, 16);
+            this.srch_box.Location = new System.Drawing.Point(9, 32);
             this.srch_box.Name = "srch_box";
             this.srch_box.Size = new System.Drawing.Size(254, 26);
             this.srch_box.TabIndex = 3;
@@ -66,7 +70,7 @@
             this.richText_title.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richText_title.Font = new System.Drawing.Font("OCR A Extended", 54F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richText_title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(118)))), ((int)(((byte)(188)))));
-            this.richText_title.Location = new System.Drawing.Point(9, 68);
+            this.richText_title.Location = new System.Drawing.Point(9, 84);
             this.richText_title.Name = "richText_title";
             this.richText_title.ReadOnly = true;
             this.richText_title.Size = new System.Drawing.Size(656, 381);
@@ -104,6 +108,7 @@
             this.Column2,
             this.Column3,
             this.Column4});
+            this.dataGridView_Course.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,9 +119,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_Course.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_Course.GridColor = System.Drawing.Color.Silver;
-            this.dataGridView_Course.Location = new System.Drawing.Point(9, 67);
+            this.dataGridView_Course.Location = new System.Drawing.Point(9, 83);
             this.dataGridView_Course.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView_Course.MultiSelect = false;
             this.dataGridView_Course.Name = "dataGridView_Course";
             this.dataGridView_Course.ReadOnly = true;
             this.dataGridView_Course.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -166,11 +170,39 @@
             this.lbl_form_view_title.AutoSize = true;
             this.lbl_form_view_title.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_form_view_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_form_view_title.Location = new System.Drawing.Point(267, 20);
+            this.lbl_form_view_title.Location = new System.Drawing.Point(267, 36);
             this.lbl_form_view_title.Name = "lbl_form_view_title";
             this.lbl_form_view_title.Size = new System.Drawing.Size(14, 18);
             this.lbl_form_view_title.TabIndex = 6;
             this.lbl_form_view_title.Text = "*";
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(680, 24);
+            this.menuStrip.TabIndex = 8;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // selectToolStripMenuItem
+            // 
+            this.selectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.multiGenerateToolStripMenuItem});
+            this.selectToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.selectToolStripMenuItem.Text = "Select";
+            // 
+            // multiGenerateToolStripMenuItem
+            // 
+            this.multiGenerateToolStripMenuItem.Name = "multiGenerateToolStripMenuItem";
+            this.multiGenerateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.multiGenerateToolStripMenuItem.Text = "Generate File(s)";
+            this.multiGenerateToolStripMenuItem.ToolTipText = "Produce XML Files based on selected data";
+            this.multiGenerateToolStripMenuItem.Click += new System.EventHandler(this.GenerateXMLFromSelectedValues);
             // 
             // FormCourseView
             // 
@@ -179,6 +211,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(680, 457);
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.dataGridView_Course);
             this.Controls.Add(this.lbl_form_view_title);
             this.Controls.Add(this.srch_box);
@@ -194,7 +227,10 @@
             this.Controls.SetChildIndex(this.lbl_form_view_title, 0);
             this.Controls.SetChildIndex(this.dataGridView_Course, 0);
             this.Controls.SetChildIndex(this.label_message, 0);
+            this.Controls.SetChildIndex(this.menuStrip, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Course)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +245,8 @@
         internal System.Windows.Forms.DataGridView dataGridView_Course;
         private System.Windows.Forms.RichTextBox richText_title;
         private System.Windows.Forms.Label lbl_form_view_title;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem multiGenerateToolStripMenuItem;
     }
 }

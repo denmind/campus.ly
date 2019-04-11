@@ -47,8 +47,7 @@ namespace campusLy._Forms
             new MainForm(form_table[2]).ShowDialog();
         }
 
-
-        //HOVER AND LEAVE
+        //HOVER AND LEAVE EVENTS
         private void button_STUDENT_OnHover(object sender, EventArgs e)
         {
             button_STUDENT.Text = btn_message[0];

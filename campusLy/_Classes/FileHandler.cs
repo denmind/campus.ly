@@ -27,6 +27,8 @@ namespace campusLy._Classes
             get { return file_location; }
             set { file_location = value; }
         }
+
+        //ADDING/CHANGING DIRECTORIES
         internal void selectFolderRead(string folder_type)
         {
             FileLocation = FileLocReading + "_" + folder_type;
@@ -34,36 +36,6 @@ namespace campusLy._Classes
         internal void selectFolderWrite(string folder_type)
         {
             FileLocation = FileLocWriting + "_" + folder_type;
-        }
-        internal int countFilesInFolder()
-        {
-            DirectoryInfo info = new System.IO.DirectoryInfo(FileLocation);
-            int count;
-            try
-            {
-                count = info.GetFiles().Length;
-            }catch(Exception E)
-            {
-                count = 0;
-            }
-
-            return count;
-        }
-        internal bool getFilesInFolder(FileInfo[] storage)
-        {
-            int filecount = this.countFilesInFolder();
-            DirectoryInfo info = new System.IO.DirectoryInfo(FileLocation);
-            bool value = false;
-
-            if (filecount > 0)
-            {
-                value = true;
-                FileInfo[] fileInfos = info.GetFiles();
-
-                for (int i = 0; i < filecount; i++)
-                    storage[i] = fileInfos[i];
-            }
-            return value;
         }
 
         //FOR STUDENT
@@ -243,6 +215,7 @@ namespace campusLy._Classes
             return XMLOpen + course_final_output + "" + stud_final_output + XMLClose;
         }
 
+        //FILE HANDLING
         internal string findAndCapture(string data, string begin, string end)
         {
             string final = "";
@@ -266,7 +239,6 @@ namespace campusLy._Classes
 
             return final;
         }
-
         internal bool WriteFile(string fileData,string filename)
         {
             bool value = true;
@@ -281,6 +253,37 @@ namespace campusLy._Classes
             catch (Exception E)
             {
                 value = false;
+            }
+            return value;
+        }
+        internal int countFilesInFolder()
+        {
+            DirectoryInfo info = new System.IO.DirectoryInfo(FileLocation);
+            int count;
+            try
+            {
+                count = info.GetFiles().Length;
+            }
+            catch (Exception E)
+            {
+                count = 0;
+            }
+
+            return count;
+        }
+        internal bool getFilesInFolder(FileInfo[] storage)
+        {
+            int filecount = this.countFilesInFolder();
+            DirectoryInfo info = new System.IO.DirectoryInfo(FileLocation);
+            bool value = false;
+
+            if (filecount > 0)
+            {
+                value = true;
+                FileInfo[] fileInfos = info.GetFiles();
+
+                for (int i = 0; i < filecount; i++)
+                    storage[i] = fileInfos[i];
             }
             return value;
         }

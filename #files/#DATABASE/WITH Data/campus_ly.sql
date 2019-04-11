@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2019 at 03:15 PM
+-- Generation Time: Apr 11, 2019 at 10:32 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -74,7 +74,8 @@ INSERT INTO `enroll` (`enroll_id`, `course_id`, `stud_id`) VALUES
 (6, 8, 1),
 (7, 14, 3),
 (8, 15, 12),
-(10, 14, 15);
+(10, 14, 15),
+(11, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,14 @@ INSERT INTO `student` (`stud_id`, `stud_id_no`, `stud_name_first`, `stud_name_mi
 (13, 15101253, 'Oliver', 'Reyes', 'Jake', 'BSLIS', '1', '1998-06-19', 'Male', '2019-03-15 17:00:55'),
 (14, 16211012, 'Sebastian', 'Miguel', 'Ramos', 'BSLIS', '1', '1997-11-14', 'Male', '2019-03-22 19:59:17'),
 (15, 15100146, 'Alexis', 'Minaro', 'Jocinta', 'BSIS', '2', '1997-07-14', 'Female', '2019-03-27 14:03:16'),
-(16, 16712001, 'Johnny', '', 'Goode', 'BSLIS', '4', '1937-05-14', 'Male', '2019-04-06 21:14:54');
+(16, 16712001, 'Johnny', '', 'Goode', 'BSLIS', '4', '1937-05-14', 'Male', '2019-04-06 21:14:54'),
+(17, 15211345, 'Cindy', 'Mariano', 'Ruggeri', 'BSCS', '1', '1996-06-06', 'Female', '2019-04-12 04:26:04'),
+(18, 16422146, 'Evie', 'Buckalew', 'Swindell', 'BSCS', '1', '1998-12-04', 'Female', '2019-04-12 04:26:54'),
+(19, 16111524, 'Gus', 'Ragon', 'Leven', 'BSCS', '1', '2019-04-12', 'Male', '2019-04-12 04:27:19'),
+(20, 17422145, 'Monica', 'Hasty', 'Yuriko', 'BSIT', '1', '1998-03-29', 'Female', '2019-04-12 04:28:29'),
+(21, 15114246, 'Kattie', 'Queen', 'Noel', 'BSIT', '1', '1997-10-21', 'Female', '2019-04-12 04:29:37'),
+(22, 15220489, 'Zella', 'Maris', 'Finch', 'BSIS', '1', '1996-11-24', 'Female', '2019-04-12 04:30:40'),
+(23, 15102034, 'Christina', 'Mcclurg', 'Guo', 'BSIS', '1', '1996-07-02', 'Female', '2019-04-12 04:31:21');
 
 --
 -- Indexes for dumped tables
@@ -148,13 +156,13 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `enroll_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=17;
+  MODIFY `stud_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifier', AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables

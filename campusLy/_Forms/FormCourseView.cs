@@ -58,25 +58,29 @@ namespace campusLy._Forms
                 dataGridView_Course.Visible = false;
                 richText_title.Visible = true;
                 richText_title.ReadOnly = true;
+
+                lbl_form_view_title.Visible = false;
+                menuStrip.Visible = false;
             }
         }
         private void VIEW_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indx = e.RowIndex;
-
             DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
 
-            Database DB = new Database();
-
-            Course C = new Course
+            try
             {
-                CourseId = (int)hold[0].Value,
-                CourseCode = hold[1].Value + "",
-                CourseTitle = hold[2].Value + "",
-                CourseType = hold[3].Value + ""
-            };
+                Course C = new Course
+                {
+                    CourseId = (int)hold[0].Value,
+                    CourseCode = hold[1].Value + "",
+                    CourseTitle = hold[2].Value + "",
+                    CourseType = hold[3].Value + ""
+                };
 
-            new XMLPicker("course", C).ShowDialog();
+                new XMLPicker("course", C).ShowDialog();
+            }
+            catch (Exception E) { }
         }
         private void UPDATE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -85,17 +89,21 @@ namespace campusLy._Forms
             int indx = e.RowIndex;
 
             DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
-
-            Course C = new Course
+            
+            try
             {
-                CourseId = (int)hold[0].Value,
-                CourseCode = hold[1].Value + "",
-                CourseTitle = hold[2].Value + "",
-                CourseType = hold[3].Value + ""
-            };
+                Course C = new Course
+                {
+                    CourseId = (int)hold[0].Value,
+                    CourseCode = hold[1].Value + "",
+                    CourseTitle = hold[2].Value + "",
+                    CourseType = hold[3].Value + ""
+                };
 
-            this.Close();
-            new FormCourse(C).ShowDialog();
+                this.Close();
+                new FormCourse(C).ShowDialog();
+            }
+            catch (Exception E) { }
         }
         private void DELETE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -105,16 +113,21 @@ namespace campusLy._Forms
 
             int indx = e.RowIndex;
             DataGridViewCellCollection hold = dataGridView_Course.Rows[indx].Cells;
+            
+            try
+            {
+                string data = "";
 
-            string data = "";
+                for (int i = 1; i < rowsize; i++)
+                    data += i + ". " + hold[i].Value + "\n";
 
-            for (int i = 1; i < rowsize; i++)
-                data += i + ". " + hold[i].Value + "\n";
+                indx = Int32.Parse(hold[0].Value + "");
 
-            indx = Int32.Parse(hold[0].Value + "");
+                this.Close();
+                new Confirm("COURSE", indx, data).ShowDialog();
+            }
+            catch (Exception E) { }
 
-            this.Close();
-            new Confirm("COURSE", indx, data).ShowDialog();
         }
         private void SEARCH_Focus(object sender, EventArgs e)
         {
@@ -122,10 +135,13 @@ namespace campusLy._Forms
         }
         private void SEARCH_TextChanged(object sender, EventArgs e)
         {
+            //reset
             if (dataGridView_Course.Visible.Equals(false))
             {
                 dataGridView_Course.Visible = true;
             }
+            lbl_form_view_title.Visible = true;
+            menuStrip.Visible = true;
 
             dataGridView_Course.Rows.Clear();
 
@@ -138,6 +154,52 @@ namespace campusLy._Forms
             course_list = DB.searchCourse(search_term);
 
             displayOnDataGridView(course_list);
+        }
+
+        private void GenerateXMLFromSelectedValues(object sender, EventArgs e)
+        {
+            //SelectedColumns displays 0 no matter the number of selected cells
+            //SelectedRows only works for the entire row
+            //SelectedCells can get the row index but they are duped
+            int rowCount = dataGridView_Course.SelectedCells.Count;
+
+            if (rowCount > 0)
+            {
+                Selector select = new Selector();
+                List<int> indexFinal = new List<int>();
+                //Adds row index in collection, but makes sure it is not duped
+                //So that the number of selected rows is equiv to number of form modals
+                for (int i = 0; i < rowCount; i++)
+                    select.AddIfNotExist(indexFinal, dataGridView_Course.SelectedCells[i].RowIndex);
+
+                rowCount = indexFinal.Count;
+
+                if (rowCount > 0)
+                {
+                    DataGridViewCellCollection hold;
+
+                    //Depending on the number of indexes in collection
+                    //should be equiv to number of XMLPicker forms shown
+                    foreach (int i in indexFinal)
+                    {
+                        hold = dataGridView_Course.Rows[i].Cells;
+
+                        try
+                        {
+                            Course C = new Course
+                            {
+                                CourseId = (int)hold[0].Value,
+                                CourseCode = hold[1].Value + "",
+                                CourseTitle = hold[2].Value + "",
+                                CourseType = hold[3].Value + ""
+                            };
+
+                            new XMLPicker("course", C).ShowDialog();
+                        }
+                        catch (Exception E) { }
+                    }
+                }
+            }
         }
     }
 }

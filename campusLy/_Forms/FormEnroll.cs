@@ -45,7 +45,6 @@ namespace campusLy._Forms
                 cmbox_student.Items.Add(stud.IdNo + "");
             }
         }
-
         private void cmbox_student_ValueChanged(object sender, EventArgs e)
         {
             //Rest
@@ -100,7 +99,6 @@ namespace campusLy._Forms
                 cmbox_courses.Enabled = false;
             }
         }
-
         private void cmbox_courses_ValueChanged(object sender, EventArgs e)
         {
             //RESET

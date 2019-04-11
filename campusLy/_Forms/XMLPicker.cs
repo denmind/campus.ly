@@ -25,7 +25,7 @@ namespace campusLy._Forms
         string xml_file_name;
 
         //FormStudentView.cs
-        public XMLPicker(string tableType,Student studata)
+        public XMLPicker(string tableType, Student studata)
         {
             InitializeComponent();
 
@@ -34,7 +34,10 @@ namespace campusLy._Forms
 
             xml_group = tableType;
             stud_inst = studata;
-            xml_file_name = studata.IdNo+"";
+            xml_file_name = studata.IdNo + "";
+
+            //Helps user in identifying which data is being used
+            this.Text += " | " + studata.IdNo + " " + studata.NameLast;
         }
         //FormCourseView.cs
         public XMLPicker(string tableType, Course coursedata)
@@ -47,6 +50,9 @@ namespace campusLy._Forms
             xml_group = tableType;
             course_inst = coursedata;
             xml_file_name = coursedata.CourseCode + "";
+
+            //Helps user in identifying which data is being used
+            this.Text += " | " + coursedata.CourseCode;
         }
 
         private void btn_confirm_Click(object sender, EventArgs e)
@@ -56,7 +62,7 @@ namespace campusLy._Forms
 
             XML.selectFolderWrite(xml_group);
 
-            message += (XML.WriteFile(dataWrite,xml_file_name)) ? "SUCCESS" : "FAILED";
+            message += (XML.WriteFile(dataWrite, xml_file_name)) ? "SUCCESS" : "FAILED";
 
             new MessageForm(XML, message).ShowDialog();
             this.Close();
@@ -114,7 +120,7 @@ namespace campusLy._Forms
                 link_open.Visible = true;
 
             try
-            { 
+            {
                 FinalFileRead = XML.FileLocation + @"\" + cmBox_files.Text;
 
                 filetemplate = File.ReadAllText(FinalFileRead);
@@ -136,7 +142,7 @@ namespace campusLy._Forms
 
             if (false == btn_confirm.Enabled)
                 btn_confirm.Enabled = true;
-            
+
         }
     }
 }

@@ -20,14 +20,6 @@ namespace campusLy._Classes
             course_title = "";
             course_type = "";
         }
-
-        internal Course(string course_code_new, string course_title_new, string course_type_new)
-        {
-            course_code = course_code_new;
-            course_title = course_title_new;
-            course_type = course_type_new;
-        }
-
         internal int CourseId{
             get{ return course_id; }
             set { course_id = value; }
@@ -47,6 +39,5 @@ namespace campusLy._Classes
             get { return course_type; }
             set { course_type = value; }
         }
-
     }
 }
