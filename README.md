@@ -1,20 +1,14 @@
-[SUBJECT SEMESTER]
-	IT 3202 2ND SEMESTER 2018-2019
+[COURSE]
+	IT 3202
 	
-[PROJECT TITLE]
+[TITLE]
 	Campus.ly
 	
-[PROJECT DESCRIPTION]
-	Basic student and course CRUD with enroll and unenroll
+[DESCRIPTION]
+	Student and course management (enroll/unenroll). Can produce XML files for external use upon prompt.
 
 [PLATFORM]
 	Windows Desktop
-	
-[LANGUAGE]
-	C# (WinForms)
-	
-[DATE]
-	2019-04-12
 	
 [MEMBERS]
 	Caboyo, Francis
